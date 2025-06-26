@@ -1,6 +1,50 @@
 import {BreedId} from './Breed'
 import {SchoolId} from './School'
 
+
+import arcaneVigor from "@/data/images/spells/arcane-vigor.jpg";
+import auraOfPurity from "@/data/images/spells/aura-of-purity.jpg";
+import armsOfHadar from "@/data/images/spells/arms-of-hadar.jpg";
+import armorOfAgathys from "@/data/images/spells/armor-of-agathys.jpg";
+import arcaneGate from "@/data/images/spells/arcane-gate.jpg";
+import auraOfVitality from "@/data/images/spells/aura-of-vitality.jpg";
+import banishingSmite from "@/data/images/spells/banishing-smite.jpg";
+import beastSense from "@/data/images/spells/beast-sense.jpg";
+import bladeWard from "@/data/images/spells/blade-ward.jpg";
+import blindingSmite from "@/data/images/spells/blinding-smite.jpg";
+import circleOfPower from "@/data/images/spells/circle-of-power.jpg";
+import cloudOfDaggers from "@/data/images/spells/cloud-of-daggers.jpg";
+import compelledDuel from "@/data/images/spells/compelled-duel.jpg";
+import conjureBarrage from "@/data/images/spells/conjure-barrage.webp";
+import conjureVolley from "@/data/images/spells/conjure-volley.jpg";
+import cordonOfArrows from "@/data/images/spells/cordon-of-arrows.jpg";
+import crownOfMadness from "@/data/images/spells/crown-of-madness.jpg";
+import crusaderSMantle from "@/data/images/spells/crusader-s-mantle.jpg";
+import destructiveWave from "@/data/images/spells/destructive-wave.jpg";
+import elementalWeapon from "@/data/images/spells/elemental-weapon.jpg";
+import feignDeath from "@/data/images/spells/feign-death.jpg";
+import fountOfMoonlight from "@/data/images/spells/fount-of-moonlight.jpg";
+import friends from "@/data/images/spells/friends.webp";
+import graspingVine from "@/data/images/spells/grasping-vine.jpg";
+import hailOfThorns from "@/data/images/spells/hail-of-thorns.jpg";
+import hungerOfHadar from "@/data/images/spells/hunger-of-hadar.jpg";
+import jallarziSStormOfRadiance from "@/data/images/spells/jallarzi-s-storm-of-radiance.jpg";
+import lightningArrow from "@/data/images/spells/lightning-arrow.jpg";
+import mindSliver from "@/data/images/spells/mind-sliver.jpg";
+import powerWordFortify from "@/data/images/spells/power-word-fortify.jpg";
+import staggeringSmite from "@/data/images/spells/staggering-smite.jpg";
+import steelWindStrike from "@/data/images/spells/steel-wind-strike.jpg";
+import summonAberration from "@/data/images/spells/summon-aberration.jpg";
+import summonBeast from "@/data/images/spells/summon-beast.webp";
+import summonCelestial from "@/data/images/spells/summon-celestial.jpg";
+import summonConstruct from "@/data/images/spells/summon-construct.jpg";
+import summonElemental from "@/data/images/spells/summon-elemental.jpg";
+import summonFey from "@/data/images/spells/summon-fey.jpg";
+import summonFiend from "@/data/images/spells/summon-fiend.jpg";
+import summonUndead from "@/data/images/spells/summon-undead.jpg";
+
+import {StaticImageData} from "next/image";
+
 export type SpellId = string
 
 export type TimeDuration = {
@@ -16,6 +60,7 @@ export type SpellComponents = ("V"|"S"|"M")[]
 
 export interface ISpell {
     id: SpellId,
+    icon?: StaticImageData,
     name: SpellTranslatedText,
     level: number,
     breeds: BreedId[],
@@ -31,6 +76,7 @@ export interface ISpell {
 export const spellList: ISpell[] = [
     {
         "id": "arcane-gate",
+        "icon": arcaneGate,
         "name": {
             "en": "Arcane Gate",
             "fr": "Portail magique|Portail arcanique"
@@ -65,6 +111,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "arcane-vigor",
+        icon: arcaneVigor,
         "name": {
             "en": "Arcane Vigor",
             "fr": "Vigueur arcanique"
@@ -92,6 +139,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "armor-of-agathys",
+        "icon": armorOfAgathys,
         "name": {
             "en": "Armor of Agathys",
             "fr": "Armure d'Agathys"
@@ -125,6 +173,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "arms-of-hadar",
+        "icon": armsOfHadar,
         "name": {
             "en": "Arms of Hadar",
             "fr": "Tentacules de Hadar"
@@ -151,6 +200,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "aura-of-purity",
+        icon: auraOfPurity,
         "name": {
             "en": "Aura of Purity",
             "fr": "Aura de pureté"
@@ -180,6 +230,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "aura-of-vitality",
+        "icon": auraOfVitality,
         "name": {
             "en": "Aura of Vitality",
             "fr": "Aura de vitalité"
@@ -210,6 +261,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "banishing-smite",
+        "icon": banishingSmite,
         "name": {
             "en": "Banishing Smite",
             "fr": "Châtiment du ban"
@@ -238,6 +290,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "beast-sense",
+        "icon": beastSense,
         "name": {
             "en": "Beast Sense",
             "fr": "Perception bestiale"
@@ -268,6 +321,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "blade-ward",
+        "icon": bladeWard,
         "name": {
             "en": "Blade Ward",
             "fr": "Voile défensif"
@@ -300,6 +354,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "blinding-smite",
+        "icon": blindingSmite,
         "name": {
             "en": "Blinding Smite",
             "fr": "Châtiment de cécité"
@@ -328,6 +383,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "circle-of-power",
+        "icon": circleOfPower,
         "name": {
             "en": "Circle of Power",
             "fr": "Cercle de pouvoir"
@@ -358,6 +414,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "cloud-of-daggers",
+        "icon": cloudOfDaggers,
         "name": {
             "en": "Cloud of Daggers",
             "fr": "Nuée de dagues"
@@ -397,6 +454,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "compelled-duel",
+        "icon": compelledDuel,
         "name": {
             "en": "Compelled Duel",
             "fr": "Duel forcé"
@@ -428,6 +486,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "conjure-barrage",
+        "icon": conjureBarrage,
         "name": {
             "en": "Conjure Barrage",
             "fr": "Invocation de projectiles"
@@ -458,6 +517,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "conjure-volley",
+        "icon": conjureVolley,
         "name": {
             "en": "Conjure Volley",
             "fr": "Invocation de volée"
@@ -491,6 +551,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "cordon-of-arrows",
+        "icon": cordonOfArrows,
         "name": {
             "en": "Cordon of Arrows",
             "fr": "Cordon de flèches"
@@ -524,6 +585,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "crown-of-madness",
+        "icon": crownOfMadness,
         "name": {
             "en": "Crown of Madness",
             "fr": "Couronne du dément"
@@ -559,6 +621,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "crusader-s-mantle",
+        "icon": crusaderSMantle,
         "name": {
             "en": "Crusader's Mantle",
             "fr": "Aura du croisé"
@@ -587,6 +650,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "destructive-wave",
+        "icon": destructiveWave,
         "name": {
             "en": "Destructive Wave",
             "fr": "Vague destructrice"
@@ -612,6 +676,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "elemental-weapon",
+        "icon": elementalWeapon,
         "name": {
             "en": "Elemental Weapon",
             "fr": "Arme élémentaire"
@@ -643,6 +708,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "feign-death",
+        "icon": feignDeath,
         "name": {
             "en": "Feign Death",
             "fr": "État cadavérique"
@@ -680,6 +746,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "fount-of-moonlight",
+        "icon": fountOfMoonlight,
         "name": {
             "en": "Fount of Moonlight",
             "fr": "Fontaine de lune"
@@ -710,6 +777,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "friends",
+        "icon": friends,
         "name": {
             "en": "Friends",
             "fr": "Amis|Faux amis"
@@ -748,6 +816,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "grasping-vine",
+        "icon": graspingVine,
         "name": {
             "en": "Grasping Vine",
             "fr": "Liane avide"
@@ -781,6 +850,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "hail-of-thorns",
+        "icon": hailOfThorns,
         "name": {
             "en": "Hail of Thorns",
             "fr": "Grêle d'épines"
@@ -806,6 +876,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "hunger-of-hadar",
+        "icon": hungerOfHadar,
         "name": {
             "en": "Hunger of Hadar",
             "fr": "Voracité de Hadar"
@@ -842,6 +913,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "jallarzi-s-storm-of-radiance",
+        "icon": jallarziSStormOfRadiance,
         "name": {
             "en": "Jallarzi's Storm of Radiance",
             "fr": "Tempête radieuse de Jallarzi"
@@ -879,6 +951,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "lightning-arrow",
+        "icon": lightningArrow,
         "name": {
             "en": "Lightning Arrow",
             "fr": "Flèche de foudre"
@@ -905,6 +978,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "mind-sliver",
+        "icon": mindSliver,
         "name": {
             "en": "Mind Sliver",
             "fr": "Piqûre mentale"
@@ -935,6 +1009,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "power-word-fortify",
+        "icon": powerWordFortify,
         "name": {
             "en": "Power Word Fortify",
             "fr": "Mot de pouvoir fortifiant"
@@ -964,6 +1039,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "staggering-smite",
+        "icon": staggeringSmite,
         "name": {
             "en": "Staggering Smite",
             "fr": "Châtiment de stupeur"
@@ -989,6 +1065,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "steel-wind-strike",
+        "icon": steelWindStrike,
         "name": {
             "en": "Steel Wind Strike",
             "fr": "Frappe du vent d'acier"
@@ -1022,6 +1099,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "summon-aberration",
+        "icon": summonAberration,
         "name": {
             "en": "Summon Aberration",
             "fr": "Convocation d'aberration"
@@ -1059,6 +1137,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "summon-beast",
+        "icon": summonBeast,
         "name": {
             "en": "Summon Beast",
             "fr": "Convocation de bête"
@@ -1096,6 +1175,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "summon-celestial",
+        "icon": summonCelestial,
         "name": {
             "en": "Summon Celestial",
             "fr": "Convocation de céleste"
@@ -1133,6 +1213,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "summon-construct",
+        "icon": summonConstruct,
         "name": {
             "en": "Summon Construct",
             "fr": "Convocation d'artificiel"
@@ -1169,6 +1250,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "summon-elemental",
+        "icon": summonElemental,
         "name": {
             "en": "Summon Elemental",
             "fr": "Convocation d'élémentaire"
@@ -1207,6 +1289,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "summon-fey",
+        "icon": summonFey,
         "name": {
             "en": "Summon Fey",
             "fr": "Convocation de fée"
@@ -1246,6 +1329,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "summon-fiend",
+        "icon": summonFiend,
         "name": {
             "en": "Summon Fiend",
             "fr": "Convocation de fiélon"
@@ -1283,6 +1367,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "summon-undead",
+        "icon": summonUndead,
         "name": {
             "en": "Summon Undead",
             "fr": "Convocation de mort-vivant"
