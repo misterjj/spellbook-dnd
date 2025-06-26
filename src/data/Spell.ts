@@ -42,6 +42,49 @@ import summonElemental from "@/data/images/spells/summon-elemental.jpg";
 import summonFey from "@/data/images/spells/summon-fey.jpg";
 import summonFiend from "@/data/images/spells/summon-fiend.jpg";
 import summonUndead from "@/data/images/spells/summon-undead.jpg";
+import swiftQuiver from "@/data/images/spells/swift-quiver.jpg";
+import synapticStatic from "@/data/images/spells/synaptic-static.jpg";
+import tashaSBubblingCauldron from "@/data/images/spells/tasha-s-bubbling-cauldron.jpg";
+import telepathy from "@/data/images/spells/telepathy.jpg";
+import thornWhip from "@/data/images/spells/thorn-whip.jpg";
+import thunderclap from "@/data/images/spells/thunderclap.jpg";
+import thunderousSmite from "@/data/images/spells/thunderous-smite.jpg";
+import tollTheDead from "@/data/images/spells/toll-the-dead.jpg";
+import witchBolt from "@/data/images/spells/witch-bolt.jpg";
+import wordOfRadiance from "@/data/images/spells/word-of-radiance.jpg";
+import wrathfulSmite from "@/data/images/spells/wrathful-smite.jpg";
+import yolandeSRegalPresence from "@/data/images/spells/yolande-s-regal-presence.jpg";
+import acidSplash from "@/data/images/spells/acid-splash.jpg";
+import aid from "@/data/images/spells/aid.jpg";
+import alarm from "@/data/images/spells/alarm.jpg";
+import alterSelf from "@/data/images/spells/alter-self.jpg";
+import animalFriendship from "@/data/images/spells/animal-friendship.jpg";
+import animalMessenger from "@/data/images/spells/animal-messenger.jpg";
+import animalShapes from "@/data/images/spells/animal-shapes.jpg";
+import animateDead from "@/data/images/spells/animate-dead.jpg";
+import animateObjects from "@/data/images/spells/animate-objects.jpg";
+import antilifeShell from "@/data/images/spells/antilife-shell.jpg";
+import antimagicField from "@/data/images/spells/antimagic-field.jpg";
+import antipathySympathy from "@/data/images/spells/antipathy-sympathy.jpg";
+import arcaneEye from "@/data/images/spells/arcane-eye.jpg";
+import arcaneLock from "@/data/images/spells/arcane-lock.jpg";
+import astralProjection from "@/data/images/spells/astral-projection.jpg";
+import augury from "@/data/images/spells/augury.jpg";
+import auraOfLife from "@/data/images/spells/aura-of-life.jpg";
+import awaken from "@/data/images/spells/awaken.jpg";
+import bane from "@/data/images/spells/bane.jpg";
+import banishment from "@/data/images/spells/banishment.jpg";
+import barkskin from "@/data/images/spells/barkskin.jpg";
+import beaconOfHope from "@/data/images/spells/beacon-of-hope.jpg";
+import befuddlement from "@/data/images/spells/befuddlement.jpg";
+import bestowCurse from "@/data/images/spells/bestow-curse.jpg";
+import bigbySHand from "@/data/images/spells/bigby-s-hand.jpg";
+import bladeBarrier from "@/data/images/spells/blade-barrier.jpg";
+import bless from "@/data/images/spells/bless.jpg";
+import blight from "@/data/images/spells/blight.jpg";
+import blindnessDeafness from "@/data/images/spells/blindness-deafness.jpg";
+import blink from "@/data/images/spells/blink.jpg";
+import blur from "@/data/images/spells/blur.jpg";
 
 import {StaticImageData} from "next/image";
 
@@ -1405,6 +1448,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "swift-quiver",
+        "icon": swiftQuiver,
         "name": {
             "en": "Swift Quiver",
             "fr": "Vif carquois"
@@ -1438,6 +1482,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "synaptic-static",
+        "icon": synapticStatic,
         "name": {
             "en": "Synaptic Static",
             "fr": "Perturbations synaptiques"
@@ -1470,6 +1515,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "tasha-s-bubbling-cauldron",
+        "icon": tashaSBubblingCauldron,
         "name": {
             "en": "Tasha's Bubbling Cauldron",
             "fr": "Chaudron bouillonnant de Tasha"
@@ -1507,6 +1553,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "telepathy",
+        "icon": telepathy,
         "name": {
             "en": "Telepathy",
             "fr": "Télépathie"
@@ -1543,6 +1590,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "thorn-whip",
+        "icon": thornWhip,
         "name": {
             "en": "Thorn Whip",
             "fr": "Fouet épineux"
@@ -1576,6 +1624,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "thunderclap",
+        "icon": thunderclap,
         "name": {
             "en": "Thunderclap",
             "fr": "Coup de tonnerre"
@@ -1605,6 +1654,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "thunderous-smite",
+        "icon": thunderousSmite,
         "name": {
             "en": "Thunderous Smite",
             "fr": "Châtiment tonitruant"
@@ -1630,6 +1680,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "toll-the-dead",
+        "icon": tollTheDead,
         "name": {
             "en": "Toll the Dead",
             "fr": "Glas"
@@ -1661,6 +1712,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "witch-bolt",
+        "icon": witchBolt,
         "name": {
             "en": "Witch Bolt",
             "fr": "Trait ensorcelé"
@@ -1699,6 +1751,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "word-of-radiance",
+        "icon": wordOfRadiance,
         "name": {
             "en": "Word of Radiance",
             "fr": "Mot de radiance"
@@ -1728,6 +1781,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "wrathful-smite",
+        "icon": wrathfulSmite,
         "name": {
             "en": "Wrathful Smite",
             "fr": "Châtiment de courroux"
@@ -1756,6 +1810,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "yolande-s-regal-presence",
+        "icon": yolandeSRegalPresence,
         "name": {
             "en": "Yolande's Regal Presence",
             "fr": "Présence royale de Yolane"
@@ -1790,6 +1845,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "acid-splash",
+        "icon": acidSplash,
         "name": {
             "en": "Acid Splash",
             "fr": "Aspersion d'acide"
@@ -1820,6 +1876,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "aid",
+        "icon": aid,
         "name": {
             "en": "Aid",
             "fr": "Aide"
@@ -1860,6 +1917,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "alarm",
+        "icon": alarm,
         "name": {
             "en": "Alarm",
             "fr": "Alarme"
@@ -1901,6 +1959,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "alter-self",
+        "icon": alterSelf,
         "name": {
             "en": "Alter Self",
             "fr": "Modification d'apparence"
@@ -1931,6 +1990,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "animal-friendship",
+        "icon": animalFriendship,
         "name": {
             "en": "Animal Friendship",
             "fr": "Amitié avec les animaux"
@@ -1969,6 +2029,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "animal-messenger",
+        "icon": animalMessenger,
         "name": {
             "en": "Animal Messenger",
             "fr": "Messager animal"
@@ -2008,6 +2069,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "animal-shapes",
+        "icon": animalShapes,
         "name": {
             "en": "Animal Shapes",
             "fr": "Métamorphose animale"
@@ -2040,6 +2102,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "animate-dead",
+        "icon": animateDead,
         "name": {
             "en": "Animate Dead",
             "fr": "Animation des morts"
@@ -2077,6 +2140,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "animate-objects",
+        "icon": animateObjects,
         "name": {
             "en": "Animate Objects",
             "fr": "Animation des objets"
@@ -2111,6 +2175,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "antilife-shell",
+        "icon": antilifeShell,
         "name": {
             "en": "Antilife Shell",
             "fr": "Coquille antivie"
@@ -2140,6 +2205,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "antimagic-field",
+        "icon": antimagicField,
         "name": {
             "en": "Antimagic Field",
             "fr": "Champ antimagie"
@@ -2174,6 +2240,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "antipathy-sympathy",
+        "icon": antipathySympathy,
         "name": {
             "en": "Antipathy/Sympathy",
             "fr": "Aversion/attirance"
@@ -2215,6 +2282,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "arcane-eye",
+        "icon": arcaneEye,
         "name": {
             "en": "Arcane Eye",
             "fr": "Oeil du mage"
@@ -2251,6 +2319,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "arcane-lock",
+        "icon": arcaneLock,
         "name": {
             "en": "Arcane Lock",
             "fr": "Verrou magique"
@@ -2281,6 +2350,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "astral-projection",
+        "icon": astralProjection,
         "name": {
             "en": "Astral Projection",
             "fr": "Projection astrale"
@@ -2319,6 +2389,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "augury",
+        "icon": augury,
         "name": {
             "en": "Augury",
             "fr": "Augure"
@@ -2355,6 +2426,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "aura-of-life",
+        "icon": auraOfLife,
         "name": {
             "en": "Aura of Life",
             "fr": "Aura de vie"
@@ -2384,6 +2456,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "awaken",
+        "icon": awaken,
         "name": {
             "en": "Awaken",
             "fr": "Éveil"
@@ -2418,6 +2491,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "bane",
+        "icon": bane,
         "name": {
             "en": "Bane",
             "fr": "Imprécation"
@@ -2456,6 +2530,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "banishment",
+        "icon": banishment,
         "name": {
             "en": "Banishment",
             "fr": "Bannissement"
@@ -2496,6 +2571,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "barkskin",
+        "icon": barkskin,
         "name": {
             "en": "Barkskin",
             "fr": "Peau d'écorce"
@@ -2530,6 +2606,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "beacon-of-hope",
+        "icon": beaconOfHope,
         "name": {
             "en": "Beacon of Hope",
             "fr": "Lueur d'espoir"
@@ -2562,6 +2639,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "befuddlement",
+        "icon": befuddlement,
         "name": {
             "en": "Befuddlement",
             "fr": "Aliénation"
@@ -2598,6 +2676,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "bestow-curse",
+        "icon": bestowCurse,
         "name": {
             "en": "Bestow Curse",
             "fr": "Malédiction"
@@ -2629,6 +2708,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "bigby-s-hand",
+        "icon": bigbySHand,
         "name": {
             "en": "Bigby's Hand",
             "fr": "Main de Bigby"
@@ -2666,6 +2746,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "blade-barrier",
+        "icon": bladeBarrier,
         "name": {
             "en": "Blade Barrier",
             "fr": "Barrière de lames"
@@ -2698,6 +2779,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "bless",
+        "icon": bless,
         "name": {
             "en": "Bless",
             "fr": "Bénédiction"
@@ -2735,6 +2817,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "blight",
+        "icon": blight,
         "name": {
             "en": "Blight",
             "fr": "Flétrissement"
@@ -2767,6 +2850,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "blindness-deafness",
+        "icon": blindnessDeafness,
         "name": {
             "en": "Blindness/Deafness",
             "fr": "Cécité/surdité"
@@ -2801,6 +2885,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "blink",
+        "icon": blink,
         "name": {
             "en": "Blink",
             "fr": "Clignotement"
@@ -2831,6 +2916,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "blur",
+        "icon": blur,
         "name": {
             "en": "Blur",
             "fr": "Flou"

@@ -5,17 +5,153 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0a8e748c-3889-46cb-abc2-cd03c8fec980" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/material_theme_project_new.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/material_theme_project_new.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/next.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/file.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/globe.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/next.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/vercel.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/window.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/app-build-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/dist/app-build-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/build-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/dist/build-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/build/chunks/[root-of-the-server]__04d7a048._.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/build/chunks/[root-of-the-server]__04d7a048._.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/build/chunks/[root-of-the-server]__04d7a048._.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/build/chunks/[root-of-the-server]__04d7a048._.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/build/chunks/[root-of-the-server]__05f88b00._.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/build/chunks/[root-of-the-server]__05f88b00._.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/build/chunks/[root-of-the-server]__05f88b00._.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/build/chunks/[root-of-the-server]__05f88b00._.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/build/chunks/[turbopack]_runtime.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/build/chunks/[turbopack]_runtime.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/build/chunks/[turbopack]_runtime.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/build/chunks/[turbopack]_runtime.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/build/chunks/node_modules_b5d1def4._.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/build/chunks/node_modules_b5d1def4._.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/build/chunks/node_modules_b5d1def4._.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/build/chunks/node_modules_b5d1def4._.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/build/chunks/postcss_config_mjs_transform_ts_f0ffbaad._.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/build/chunks/postcss_config_mjs_transform_ts_f0ffbaad._.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/build/chunks/postcss_config_mjs_transform_ts_f0ffbaad._.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/build/chunks/postcss_config_mjs_transform_ts_f0ffbaad._.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/cache/images/1JQgDuAr2ol7uwl8SRMPKhZDPfY3hiCFt-JI1oVeCfw/60.1750940172803.NgY4oP1qNo_ScWUGFmhSIm_Xcch6i__ofL8TJ6L-ZRA.Vy8iYTg5ZjItMTk3YWMyODU1ODci.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/cache/images/2UomXj9PBSvQs3-n_IJbWUDD-xFopJP5s0bQ5aHz1rM/60.1750940173721.exuPRrr_x3xpFck0panKA_UAC_fGYqIxMr8pkMi6Ej0.Vy8iOTkxYmItMTk3YWMyODUzZDgi.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/cache/images/7ceJWCff9ai7rsAD4XaOL9jU2xltVZb1DGAXfxIYCBw/60.1750940176389.aGoIzxtI4CjIG1aGqXjO9-f_uY5uuLNan9zZg_3RpFc.Vy8iNmMyOC0xOTdhYzI5OTcwYiI.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/cache/images/AzR0hysQ--pPBiCYbV8itR3S7nsxX8QGLAom4LMUiys/60.1750940173677.sP5pzEc6OXtGZlxP0YfwwgrtWcTz2-6CdUvns09aRJM.Vy8iYWZjZDktMTk3YWMyODU2NjAi.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/cache/images/Bl9C0w2cw2cI_d6ThVwoyXCvuL_MHfBv3-F8BkpKzGY/60.1750940176414.PwDCvi16fGcxrmY5kdrK__itPRt9BauJfv6N1V5VFiY.Vy8iYmRkYjUtMTk3YWMyODU2M2Yi.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/cache/images/CxvVFa0QiEDPIapEI1B5JsrpNCO8yh_qxSzp0Awrb8s/60.1750940172802.5VEj1cRR1nQbfnhqVod6noyHL_gThNStwn5JWTMpfcU.Vy8iOTg3NzQtMTk3YWMyODU2OWYi.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/cache/images/DrMs26omAQxtuNdA60_ykHTsLhGCmteJ-cRI8X_nBcE/60.1750940176731.IF5Ux8VMTXtT43WFnLn6P1f69lCtH7G-_PJtdLhH3uI.Vy8iODc5MGQtMTk3YWMyODU1NWEi.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/cache/images/FYtcoeHTtKPv8ah_NL8PRGPDUOuProD9tmTaFwtAHgc/60.1750940172804.NOxknwd4FVjT0P2RhzFmQsi62E3785_0fiNG6bFBt6Q.Vy8iY2I3NmEtMTk3YWMyODU3Yzci.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/cache/images/IBudJiutA2hE0N5qD_b5wLDDqEXUveTUXqkOJ5Pxsys/60.1750940173665.SQCHMv2EI6EXYNrjzC_BJz41C7d0tdgLWwmj_tLE-ck.Vy8iNTA3NDAtMTk3YWMyODU2ZmIi.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/cache/images/NQhzM58pn2ZqPsAjR9uwdRtohPn4SsaIuRoFm_g1QFY/60.1750940173720.lwVPxtF__jc2Fy-bdZshJBz8i5wS4t12FEZ7F49wfYw.Vy8iNWNiOTEtMTk3YWMyODU2NmQi.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/cache/images/QugaBGr8AgDJNJmICCG4MNPTbL6_hsLJ_QPQ9Vj7dsE/60.1750940177506.bZvGD7xVUwgEYhYPQFqODYXkJ2RNs_vC-Q0qC1Vd9to.Vy8iY2YxZTUtMTk3YWMyODU1ODIi.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/cache/images/QvHWnis8ioWNevOILz2KaZrZMfp4NvAGmQZiHGTG8QM/60.1750940177457.4in8G78QKkP6FNJs3ZrwydYqIUTUjrLAZe-hhW1vx3Q.Vy8iODBmMDAtMTk3YWMyODU1Yjci.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/cache/images/TEaFu3KJP6rGMMfHSqfmBzJfzi_uHEf43oJLOZihrU4/60.1750940177174.R4hiTthOWtTHuQBJ37tO5hUqGW__PZR_rPCngrbVQX8.Vy8iODk5NC0xOTdhYzI5ZDRlNiI.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/cache/images/TrG354khqWLht9dTpYgXxPd4ib2exJxR9o8Jumei0uA/60.1750936487384.kvwUbttPeXHaeZXlKh-r8ADCqUzm95gG5qqJJ9-NKNw.Vy8iYjk2ZGItMTk3YWJmMTlhNDki.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/cache/images/U2YHxOb9HiO2E4_Ozf4CKeBOQk3hSi_Hcng6z02K_TA/60.1750939762704.XE_3HlSpijPallqlnjZX1nM7CemcBsfzfqSZDJE2TkU.Vy8iY2IyMWYtMTk3YWMyMzkyZmMi.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/cache/images/Vhk2P4EDd9JWYf2zGLohACgo-xCYw8TWPv3-qsrrB84/60.1750940176854.p7YkdbaHrB_riopr5gtV8xcEZwnr_5Faa-7y3YvWDDE.Vy8iYzE1MDItMTk3YWMyODU3YmIi.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/cache/images/_j5Fqeb71jUDXK_sbzzEGwUGhZDlpioE8sB8d5b8iro/60.1750940176346.MuP784loxLPYyhcaSSnG8PfFXp6uQ95ZFbJhV2JqDoo.Vy8iOTMwMDctMTk3YWMyODU3YmYi.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/cache/images/aJrBue3aDiBV7Ndvx-kpL-8yWwDqrK6ZkLBUrgEjStI/60.1750940176383.5HMHRU6ZYA_ZFzMxN2x-zcuHUeIhSms6tTzv9Sjqauw.Vy8iYTg3MzMtMTk3YWMyODU1ZDQi.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/cache/images/aXTSrTYOyghxEtubMUEda6tN2m7q3E3dNO7or3nrLaE/60.1750940177492.ZpHtjcMlzxcboPwIOulctKTa5pZUI77zg3MNNYlRyMU.Vy8iNzlmMGQtMTk3YWMyODU1OGIi.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/cache/images/b7W2UhSk44q58aHWFU0pvevVEekH6M0-rFslDgOBFSg/60.1750940173676.kDP2KG0thAtblUhw770HUbTI48tcJFhZb6Eu9GDdK4E.Vy8iZDIxZDctMTk3YWMyODU1OTQi.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/cache/images/dExle7_FwIgAB_eSotUvWUPQXQpF89NO1LeGx4BamgQ/60.1750940177481.Phi3VHlNOm7ZOeRI5Zavcze9Rk6rqob9H9T2XJNyKIA.Vy8iOTI0OGMtMTk3YWMyODU0ZGMi.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/cache/images/eeouQnK4emnRvuh5lEofZVn4TgWXFHj7979HZWMaaBw/60.1750940177196.2nf3KbUM0WAhM3FwXZpdXmrFNYgpCpC3rnC_qQRfY_o.Vy8iNzA3YjktMTk3YWMyODU2NDIi.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/cache/images/hEoicyk4jCcmlzxpeaCiu4mIO1DFTEAce4TF7ZptYPE/60.1750936487375.rq3OBGeIokUNqXuuN1WbUrz6ChJH7hD6FtL6pHl_cR4.Vy8iOTdkYTgtMTk3YWJmMTlhMTgi.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/cache/images/m2wgWs2tzIICi35uDbiE89IP2ErVb2yppoNVQXtW0cw/60.1750936301091.VEM8XEONXSXI3tGtvzRqYPwmU4gtNEvSavs6HrzNOZc.Vy8iODE5OTEtMTk3YWJlZWJkZTIi.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/cache/images/mpR8M4Sp8cov7moPRHsWDI7YL9-l1PfADv7r5J76pM4/60.1750940173718.KBnNnm2Dr5DkVuiimqmeVksd4vnS6k5O2Pcd_HrwDmo.Vy8iOTgzZWYtMTk3YWMyODU1NjMi.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/cache/images/n7NC_c3I56peBbmWLIDQzkpd91oayNfogOSsYg0yOb4/60.1750940176376.c0bZxAYJgwJA7pe0VKh4wZRK8MCIkn_K5ly72Ee6ZkQ.Vy8iN2I1ZGYtMTk3YWMyODU0NTki.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/cache/images/nhphyH67heiB8w9EYckY3RWmwWjV-jScO6zocKw9Bt8/60.1750940176368.AuYlH4jXzL7ELz89RQ-Pv8dQp9_SvlMPeuzXPi-IVrg.Vy8iOGQ2MWQtMTk3YWMyOTRhMTci.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/cache/images/pNEDLaa91RDzqgD-ebh9EpPtJyPe-eSsJYPcCuQXACg/60.1750940177120.Nkvv5ZrWD9JEg0YrC9HQ01UHP3194ecM12iZmAGOR8w.Vy8iNzM1NDMtMTk3YWMyODU1NjYi.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/cache/images/raayR7zbrRvMdTEV8HS6KNVuw7BZXigjfgl-RqW0JOM/60.1750940176832.0DsTU_rGJlGvBL5JBunDSqM3F6bLl2mGdBg59kJ3f9U.Vy8iN2FmNzQtMTk3YWMyODU2NjIi.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/cache/images/sHzZAv0oEJB6VMHvaQzKbKWw2YIYVKrwAo2Lit0kpiY/60.1750940172798.Od-7PNwRWd5uhzb3BtZWaDr1rotUyI7AQx275sVGsVM.Vy8iYjI0YmMtMTk3YWMyODU2MjQi.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/cache/images/tMwbh2eLepIbpb7wZHwwVA11Q_EUtkmStzNTOoi9BtI/60.1750940176327.pg7rhSSxtulqLxK5Jrl_a5T4JcN-amBjGlpkwANzBDg.Vy8iNzNhZDQtMTk3YWMyODU3YzQi.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/cache/images/utRAl3Q87tS5HtNzrYu26eW_GRS9bLm1VB7OQuvMHCE/60.1750940176792.2gUa14HKjSkyG3KiHBUCaLRi_BiFVhGqPZ3zhuD1FLE.Vy8iODUxNjYtMTk3YWMyODU2MDEi.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/cache/images/vOicTh4gDe9IhOT3HZcSQmbNKQ5xYkpFiaPeUAE86oU/60.1750940177168.dlxt6jGSCY1zYDjPQY3I85xkNyD-qxiMgkN6j8dp4Oo.Vy8iYThkM2MtMTk3YWMyODU1ZDki.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/cache/images/wWQ7nUngxj_lATyETFBN7V8JiDoBROFRo1uWVTUaBEM/60.1750936854301.W9pWlJt5XnCf-tSQPfOfAVJ-MTqNdRCuIeGWmAbiHMo.Vy8iYzhmMzUtMTk3YWJmNzMzZTki.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/cache/images/wbJE4t4HH3_UnhtMBXUOAe7HGiG6bkihuXt_hE_Nbfw/60.1750940173716.TgPs_PjJYQT-0UHmWAAvc9j7qXFcXpXTpcxMFEWNJXs.Vy8iNjc0Y2YtMTk3YWMyODU3MmUi.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/cache/images/wz3wRe5bUQDIm9rVWFuOQ1uTFio69tU1N_vAshvKf3M/60.1750940177413.OtRhyd5R_o2EXkmgF0hyKNdgetTquCRI5iYBW8acyf0.Vy8iYTI1MGItMTk3YWMyODU1ZjIi.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/cache/images/yw7ZZ4BQbQrz8yfXBD2i0hQu62MsWWQsAxu6Ls5rghA/60.1750940176850.Ilh0D0PTqsE_RlVaxQE2w8UQn6IiLBSFg4FYtb3OR8o.Vy8iODdiMmQtMTk3YWMyODU1OGYi.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/cache/images/z5wAE1uuohOsyvtgHGGcP9Jdbb9vGb5DxgomDh39LYM/60.1750940176403.gPlhjQ_CZE_Sqn3V5JOecdfT0BLP2lXTbQ3aFyj_jeU.Vy8iYTU3OGMtMTk3YWMyODU2NjUi.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/cache/images/za4-NMagrZRUQagMvmMpIk6QR--9vCDdhBsSb4PHlB0/60.1750940173684.tWpknz8BpjR6_ct2ClqkYvhrC895-nkSehRFrGZsTRk.Vy8iNjgyOC0xOTdhYzI5MDQxOCI.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/fallback-build-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/dist/fallback-build-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/server/app-paths-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/dist/server/app-paths-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/server/app/_not-found/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/server/app/_not-found/page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/server/app/_not-found/page_client-reference-manifest.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/server/app/_not-found/page_client-reference-manifest.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/server/app/favicon.ico/route.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/server/app/favicon.ico/route.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/server/app/favicon.ico/route.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/server/app/favicon.ico/route.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/server/app/favicon.ico/route/app-build-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/dist/server/app/favicon.ico/route/app-build-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/server/app/favicon.ico/route/app-paths-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/dist/server/app/favicon.ico/route/app-paths-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/server/app/favicon.ico/route/build-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/dist/server/app/favicon.ico/route/build-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/server/app/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/server/app/page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/server/app/page_client-reference-manifest.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/server/app/page_client-reference-manifest.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/server/app/spell-list/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/server/app/spell-list/page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/server/app/spell-list/page.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/server/app/spell-list/page.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/server/app/spell-list/page/app-build-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/dist/server/app/spell-list/page/app-build-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/server/app/spell-list/page/app-paths-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/dist/server/app/spell-list/page/app-paths-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/server/app/spell-list/page/build-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/dist/server/app/spell-list/page/build-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/server/app/spell-list/page/next-font-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/dist/server/app/spell-list/page/next-font-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/server/app/spell-list/page/server-reference-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/dist/server/app/spell-list/page/server-reference-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/server/app/spell-list/page_client-reference-manifest.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/server/app/spell-list/page_client-reference-manifest.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/server/chunks/[root-of-the-server]__48b32c58._.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/server/chunks/[root-of-the-server]__48b32c58._.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/server/chunks/[root-of-the-server]__48b32c58._.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/server/chunks/[root-of-the-server]__48b32c58._.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/server/chunks/[turbopack]_runtime.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/server/chunks/[turbopack]_runtime.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/server/chunks/[turbopack]_runtime.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/server/chunks/[turbopack]_runtime.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/server/chunks/node_modules_next_229848ed._.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/server/chunks/node_modules_next_229848ed._.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/server/chunks/node_modules_next_229848ed._.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/server/chunks/node_modules_next_229848ed._.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/server/chunks/ssr/[root-of-the-server]__0a46983d._.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/server/chunks/ssr/[root-of-the-server]__0a46983d._.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/server/chunks/ssr/[root-of-the-server]__0a46983d._.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/server/chunks/ssr/[root-of-the-server]__0a46983d._.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/server/chunks/ssr/[root-of-the-server]__4c58c055._.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/server/chunks/ssr/[root-of-the-server]__4c58c055._.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/server/chunks/ssr/[root-of-the-server]__4c58c055._.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/server/chunks/ssr/[root-of-the-server]__4c58c055._.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/server/chunks/ssr/[root-of-the-server]__6302eb5e._.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/server/chunks/ssr/[root-of-the-server]__6302eb5e._.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/server/chunks/ssr/[root-of-the-server]__6302eb5e._.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/server/chunks/ssr/[root-of-the-server]__6302eb5e._.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/server/chunks/ssr/[root-of-the-server]__6829d9e6._.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/server/chunks/ssr/[root-of-the-server]__6829d9e6._.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/server/chunks/ssr/[root-of-the-server]__6829d9e6._.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/server/chunks/ssr/[root-of-the-server]__6829d9e6._.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/server/chunks/ssr/[turbopack]_runtime.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/server/chunks/ssr/[turbopack]_runtime.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/server/chunks/ssr/[turbopack]_runtime.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/server/chunks/ssr/[turbopack]_runtime.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/server/chunks/ssr/_43e8c592._.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/server/chunks/ssr/_43e8c592._.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/server/chunks/ssr/_43e8c592._.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/server/chunks/ssr/_43e8c592._.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/server/chunks/ssr/node_modules_84bfc1e5._.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/server/chunks/ssr/node_modules_84bfc1e5._.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/server/chunks/ssr/node_modules_84bfc1e5._.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/server/chunks/ssr/node_modules_84bfc1e5._.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/server/chunks/ssr/node_modules_96715ba7._.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/server/chunks/ssr/node_modules_96715ba7._.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/server/chunks/ssr/node_modules_96715ba7._.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/server/chunks/ssr/node_modules_96715ba7._.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/server/chunks/ssr/node_modules_e598c369._.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/server/chunks/ssr/node_modules_e598c369._.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/server/chunks/ssr/node_modules_e598c369._.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/server/chunks/ssr/node_modules_e598c369._.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/server/chunks/ssr/node_modules_next_dist_0962b827._.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/server/chunks/ssr/node_modules_next_dist_0962b827._.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/server/chunks/ssr/node_modules_next_dist_0962b827._.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/server/chunks/ssr/node_modules_next_dist_0962b827._.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/server/chunks/ssr/node_modules_next_dist_client_components_forbidden-error_ea7ea172.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/server/chunks/ssr/node_modules_next_dist_client_components_forbidden-error_ea7ea172.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/server/chunks/ssr/node_modules_next_dist_client_components_forbidden-error_ea7ea172.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/server/chunks/ssr/node_modules_next_dist_client_components_forbidden-error_ea7ea172.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/server/chunks/ssr/node_modules_next_dist_client_components_unauthorized-error_c8949b27.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/server/chunks/ssr/node_modules_next_dist_client_components_unauthorized-error_c8949b27.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/server/chunks/ssr/node_modules_next_dist_client_components_unauthorized-error_c8949b27.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/server/chunks/ssr/node_modules_next_dist_client_components_unauthorized-error_c8949b27.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/server/chunks/ssr/src_app_a4430781._.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/server/chunks/ssr/src_app_a4430781._.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/server/chunks/ssr/src_app_a4430781._.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/server/chunks/ssr/src_app_a4430781._.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/server/middleware-build-manifest.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/server/middleware-build-manifest.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/server/middleware-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/dist/server/middleware-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/server/next-font-manifest.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/server/next-font-manifest.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/server/next-font-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/dist/server/next-font-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/server/server-reference-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/dist/server/server-reference-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/static/chunks/[next]_internal_font_google_geist_e531dabc_module_css_f9ee138c._.single.css" beforeDir="false" afterPath="$PROJECT_DIR$/dist/static/chunks/[next]_internal_font_google_geist_e531dabc_module_css_f9ee138c._.single.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/static/chunks/[next]_internal_font_google_geist_e531dabc_module_css_f9ee138c._.single.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/static/chunks/[next]_internal_font_google_geist_e531dabc_module_css_f9ee138c._.single.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/static/chunks/[next]_internal_font_google_geist_mono_68a01160_module_css_f9ee138c._.single.css" beforeDir="false" afterPath="$PROJECT_DIR$/dist/static/chunks/[next]_internal_font_google_geist_mono_68a01160_module_css_f9ee138c._.single.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/static/chunks/[next]_internal_font_google_geist_mono_68a01160_module_css_f9ee138c._.single.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/static/chunks/[next]_internal_font_google_geist_mono_68a01160_module_css_f9ee138c._.single.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/static/chunks/[root-of-the-server]__8ebb6d4b._.css" beforeDir="false" afterPath="$PROJECT_DIR$/dist/static/chunks/[root-of-the-server]__8ebb6d4b._.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/static/chunks/[root-of-the-server]__8ebb6d4b._.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/static/chunks/[root-of-the-server]__8ebb6d4b._.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/static/chunks/[turbopack]_browser_dev_hmr-client_hmr-client_ts_61dcf9ba._.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/static/chunks/[turbopack]_browser_dev_hmr-client_hmr-client_ts_61dcf9ba._.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/static/chunks/[turbopack]_browser_dev_hmr-client_hmr-client_ts_61dcf9ba._.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/static/chunks/[turbopack]_browser_dev_hmr-client_hmr-client_ts_61dcf9ba._.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/static/chunks/[turbopack]_browser_dev_hmr-client_hmr-client_ts_66796270._.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/static/chunks/[turbopack]_browser_dev_hmr-client_hmr-client_ts_66796270._.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/static/chunks/[turbopack]_browser_dev_hmr-client_hmr-client_ts_fd44f5a4._.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/static/chunks/[turbopack]_browser_dev_hmr-client_hmr-client_ts_fd44f5a4._.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/static/chunks/[turbopack]_browser_dev_hmr-client_hmr-client_ts_fd44f5a4._.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/static/chunks/[turbopack]_browser_dev_hmr-client_hmr-client_ts_fd44f5a4._.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/static/chunks/_93808211._.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/static/chunks/_93808211._.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/static/chunks/_93808211._.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/static/chunks/_93808211._.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/static/chunks/_e69f0d32._.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/static/chunks/_e69f0d32._.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/static/chunks/node_modules_@swc_helpers_cjs_00636ac3._.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/static/chunks/node_modules_@swc_helpers_cjs_00636ac3._.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/static/chunks/node_modules_@swc_helpers_cjs_00636ac3._.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/static/chunks/node_modules_@swc_helpers_cjs_00636ac3._.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/static/chunks/node_modules_next_0766a282._.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/static/chunks/node_modules_next_0766a282._.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/static/chunks/node_modules_next_0766a282._.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/static/chunks/node_modules_next_0766a282._.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/static/chunks/node_modules_next_dist_1a6ee436._.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/static/chunks/node_modules_next_dist_1a6ee436._.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/static/chunks/node_modules_next_dist_1a6ee436._.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/static/chunks/node_modules_next_dist_1a6ee436._.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/static/chunks/node_modules_next_dist_2ecbf5fa._.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/static/chunks/node_modules_next_dist_2ecbf5fa._.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/static/chunks/node_modules_next_dist_2ecbf5fa._.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/static/chunks/node_modules_next_dist_2ecbf5fa._.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/static/chunks/node_modules_next_dist_build_polyfills_polyfill-nomodule.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/static/chunks/node_modules_next_dist_build_polyfills_polyfill-nomodule.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/static/chunks/node_modules_next_dist_client_8f19e6fb._.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/static/chunks/node_modules_next_dist_client_8f19e6fb._.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/static/chunks/node_modules_next_dist_client_8f19e6fb._.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/static/chunks/node_modules_next_dist_client_8f19e6fb._.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/static/chunks/node_modules_next_dist_compiled_2ce9398a._.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/static/chunks/node_modules_next_dist_compiled_2ce9398a._.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/static/chunks/node_modules_next_dist_compiled_2ce9398a._.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/static/chunks/node_modules_next_dist_compiled_2ce9398a._.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/static/chunks/src_app_favicon_ico_mjs_8a7a8fdc._.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/static/chunks/src_app_favicon_ico_mjs_8a7a8fdc._.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/static/chunks/src_app_globals_css_f9ee138c._.single.css" beforeDir="false" afterPath="$PROJECT_DIR$/dist/static/chunks/src_app_globals_css_f9ee138c._.single.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/static/chunks/src_app_globals_css_f9ee138c._.single.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/static/chunks/src_app_globals_css_f9ee138c._.single.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/static/chunks/src_app_layout_tsx_c0237562._.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/static/chunks/src_app_layout_tsx_c0237562._.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/static/chunks/src_app_spell-list_page_tsx_8450df25._.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/static/chunks/src_app_spell-list_page_tsx_8450df25._.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/static/chunks/src_e0c41073._.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/static/chunks/src_e0c41073._.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/static/chunks/src_e0c41073._.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/static/chunks/src_e0c41073._.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/trace" beforeDir="false" afterPath="$PROJECT_DIR$/dist/trace" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/transform.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/transform.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/transform.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/transform.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/spell-list/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/spell-list/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/data/Spell.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/Spell.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +191,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "/Users/jjorand/perso/spellbook-dnd/node_modules/typescript/lib",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2023.2.5\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -85,8 +221,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.25410.129" />
-        <option value="bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-IU-251.25410.129" />
+        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.26927.53" />
+        <option value="bundled-js-predefined-d6986cc7102b-09060db00ec0-JavaScript-IU-251.26927.53" />
       </set>
     </attachedChunks>
   </component>
@@ -105,16 +241,5 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/data/Spell.ts</url>
-          <line>76</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

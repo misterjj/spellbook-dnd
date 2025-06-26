@@ -14311,38 +14311,52 @@ function SpellList() {
         }).replace(/\s+/g, '');
     }
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        children: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$data$2f$Spell$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["spellList"].map((spell, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+        children: [
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "fixed right-0 top-0",
                 children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        children: [
-                            "import ",
-                            camelize(spell.id).replaceAll("-", ""),
-                            ' from "@/data/images/spells/',
-                            spell.id,
-                            '.jpg";'
-                        ]
-                    }, void 0, true, {
-                        fileName: "[project]/src/app/spell-list/page.tsx",
-                        lineNumber: 20,
-                        columnNumber: 25
-                    }, this),
-                    spell.icon && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
-                        src: spell.icon,
-                        width: 128,
-                        height: 128,
-                        alt: spell.name.en
-                    }, void 0, false, {
-                        fileName: "[project]/src/app/spell-list/page.tsx",
-                        lineNumber: 21,
-                        columnNumber: 40
-                    }, this)
+                    __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$data$2f$Spell$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["spellList"].filter((item)=>item.icon !== undefined).length,
+                    " / ",
+                    __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$data$2f$Spell$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["spellList"].length
                 ]
-            }, i, true, {
+            }, void 0, true, {
                 fileName: "[project]/src/app/spell-list/page.tsx",
-                lineNumber: 18,
-                columnNumber: 21
-            }, this))
-    }, void 0, false, {
+                lineNumber: 16,
+                columnNumber: 13
+            }, this),
+            __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$data$2f$Spell$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["spellList"].map((spell, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    children: [
+                        spell.icon && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                            src: spell.icon,
+                            width: 128,
+                            height: 128,
+                            alt: spell.name.en
+                        }, void 0, false, {
+                            fileName: "[project]/src/app/spell-list/page.tsx",
+                            lineNumber: 24,
+                            columnNumber: 40
+                        }, this),
+                        !spell.icon && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            children: [
+                                "import ",
+                                camelize(spell.id).replaceAll("-", ""),
+                                ' from "@/data/images/spells/',
+                                spell.id,
+                                '.jpg";'
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/src/app/spell-list/page.tsx",
+                            lineNumber: 26,
+                            columnNumber: 41
+                        }, this)
+                    ]
+                }, i, true, {
+                    fileName: "[project]/src/app/spell-list/page.tsx",
+                    lineNumber: 21,
+                    columnNumber: 21
+                }, this))
+        ]
+    }, void 0, true, {
         fileName: "[project]/src/app/spell-list/page.tsx",
         lineNumber: 15,
         columnNumber: 9
