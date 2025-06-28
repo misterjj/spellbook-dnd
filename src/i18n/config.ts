@@ -14,7 +14,7 @@ i18next.use(initReactI18next).init({
 
 export default i18next;
 
-export const availableLangue = {
+export const availableLangue:Record<string, string> = {
     en: "english",
     fr: "français",
 }

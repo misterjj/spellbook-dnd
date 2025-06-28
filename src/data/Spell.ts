@@ -146,7 +146,7 @@ export type TimeDuration = {
     unit: "minutes" | "hours" | "days";
 };
 
-export type SpellTranslatedText = {en: string, fr: string}
+export type SpellTranslatedText = Record<string, string>
 export type SpellCastingTime = ("Action"|"Bonus Action"|"Ritual"|TimeDuration)[]
 export type SpellRange = {feet: number, meter: number}|"touch"|"self"
 export type SpellDuration = "Instantaneous"|TimeDuration|"Until dispelled"
@@ -160,7 +160,7 @@ export interface ISpell {
     breeds: BreedId[],
     school: SchoolId,
     castingTime: SpellCastingTime,
-    Range: SpellRange,
+    range: SpellRange,
     components: SpellComponents,
     materials: SpellTranslatedText|null
     duration: SpellDuration,
@@ -173,7 +173,7 @@ export const spellList: ISpell[] = [
         "icon": arcaneGate,
         "name": {
             "en": "Arcane Gate",
-            "fr": "Portail magique|Portail arcanique"
+            "fr": "Portail arcanique"
         },
         "level": 6,
         "breeds": [
@@ -185,7 +185,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 500,
             "meter": 90
         },
@@ -219,7 +219,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Bonus Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S"
@@ -246,7 +246,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Bonus Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S",
@@ -280,7 +280,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S"
@@ -308,7 +308,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V"
         ],
@@ -339,7 +339,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V"
         ],
@@ -368,7 +368,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Bonus Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V"
         ],
@@ -399,7 +399,7 @@ export const spellList: ISpell[] = [
             "Action",
             "Ritual"
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "S"
         ],
@@ -431,7 +431,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S"
@@ -461,7 +461,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Bonus Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V"
         ],
@@ -492,7 +492,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V"
         ],
@@ -524,7 +524,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -561,7 +561,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Bonus Action"
         ],
-        "Range": {
+        "range": {
             "feet": 30,
             "meter": 9
         },
@@ -593,7 +593,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S",
@@ -624,7 +624,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 150,
             "meter": 45
         },
@@ -658,7 +658,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S",
@@ -695,7 +695,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 120,
             "meter": 36
         },
@@ -728,7 +728,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V"
         ],
@@ -757,7 +757,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V"
         ],
@@ -785,7 +785,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S"
@@ -819,7 +819,7 @@ export const spellList: ISpell[] = [
             "Action",
             "Ritual"
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S",
@@ -854,7 +854,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S"
@@ -887,7 +887,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 10,
             "meter": 3
         },
@@ -924,7 +924,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Bonus Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -957,7 +957,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Bonus Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V"
         ],
@@ -983,7 +983,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 150,
             "meter": 45
         },
@@ -1021,7 +1021,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 120,
             "meter": 36
         },
@@ -1058,7 +1058,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Bonus Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S"
@@ -1087,7 +1087,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -1117,7 +1117,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -1146,7 +1146,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Bonus Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V"
         ],
@@ -1173,7 +1173,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 30,
             "meter": 9
         },
@@ -1207,7 +1207,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 90,
             "meter": 27
         },
@@ -1245,7 +1245,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 90,
             "meter": 27
         },
@@ -1283,7 +1283,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 90,
             "meter": 27
         },
@@ -1320,7 +1320,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 90,
             "meter": 27
         },
@@ -1359,7 +1359,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 90,
             "meter": 27
         },
@@ -1399,7 +1399,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 90,
             "meter": 27
         },
@@ -1437,7 +1437,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 90,
             "meter": 27
         },
@@ -1475,7 +1475,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 90,
             "meter": 27
         },
@@ -1512,7 +1512,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Bonus Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S",
@@ -1549,7 +1549,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 120,
             "meter": 36
         },
@@ -1580,7 +1580,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 5,
             "meter": 1.5
         },
@@ -1617,7 +1617,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 0,
             "meter": 0
         },
@@ -1654,7 +1654,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 30,
             "meter": 9
         },
@@ -1692,7 +1692,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "S"
         ],
@@ -1718,7 +1718,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Bonus Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V"
         ],
@@ -1746,7 +1746,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -1778,7 +1778,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -1815,7 +1815,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "M"
@@ -1845,7 +1845,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Bonus Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V"
         ],
@@ -1875,7 +1875,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S",
@@ -1910,7 +1910,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -1944,7 +1944,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 30,
             "meter": 9
         },
@@ -1986,7 +1986,7 @@ export const spellList: ISpell[] = [
                 "unit": "minutes"
             }
         ],
-        "Range": {
+        "range": {
             "feet": 30,
             "meter": 9
         },
@@ -2024,7 +2024,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S"
@@ -2056,7 +2056,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 30,
             "meter": 9
         },
@@ -2096,7 +2096,7 @@ export const spellList: ISpell[] = [
             "Action",
             "Ritual"
         ],
-        "Range": {
+        "range": {
             "feet": 30,
             "meter": 9
         },
@@ -2133,7 +2133,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 30,
             "meter": 9
         },
@@ -2170,7 +2170,7 @@ export const spellList: ISpell[] = [
                 "unit": "minutes"
             }
         ],
-        "Range": {
+        "range": {
             "feet": 10,
             "meter": 3
         },
@@ -2206,7 +2206,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 120,
             "meter": 36
         },
@@ -2239,7 +2239,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S"
@@ -2270,7 +2270,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S",
@@ -2309,7 +2309,7 @@ export const spellList: ISpell[] = [
                 "unit": "hours"
             }
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -2346,7 +2346,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 30,
             "meter": 9
         },
@@ -2383,7 +2383,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S",
@@ -2419,7 +2419,7 @@ export const spellList: ISpell[] = [
                 "unit": "hours"
             }
         ],
-        "Range": {
+        "range": {
             "feet": 10,
             "meter": 3
         },
@@ -2459,7 +2459,7 @@ export const spellList: ISpell[] = [
                 "unit": "minutes"
             }
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S",
@@ -2491,7 +2491,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V"
         ],
@@ -2524,7 +2524,7 @@ export const spellList: ISpell[] = [
                 "unit": "hours"
             }
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S",
@@ -2557,7 +2557,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 30,
             "meter": 9
         },
@@ -2598,7 +2598,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 30,
             "meter": 9
         },
@@ -2636,7 +2636,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Bonus Action"
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S",
@@ -2670,7 +2670,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 30,
             "meter": 9
         },
@@ -2706,7 +2706,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 150,
             "meter": 45
         },
@@ -2742,7 +2742,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S"
@@ -2773,7 +2773,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 120,
             "meter": 36
         },
@@ -2810,7 +2810,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 90,
             "meter": 27
         },
@@ -2844,7 +2844,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 30,
             "meter": 9
         },
@@ -2884,7 +2884,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 30,
             "meter": 9
         },
@@ -2917,7 +2917,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 120,
             "meter": 36
         },
@@ -2950,7 +2950,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S"
@@ -2981,7 +2981,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V"
         ],
@@ -3011,7 +3011,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S"
@@ -3038,7 +3038,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 120,
             "meter": 36
         },
@@ -3072,7 +3072,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -3106,7 +3106,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 150,
             "meter": 45
         },
@@ -3144,7 +3144,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 30,
             "meter": 9
         },
@@ -3181,7 +3181,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 30,
             "meter": 9
         },
@@ -3216,7 +3216,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S"
@@ -3244,7 +3244,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 90,
             "meter": 27
         },
@@ -3280,7 +3280,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 150,
             "meter": 45
         },
@@ -3320,7 +3320,7 @@ export const spellList: ISpell[] = [
                 "unit": "minutes"
             }
         ],
-        "Range": {
+        "range": {
             "feet": 0,
             "meter": 0
         },
@@ -3360,7 +3360,7 @@ export const spellList: ISpell[] = [
                 "unit": "hours"
             }
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S",
@@ -3392,7 +3392,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 120,
             "meter": 36
         },
@@ -3427,7 +3427,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S",
@@ -3460,7 +3460,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -3493,7 +3493,7 @@ export const spellList: ISpell[] = [
                 "unit": "minutes"
             }
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S",
@@ -3532,7 +3532,7 @@ export const spellList: ISpell[] = [
                 "unit": "minutes"
             }
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S"
@@ -3563,7 +3563,7 @@ export const spellList: ISpell[] = [
             "Action",
             "Ritual"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S",
@@ -3597,7 +3597,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 30,
             "meter": 9
         },
@@ -3632,7 +3632,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S",
@@ -3666,7 +3666,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 90,
             "meter": 27
         },
@@ -3704,7 +3704,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -3737,7 +3737,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 90,
             "meter": 27
         },
@@ -3771,7 +3771,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -3804,7 +3804,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -3838,7 +3838,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S"
@@ -3869,7 +3869,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S"
@@ -3904,7 +3904,7 @@ export const spellList: ISpell[] = [
                 "unit": "minutes"
             }
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V"
         ],
@@ -3934,7 +3934,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S"
@@ -3967,7 +3967,7 @@ export const spellList: ISpell[] = [
                 "unit": "minutes"
             }
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S",
@@ -4003,7 +4003,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S",
@@ -4036,7 +4036,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 300,
             "meter": 90
         },
@@ -4078,7 +4078,7 @@ export const spellList: ISpell[] = [
                 "unit": "minutes"
             }
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S",
@@ -4114,7 +4114,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -4144,7 +4144,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 30,
             "meter": 9
         },
@@ -4175,7 +4175,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 30,
             "meter": 9
         },
@@ -4214,7 +4214,7 @@ export const spellList: ISpell[] = [
                 "unit": "minutes"
             }
         ],
-        "Range": {
+        "range": {
             "feet": 10,
             "meter": 3
         },
@@ -4252,7 +4252,7 @@ export const spellList: ISpell[] = [
                 "unit": "minutes"
             }
         ],
-        "Range": {
+        "range": {
             "feet": 30,
             "meter": 9
         },
@@ -4290,7 +4290,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S"
@@ -4319,7 +4319,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 120,
             "meter": 36
         },
@@ -4358,7 +4358,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -4397,7 +4397,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S",
@@ -4435,7 +4435,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -4469,7 +4469,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S"
@@ -4500,7 +4500,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 150,
             "meter": 45
         },
@@ -4539,7 +4539,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -4572,7 +4572,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S"
@@ -4610,7 +4610,7 @@ export const spellList: ISpell[] = [
             "Action",
             "Ritual"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S"
@@ -4644,7 +4644,7 @@ export const spellList: ISpell[] = [
             "Action",
             "Ritual"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S",
@@ -4680,7 +4680,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S",
@@ -4717,7 +4717,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 500,
             "meter": 150
         },
@@ -4748,7 +4748,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S"
@@ -4778,7 +4778,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -4812,7 +4812,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S",
@@ -4852,7 +4852,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 120,
             "meter": 36
         },
@@ -4881,7 +4881,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -4912,7 +4912,7 @@ export const spellList: ISpell[] = [
             "Action",
             "Ritual"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S",
@@ -4942,7 +4942,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Bonus Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S"
@@ -4971,7 +4971,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Bonus Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V"
         ],
@@ -4996,7 +4996,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Bonus Action"
         ],
-        "Range": {
+        "range": {
             "feet": 30,
             "meter": 9
         },
@@ -5026,7 +5026,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -5061,7 +5061,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -5095,7 +5095,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -5128,7 +5128,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Bonus Action"
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S",
@@ -5165,7 +5165,7 @@ export const spellList: ISpell[] = [
                 "unit": "minutes"
             }
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S",
@@ -5200,7 +5200,7 @@ export const spellList: ISpell[] = [
                 "unit": "minutes"
             }
         ],
-        "Range": {
+        "range": {
             "feet": 0,
             "meter": 0
         },
@@ -5236,7 +5236,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 30,
             "meter": 9
         },
@@ -5267,7 +5267,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 500,
             "meter": 150
         },
@@ -5303,7 +5303,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 120,
             "meter": 36
         },
@@ -5334,7 +5334,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 30,
             "meter": 9
         },
@@ -5368,7 +5368,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S",
@@ -5404,7 +5404,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 30,
             "meter": 9
         },
@@ -5440,7 +5440,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Bonus Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V"
         ],
@@ -5469,7 +5469,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 90,
             "meter": 27
         },
@@ -5502,7 +5502,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -5538,7 +5538,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S"
@@ -5567,7 +5567,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 90,
             "meter": 27
         },
@@ -5605,7 +5605,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Bonus Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S"
@@ -5637,7 +5637,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S"
@@ -5669,7 +5669,7 @@ export const spellList: ISpell[] = [
                 "unit": "minutes"
             }
         ],
-        "Range": {
+        "range": {
             "feet": 120,
             "meter": 36
         },
@@ -5699,7 +5699,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -5731,7 +5731,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S",
@@ -5764,7 +5764,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S",
@@ -5799,7 +5799,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -5838,7 +5838,7 @@ export const spellList: ISpell[] = [
                 "unit": "hours"
             }
         ],
-        "Range": {
+        "range": {
             "feet": 10,
             "meter": 3
         },
@@ -5871,7 +5871,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 30,
             "meter": 9
         },
@@ -5905,7 +5905,7 @@ export const spellList: ISpell[] = [
                 "unit": "minutes"
             }
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S",
@@ -5940,7 +5940,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 120,
             "meter": 36
         },
@@ -5971,7 +5971,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -6001,7 +6001,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 120,
             "meter": 36
         },
@@ -6032,7 +6032,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S",
@@ -6067,7 +6067,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 150,
             "meter": 45
         },
@@ -6097,7 +6097,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 150,
             "meter": 45
         },
@@ -6131,7 +6131,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Bonus Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S",
@@ -6164,7 +6164,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -6199,7 +6199,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -6237,7 +6237,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -6275,7 +6275,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S",
@@ -6311,7 +6311,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 120,
             "meter": 36
         },
@@ -6347,7 +6347,7 @@ export const spellList: ISpell[] = [
                 "unit": "minutes"
             }
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S",
@@ -6382,7 +6382,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 100,
             "meter": 30
         },
@@ -6424,7 +6424,7 @@ export const spellList: ISpell[] = [
                 "unit": "minutes"
             }
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S",
@@ -6460,7 +6460,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S",
@@ -6495,7 +6495,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S",
@@ -6531,7 +6531,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -6574,7 +6574,7 @@ export const spellList: ISpell[] = [
                 "unit": "minutes"
             }
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -6608,7 +6608,7 @@ export const spellList: ISpell[] = [
             "Action",
             "Ritual"
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S",
@@ -6641,7 +6641,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -6674,7 +6674,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V"
         ],
@@ -6703,7 +6703,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S",
@@ -6741,7 +6741,7 @@ export const spellList: ISpell[] = [
                 "unit": "hours"
             }
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S",
@@ -6772,7 +6772,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S",
@@ -6806,7 +6806,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -6844,7 +6844,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S"
@@ -6877,7 +6877,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S",
@@ -6907,7 +6907,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 30,
             "meter": 9
         },
@@ -6942,7 +6942,7 @@ export const spellList: ISpell[] = [
                 "unit": "hours"
             }
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S",
@@ -6976,7 +6976,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S"
@@ -7005,7 +7005,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 120,
             "meter": 36
         },
@@ -7037,7 +7037,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S",
@@ -7073,7 +7073,7 @@ export const spellList: ISpell[] = [
                 "unit": "hours"
             }
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S",
@@ -7109,7 +7109,7 @@ export const spellList: ISpell[] = [
                 "unit": "minutes"
             }
         ],
-        "Range": {
+        "range": {
             "feet": 300,
             "meter": 90
         },
@@ -7145,7 +7145,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -7175,7 +7175,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 30,
             "meter": 9
         },
@@ -7212,7 +7212,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -7243,7 +7243,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Bonus Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -7272,7 +7272,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -7308,7 +7308,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -7342,7 +7342,7 @@ export const spellList: ISpell[] = [
                 "unit": "minutes"
             }
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S",
@@ -7373,7 +7373,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S"
@@ -7402,7 +7402,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Bonus Action"
         ],
-        "Range": {
+        "range": {
             "feet": 90,
             "meter": 27
         },
@@ -7441,7 +7441,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 90,
             "meter": 27
         },
@@ -7482,7 +7482,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -7518,7 +7518,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S",
@@ -7551,7 +7551,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Bonus Action"
         ],
-        "Range": {
+        "range": {
             "feet": 90,
             "meter": 27
         },
@@ -7585,7 +7585,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 120,
             "meter": 36
         },
@@ -7622,7 +7622,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -7656,7 +7656,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 300,
             "meter": 90
         },
@@ -7694,7 +7694,7 @@ export const spellList: ISpell[] = [
                 "unit": "minutes"
             }
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S",
@@ -7730,7 +7730,7 @@ export const spellList: ISpell[] = [
                 "unit": "minutes"
             }
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "S",
             "M"
@@ -7766,7 +7766,7 @@ export const spellList: ISpell[] = [
                 "unit": "minutes"
             }
         ],
-        "Range": {
+        "range": {
             "feet": 30,
             "meter": 9
         },
@@ -7801,7 +7801,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 150,
             "meter": 45
         },
@@ -7833,7 +7833,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S"
@@ -7861,7 +7861,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 300,
             "meter": 45
         },
@@ -7900,7 +7900,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S",
@@ -7936,7 +7936,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Bonus Action"
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S",
@@ -7971,7 +7971,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -8004,7 +8004,7 @@ export const spellList: ISpell[] = [
                 "unit": "minutes"
             }
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S",
@@ -8034,7 +8034,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S",
@@ -8069,7 +8069,7 @@ export const spellList: ISpell[] = [
                 "unit": "minutes"
             }
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S",
@@ -8106,7 +8106,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Bonus Action"
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S"
@@ -8133,7 +8133,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -8172,7 +8172,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "M"
@@ -8205,7 +8205,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S",
@@ -8238,7 +8238,7 @@ export const spellList: ISpell[] = [
             "Action",
             "Ritual"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S",
@@ -8273,7 +8273,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S",
@@ -8311,7 +8311,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S",
@@ -8347,7 +8347,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S",
@@ -8381,7 +8381,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S",
@@ -8417,7 +8417,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 30,
             "meter": 9
         },
@@ -8455,7 +8455,7 @@ export const spellList: ISpell[] = [
                 "unit": "minutes"
             }
         ],
-        "Range": {
+        "range": {
             "feet": 10,
             "meter": 3
         },
@@ -8494,7 +8494,7 @@ export const spellList: ISpell[] = [
                 "unit": "minutes"
             }
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S",
@@ -8525,7 +8525,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 120,
             "meter": 36
         },
@@ -8559,7 +8559,7 @@ export const spellList: ISpell[] = [
                 "unit": "minutes"
             }
         ],
-        "Range": {
+        "range": {
             "feet": 30,
             "meter": 9
         },
@@ -8595,7 +8595,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Bonus Action"
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S"
@@ -8627,7 +8627,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 120,
             "meter": 36
         },
@@ -8665,7 +8665,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -8694,7 +8694,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -8724,7 +8724,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Bonus Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -8754,7 +8754,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -8789,7 +8789,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -8824,7 +8824,7 @@ export const spellList: ISpell[] = [
             "Action",
             "Ritual"
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S"
@@ -8853,7 +8853,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 90,
             "meter": 27
         },
@@ -8893,7 +8893,7 @@ export const spellList: ISpell[] = [
                 "unit": "minutes"
             }
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S",
@@ -8926,7 +8926,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 120,
             "meter": 36
         },
@@ -8959,7 +8959,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 0,
             "meter": 0
         },
@@ -8989,7 +8989,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S"
@@ -9020,7 +9020,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 120,
             "meter": 36
         },
@@ -9054,7 +9054,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 30,
             "meter": 9
         },
@@ -9094,7 +9094,7 @@ export const spellList: ISpell[] = [
                 "unit": "minutes"
             }
         ],
-        "Range": {
+        "range": {
             "feet": 0,
             "meter": 0
         },
@@ -9129,7 +9129,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S"
@@ -9160,7 +9160,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "S"
         ],
@@ -9190,7 +9190,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Bonus Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V"
         ],
@@ -9216,7 +9216,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 30,
             "meter": 9
         },
@@ -9248,7 +9248,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 120,
             "meter": 36
         },
@@ -9284,7 +9284,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 30,
             "meter": 9
         },
@@ -9324,7 +9324,7 @@ export const spellList: ISpell[] = [
                 "unit": "minutes"
             }
         ],
-        "Range": {
+        "range": {
             "feet": 300,
             "meter": 45
         },
@@ -9363,7 +9363,7 @@ export const spellList: ISpell[] = [
                 "unit": "minutes"
             }
         ],
-        "Range": {
+        "range": {
             "feet": 120,
             "meter": 36
         },
@@ -9400,7 +9400,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 90,
             "meter": 27
         },
@@ -9438,7 +9438,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 120,
             "meter": 36
         },
@@ -9476,7 +9476,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S",
@@ -9509,7 +9509,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S",
@@ -9543,7 +9543,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 300,
             "meter": 45
         },
@@ -9576,7 +9576,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 30,
             "meter": 9
         },
@@ -9613,7 +9613,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 30,
             "meter": 9
         },
@@ -9645,7 +9645,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S",
@@ -9678,7 +9678,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 30,
             "meter": 9
         },
@@ -9716,7 +9716,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -9753,7 +9753,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 120,
             "meter": 36
         },
@@ -9789,7 +9789,7 @@ export const spellList: ISpell[] = [
                 "unit": "minutes"
             }
         ],
-        "Range": {
+        "range": {
             "feet": 30,
             "meter": 9
         },
@@ -9824,7 +9824,7 @@ export const spellList: ISpell[] = [
                 "unit": "minutes"
             }
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -9860,7 +9860,7 @@ export const spellList: ISpell[] = [
                 "unit": "hours"
             }
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -9900,7 +9900,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S",
@@ -9936,7 +9936,7 @@ export const spellList: ISpell[] = [
                 "unit": "hours"
             }
         ],
-        "Range": {
+        "range": {
             "feet": 150,
             "meter": 45
         },
@@ -9968,7 +9968,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 30,
             "meter": 9
         },
@@ -10000,7 +10000,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -10037,7 +10037,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -10068,7 +10068,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -10099,7 +10099,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -10131,7 +10131,7 @@ export const spellList: ISpell[] = [
                 "unit": "minutes"
             }
         ],
-        "Range": {
+        "range": {
             "feet": 30,
             "meter": 9
         },
@@ -10162,7 +10162,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 10,
             "meter": 3
         },
@@ -10196,7 +10196,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S"
@@ -10223,7 +10223,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -10255,7 +10255,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Bonus Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S"
@@ -10285,7 +10285,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 120,
             "meter": 36
         },
@@ -10319,7 +10319,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 0,
             "meter": 0
         },
@@ -10359,7 +10359,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S"
@@ -10392,7 +10392,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S",
@@ -10428,7 +10428,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S"
@@ -10460,7 +10460,7 @@ export const spellList: ISpell[] = [
             "Action",
             "Ritual"
         ],
-        "Range": {
+        "range": {
             "feet": 10,
             "meter": 3
         },
@@ -10494,7 +10494,7 @@ export const spellList: ISpell[] = [
                 "unit": "hours"
             }
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S",
@@ -10526,7 +10526,7 @@ export const spellList: ISpell[] = [
             "Action",
             "Ritual"
         ],
-        "Range": {
+        "range": {
             "feet": 30,
             "meter": 9
         },
@@ -10563,7 +10563,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -10596,7 +10596,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -10626,7 +10626,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -10660,7 +10660,7 @@ export const spellList: ISpell[] = [
                 "unit": "minutes"
             }
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S",
@@ -10696,7 +10696,7 @@ export const spellList: ISpell[] = [
                 "unit": "hours"
             }
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S",
@@ -10729,7 +10729,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S"
@@ -10756,7 +10756,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S"
@@ -10789,7 +10789,7 @@ export const spellList: ISpell[] = [
                 "unit": "hours"
             }
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S",
@@ -10821,7 +10821,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 100,
             "meter": 30
         },
@@ -10860,7 +10860,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S",
@@ -10890,7 +10890,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S",
@@ -10923,7 +10923,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -10952,7 +10952,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Bonus Action"
         ],
-        "Range": {
+        "range": {
             "feet": 30,
             "meter": 9
         },
@@ -10989,7 +10989,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 120,
             "meter": 36
         },
@@ -11025,7 +11025,7 @@ export const spellList: ISpell[] = [
                 "unit": "minutes"
             }
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S",
@@ -11058,7 +11058,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Bonus Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V"
         ],
@@ -11088,7 +11088,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S",
@@ -11123,7 +11123,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 30,
             "meter": 9
         },
@@ -11157,7 +11157,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 0,
             "meter": 0
         },
@@ -11190,7 +11190,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S",
@@ -11221,7 +11221,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S",
@@ -11256,7 +11256,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -11290,7 +11290,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S"
@@ -11317,7 +11317,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Bonus Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -11353,7 +11353,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Bonus Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S",
@@ -11386,7 +11386,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Bonus Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V"
         ],
@@ -11415,7 +11415,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S"
@@ -11444,7 +11444,7 @@ export const spellList: ISpell[] = [
             "Action",
             "Ritual"
         ],
-        "Range": {
+        "range": {
             "feet": 120,
             "meter": 36
         },
@@ -11478,7 +11478,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -11517,7 +11517,7 @@ export const spellList: ISpell[] = [
                 "unit": "hours"
             }
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S",
@@ -11549,7 +11549,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -11587,7 +11587,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 150,
             "meter": 45
         },
@@ -11625,7 +11625,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 120,
             "meter": 36
         },
@@ -11661,7 +11661,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 120,
             "meter": 36
         },
@@ -11691,7 +11691,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 15,
             "meter": 4.5
         },
@@ -11724,7 +11724,7 @@ export const spellList: ISpell[] = [
             "Action",
             "Ritual"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S"
@@ -11755,7 +11755,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 10,
             "meter": 3
         },
@@ -11793,7 +11793,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S"
@@ -11824,7 +11824,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S",
@@ -11858,7 +11858,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 150,
             "meter": 45
         },
@@ -11894,7 +11894,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S",
@@ -11927,7 +11927,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Bonus Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -11960,7 +11960,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -11991,7 +11991,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 90,
             "meter": 27
         },
@@ -12029,7 +12029,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S",
@@ -12062,7 +12062,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S",
@@ -12095,7 +12095,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 0,
             "meter": 0
         },
@@ -12130,7 +12130,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 30,
             "meter": 9
         },
@@ -12165,7 +12165,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -12204,7 +12204,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S",
@@ -12240,7 +12240,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 150,
             "meter": 45
         },
@@ -12279,7 +12279,7 @@ export const spellList: ISpell[] = [
                 "unit": "minutes"
             }
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S",
@@ -12311,7 +12311,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 30,
             "meter": 9
         },
@@ -12348,7 +12348,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -12382,7 +12382,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 10,
             "meter": 3
         },
@@ -12416,7 +12416,7 @@ export const spellList: ISpell[] = [
                 "unit": "minutes"
             }
         ],
-        "Range": {
+        "range": {
             "feet": 10,
             "meter": 3
         },
@@ -12449,7 +12449,7 @@ export const spellList: ISpell[] = [
             "Action",
             "Ritual"
         ],
-        "Range": {
+        "range": {
             "feet": 30,
             "meter": 9
         },
@@ -12485,7 +12485,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 30,
             "meter": 9
         },
@@ -12519,7 +12519,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S"
@@ -12546,7 +12546,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V"
         ],
@@ -12575,7 +12575,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "M"
@@ -12607,7 +12607,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 10,
             "meter": 3
         },
@@ -12640,7 +12640,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S"
@@ -12671,7 +12671,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 30,
             "meter": 9
         },
@@ -12711,7 +12711,7 @@ export const spellList: ISpell[] = [
                 "unit": "hours"
             }
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S",
@@ -12745,7 +12745,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S",
@@ -12781,7 +12781,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "S",
             "M"
@@ -12813,7 +12813,7 @@ export const spellList: ISpell[] = [
                 "unit": "minutes"
             }
         ],
-        "Range": {
+        "range": {
             "feet": 0,
             "meter": 0
         },
@@ -12845,7 +12845,7 @@ export const spellList: ISpell[] = [
             "Action",
             "Ritual"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -12883,7 +12883,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V",
             "S"
@@ -12912,7 +12912,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -12941,7 +12941,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 150,
             "meter": 45
         },
@@ -12976,7 +12976,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 120,
             "meter": 36
         },
@@ -13012,7 +13012,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 120,
             "meter": 36
         },
@@ -13048,7 +13048,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 120,
             "meter": 36
         },
@@ -13086,7 +13086,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 120,
             "meter": 36
         },
@@ -13122,7 +13122,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 120,
             "meter": 36
         },
@@ -13159,7 +13159,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "touch",
+        "range": "touch",
         "components": [
             "V",
             "S",
@@ -13196,7 +13196,7 @@ export const spellList: ISpell[] = [
             "Action",
             "Ritual"
         ],
-        "Range": {
+        "range": {
             "feet": 30,
             "meter": 9
         },
@@ -13236,7 +13236,7 @@ export const spellList: ISpell[] = [
             "Action",
             "Ritual"
         ],
-        "Range": {
+        "range": {
             "feet": 30,
             "meter": 9
         },
@@ -13273,7 +13273,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },
@@ -13310,7 +13310,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 120,
             "meter": 36
         },
@@ -13345,7 +13345,7 @@ export const spellList: ISpell[] = [
                 "unit": "minutes"
             }
         ],
-        "Range": {
+        "range": {
             "feet": 30,
             "meter": 9
         },
@@ -13382,7 +13382,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 120,
             "meter": 36
         },
@@ -13419,7 +13419,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": "self",
+        "range": "self",
         "components": [
             "V"
         ],
@@ -13444,7 +13444,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 5,
             "meter": 1.5
         },
@@ -13474,7 +13474,7 @@ export const spellList: ISpell[] = [
         "castingTime": [
             "Action"
         ],
-        "Range": {
+        "range": {
             "feet": 60,
             "meter": 18
         },

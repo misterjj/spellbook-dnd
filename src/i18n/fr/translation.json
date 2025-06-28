@@ -4,6 +4,33 @@
       "title": "Paramèttres",
       "language": "Langue",
       "theme": "Thème"
+    },
+    "menu": {
+      "title": "Menu",
+      "characters-list": "Liste des personnages",
+      "spells-list": "Liste des sorts"
+    }
+  },
+  "spell-layout": {
+    "subtitle": "{{school}} de niveau {{level}}",
+    "range": {
+      "phrase": "<bold>Portée</bold> : {{value}}",
+      "self": "Personnelle",
+      "touch": "Contact"
+    }
+  },
+  "data": {
+    "spell": {
+      "school": {
+        "Abjuration": "Abjuration",
+        "Conjuration": "Invocation",
+        "Divination": "Divination",
+        "Enchantment": "Enchantement",
+        "Evocation": "Évocation",
+        "Illusion": "Illusion",
+        "Necromancy": "Nécromancie",
+        "Transmutation": "Transmutation"
+      }
     }
   }
 }

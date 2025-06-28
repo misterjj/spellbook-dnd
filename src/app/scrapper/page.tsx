@@ -179,7 +179,7 @@ export default function Scrapper() {
                     breeds,
                     school,
                     castingTime,
-                    Range,
+                    range: Range,
                     components,
                     materials,
                     duration,

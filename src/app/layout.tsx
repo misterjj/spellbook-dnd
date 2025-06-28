@@ -7,6 +7,9 @@ import {useEffect, useState} from "react";
 import '../i18n/config';
 import {useTranslation} from 'react-i18next';
 import {availableLangue} from "@/i18n/config";
+import {FaHatWizard} from "react-icons/fa";
+import {GiTiedScroll} from "react-icons/gi";
+import Link from "next/link";
 
 export default function RootLayout({
                                        children,
@@ -101,10 +104,13 @@ export default function RootLayout({
             </div>
             <div className="drawer-side">
                 <label htmlFor="my-drawer-menu" aria-label="close sidebar" className="drawer-overlay"></label>
-                <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
-                    <li><a>Sidebar Item 1</a></li>
-                    <li><a>Sidebar Item 2</a></li>
-                </ul>
+                <div className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
+                    <div className={`font-semibold text-2xl text-center`}>{t("layout.menu.title")}</div>
+                    <ul>
+                        <li className={`text-xl`}><Link href={"/"}><FaHatWizard size={20} /> {t("layout.menu.characters-list")}</Link></li>
+                        <li className={`text-xl`}><Link href={"/spell-list"}><GiTiedScroll size={20} /> {t("layout.menu.spells-list")}</Link></li>
+                    </ul>
+                </div>
             </div>
         </div>
         <div className={`drawer drawer-end fixed right-6 top-6 w-10 ${drawerActive === "settings" ? "z-20" : "z-10"}`}>
@@ -120,11 +126,11 @@ export default function RootLayout({
             <div className="drawer-side">
                 <label htmlFor="my-drawer-settings" aria-label="close sidebar" className="drawer-overlay"></label>
                 <div className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
-                    <div className={`font-semibold text-xl text-center`}>{t("layout.settings.title")}</div>
-                    <fieldset className="fieldset bg-base-100 border-base-300 rounded-box w-full border p-4">
+                    <div className={`font-semibold text-2xl text-center`}>{t("layout.settings.title")}</div>
+                    <fieldset className="fieldset bg-base-100 border-base-300 rounded-box w-full border px-4 pb-3">
                         <legend className="fieldset-legend">{t("layout.settings.language")}</legend>
                         <label className="text-base-content flex items-center justify-center gap-2">
-                            <button className="btn w-full" popoverTarget="popover-lng"
+                            <button className="btn btn-ghost bg-base-100 border-none w-full" popoverTarget="popover-lng"
                                     style={{anchorName: "--anchor-1"} as React.CSSProperties}>
                                 <div className={`w-4 h-4 rounded overflow-hidden`} style={{
                                     backgroundSize: 'cover',
@@ -134,7 +140,7 @@ export default function RootLayout({
                                 </div>
                                 {availableLangue[i18n.language]}
                             </button>
-                            <ul className="dropdown menu w-64 rounded-box bg-base-300 shadow-sm max-h-100"
+                            <ul className="dropdown menu w-64 rounded-box bg-base-100 shadow-sm max-h-100"
                                 popover="auto" id="popover-lng">
                                 {
                                     Object.keys(availableLangue)
@@ -155,13 +161,13 @@ export default function RootLayout({
                             </ul>
                         </label>
                     </fieldset>
-                    <fieldset className="fieldset bg-base-100 border-base-300 rounded-box w-full border p-4">
+                    <fieldset className="fieldset bg-base-100 border-base-300 rounded-box w-full border px-4 pb-3">
                         <legend className="fieldset-legend">{t("layout.settings.theme")}</legend>
                         <label className="text-base-content flex items-center justify-center gap-2">
-                            <button className="btn w-full" popoverTarget="popover-theme"
+                            <button className="btn btn-ghost w-full bg-base-100 border-none" popoverTarget="popover-theme"
                                     style={{anchorName: "--anchor-2"} as React.CSSProperties}>
                                 <div data-theme={selectedTheme}
-                                     className="bg-base-100 grid shrink-0 grid-cols-2 gap-0.5 rounded-md p-1 shadow-sm">
+                                     className="bg-base-100 grid shrink-0 grid-cols-2 gap-0.5 rounded-md p-1 shadow-sm border border-base-content/20">
                                     <div className="bg-base-content size-1 rounded-full"></div>
                                     <div className="bg-primary size-1 rounded-full"></div>
                                     <div className="bg-secondary size-1 rounded-full"></div>
@@ -179,7 +185,7 @@ export default function RootLayout({
                                     }}>
                                         <div>
                                             <div data-theme={theme}
-                                                 className="bg-base-100 grid shrink-0 grid-cols-2 gap-0.5 rounded-md p-1 shadow-sm">
+                                                 className="bg-base-100 grid shrink-0 grid-cols-2 gap-0.5 rounded-md p-1 shadow-sm border  border-base-content/20">
                                                 <div className="bg-base-content size-1 rounded-full"></div>
                                                 <div className="bg-primary size-1 rounded-full"></div>
                                                 <div className="bg-secondary size-1 rounded-full"></div>
@@ -195,7 +201,9 @@ export default function RootLayout({
                 </div>
             </div>
         </div>
-        {children}
+        <div className={`pt-10 px-10`}>
+            {children}
+        </div>
         </body>
         </html>
     );

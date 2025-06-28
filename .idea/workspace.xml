@@ -5,7 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0a8e748c-3889-46cb-abc2-cd03c8fec980" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/scrapper/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/scrapper/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/spell-list/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/spell-list/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/Spell.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/Spell.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/i18n/config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/i18n/config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/i18n/en/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/i18n/en/translation.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/i18n/fr/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/i18n/fr/translation.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +46,7 @@
     "ignore.virus.scanning.warn.message": "true",
     "js.debugger.nextJs.config.created.client": "true",
     "js.debugger.nextJs.config.created.server": "true",
-    "last_opened_file_path": "C:/Users/jonathan/projets/spellbook-dnd/src/i18n/fr",
+    "last_opened_file_path": "C:/Users/jonathan/projets/spellbook-dnd/src/components",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -51,6 +58,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\jonathan\projets\spellbook-dnd\src\components" />
       <recent name="C:\Users\jonathan\projets\spellbook-dnd\src\i18n\fr" />
       <recent name="C:\Users\jonathan\projets\spellbook-dnd\src\data" />
     </key>
@@ -93,7 +101,8 @@
       <workItem from="1750934022401" duration="5665000" />
       <workItem from="1751015871184" duration="56000" />
       <workItem from="1751016090443" duration="4484000" />
-      <workItem from="1751097484192" duration="10956000" />
+      <workItem from="1751097484192" duration="11114000" />
+      <workItem from="1751120828650" duration="9805000" />
     </task>
     <servers />
   </component>
