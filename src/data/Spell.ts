@@ -85,6 +85,57 @@ import blight from "@/data/images/spells/blight.jpg";
 import blindnessDeafness from "@/data/images/spells/blindness-deafness.jpg";
 import blink from "@/data/images/spells/blink.jpg";
 import blur from "@/data/images/spells/blur.jpg";
+import burningHands from "@/data/images/spells/burning-hands.jpg";
+import callLightning from "@/data/images/spells/call-lightning.jpg";
+import calmEmotions from "@/data/images/spells/calm-emotions.jpg";
+import chainLightning from "@/data/images/spells/chain-lightning.jpg";
+import charmMonster from "@/data/images/spells/charm-monster.jpg";
+import charmPerson from "@/data/images/spells/charm-person.jpg";
+import chillTouch from "@/data/images/spells/chill-touch.jpg";
+import chromaticOrb from "@/data/images/spells/chromatic-orb.jpg";
+import circleOfDeath from "@/data/images/spells/circle-of-death.jpg";
+import clairvoyance from "@/data/images/spells/clairvoyance.jpg";
+import clone from "@/data/images/spells/clone.jpg";
+import cloudkill from "@/data/images/spells/cloudkill.jpg";
+import colorSpray from "@/data/images/spells/color-spray.jpg";
+import command from "@/data/images/spells/command.jpg";
+import commune from "@/data/images/spells/commune.jpg";
+import communeWithNature from "@/data/images/spells/commune-with-nature.jpg";
+import comprehendLanguages from "@/data/images/spells/comprehend-languages.jpg";
+import compulsion from "@/data/images/spells/compulsion.jpg";
+import coneOfCold from "@/data/images/spells/cone-of-cold.jpg";
+import confusion from "@/data/images/spells/confusion.jpg";
+import conjureAnimals from "@/data/images/spells/conjure-animals.jpg";
+import conjureCelestial from "@/data/images/spells/conjure-celestial.jpg";
+import conjureElemental from "@/data/images/spells/conjure-elemental.jpg";
+import conjureFey from "@/data/images/spells/conjure-fey.jpg";
+import conjureMinorElementals from "@/data/images/spells/conjure-minor-elementals.jpg";
+import conjureWoodlandBeings from "@/data/images/spells/conjure-woodland-beings.jpg";
+import contactOtherPlane from "@/data/images/spells/contact-other-plane.jpg";
+import contagion from "@/data/images/spells/contagion.jpg";
+import contingency from "@/data/images/spells/contingency.jpg";
+import continualFlame from "@/data/images/spells/continual-flame.jpg";
+import controlWater from "@/data/images/spells/control-water.jpg";
+import controlWeather from "@/data/images/spells/control-weather.jpg";
+import counterspell from "@/data/images/spells/counterspell.jpg";
+import createFoodAndWater from "@/data/images/spells/create-food-and-water.jpg";
+import createOrDestroyWater from "@/data/images/spells/create-or-destroy-water.jpg";
+import createUndead from "@/data/images/spells/create-undead.jpg";
+import creation from "@/data/images/spells/creation.jpg";
+import cureWounds from "@/data/images/spells/cure-wounds.jpg";
+import dancingLights from "@/data/images/spells/dancing-lights.jpg";
+import darkness from "@/data/images/spells/darkness.jpg";
+import darkvision from "@/data/images/spells/darkvision.jpg";
+import daylight from "@/data/images/spells/daylight.jpg";
+import deathWard from "@/data/images/spells/death-ward.jpg";
+import delayedBlastFireball from "@/data/images/spells/delayed-blast-fireball.jpg";
+import demiplane from "@/data/images/spells/demiplane.jpg";
+import detectEvilAndGood from "@/data/images/spells/detect-evil-and-good.jpg";
+import detectMagic from "@/data/images/spells/detect-magic.jpg";
+import detectPoisonAndDisease from "@/data/images/spells/detect-poison-and-disease.jpg";
+import detectThoughts from "@/data/images/spells/detect-thoughts.jpg";
+import dimensionDoor from "@/data/images/spells/dimension-door.jpg";
+import disguiseSelf from "@/data/images/spells/disguise-self.jpg";
 
 import {StaticImageData} from "next/image";
 
@@ -2946,6 +2997,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "burning-hands",
+        "icon": burningHands,
         "name": {
             "en": "Burning Hands",
             "fr": "Mains brûlantes"
@@ -2973,6 +3025,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "call-lightning",
+        "icon": callLightning,
         "name": {
             "en": "Call Lightning",
             "fr": "Appel de la foudre"
@@ -3005,6 +3058,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "calm-emotions",
+        "icon": calmEmotions,
         "name": {
             "en": "Calm Emotions",
             "fr": "Apaisement des émotions"
@@ -3038,6 +3092,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "chain-lightning",
+        "icon": chainLightning,
         "name": {
             "en": "Chain Lightning",
             "fr": "Chaîne d'éclairs"
@@ -3072,6 +3127,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "charm-monster",
+        "icon": charmMonster,
         "name": {
             "en": "Charm Monster",
             "fr": "Charme-monstre"
@@ -3108,6 +3164,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "charm-person",
+        "icon": charmPerson,
         "name": {
             "en": "Charm Person",
             "fr": "Charme-personne"
@@ -3144,6 +3201,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "chill-touch",
+        "icon": chillTouch,
         "name": {
             "en": "Chill Touch",
             "fr": "Contact glacial"
@@ -3172,6 +3230,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "chromatic-orb",
+        "icon": chromaticOrb,
         "name": {
             "en": "Chromatic Orb",
             "fr": "Orbe chromatique"
@@ -3206,6 +3265,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "circle-of-death",
+        "icon": circleOfDeath,
         "name": {
             "en": "Circle of Death",
             "fr": "Cercle de mort"
@@ -3241,6 +3301,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "clairvoyance",
+        "icon": clairvoyance,
         "name": {
             "en": "Clairvoyance",
             "fr": "Clairvoyance"
@@ -3283,6 +3344,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "clone",
+        "icon": clone,
         "name": {
             "en": "Clone",
             "fr": "Clone"
@@ -3316,6 +3378,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "cloudkill",
+        "icon": cloudkill,
         "name": {
             "en": "Cloudkill",
             "fr": "Brume mortelle"
@@ -3349,6 +3412,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "color-spray",
+        "icon": colorSpray,
         "name": {
             "en": "Color Spray",
             "fr": "Couleurs dansantes"
@@ -3381,6 +3445,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "command",
+        "icon": command,
         "name": {
             "en": "Command",
             "fr": "Injonction"
@@ -3411,6 +3476,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "commune",
+        "icon": commune,
         "name": {
             "en": "Commune",
             "fr": "Communion"
@@ -3448,6 +3514,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "commune-with-nature",
+        "icon": communeWithNature,
         "name": {
             "en": "Commune with Nature",
             "fr": "Communion avec la nature"
@@ -3479,6 +3546,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "comprehend-languages",
+        "icon": comprehendLanguages,
         "name": {
             "en": "Comprehend Languages",
             "fr": "Compréhension des langues"
@@ -3516,6 +3584,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "compulsion",
+        "icon": compulsion,
         "name": {
             "en": "Compulsion",
             "fr": "Compulsion"
@@ -3548,6 +3617,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "cone-of-cold",
+        "icon": coneOfCold,
         "name": {
             "en": "Cone of Cold",
             "fr": "Cône de froid"
@@ -3580,6 +3650,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "confusion",
+        "icon": confusion,
         "name": {
             "en": "Confusion",
             "fr": "Confusion"
@@ -3619,6 +3690,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "conjure-animals",
+        "icon": conjureAnimals,
         "name": {
             "en": "Conjure Animals",
             "fr": "Invocation d'animaux"
@@ -3652,6 +3724,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "conjure-celestial",
+        "icon": conjureCelestial,
         "name": {
             "en": "Conjure Celestial",
             "fr": "Invocation de céleste"
@@ -3684,6 +3757,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "conjure-elemental",
+        "icon": conjureElemental,
         "name": {
             "en": "Conjure Elemental",
             "fr": "Invocation d'élémentaire"
@@ -3717,6 +3791,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "conjure-fey",
+        "icon": conjureFey,
         "name": {
             "en": "Conjure Fey",
             "fr": "Invocation de fée"
@@ -3749,6 +3824,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "conjure-minor-elementals",
+        "icon": conjureMinorElementals,
         "name": {
             "en": "Conjure Minor Elementals",
             "fr": "Invocation d'élémentaires mineurs"
@@ -3779,6 +3855,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "conjure-woodland-beings",
+        "icon": conjureWoodlandBeings,
         "name": {
             "en": "Conjure Woodland Beings",
             "fr": "Invocation d'êtres sylvestres"
@@ -3809,6 +3886,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "contact-other-plane",
+        "icon": contactOtherPlane,
         "name": {
             "en": "Contact Other Plane",
             "fr": "Contact avec les plans"
@@ -3842,6 +3920,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "contagion",
+        "icon": contagion,
         "name": {
             "en": "Contagion",
             "fr": "Contagion"
@@ -3872,6 +3951,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "contingency",
+        "icon": contingency,
         "name": {
             "en": "Contingency",
             "fr": "Préméditation"
@@ -3908,6 +3988,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "continual-flame",
+        "icon": continualFlame,
         "name": {
             "en": "Continual Flame",
             "fr": "Flamme éternelle"
@@ -3940,6 +4021,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "control-water",
+        "icon": controlWater,
         "name": {
             "en": "Control Water",
             "fr": "Contrôle de l'eau"
@@ -3978,6 +4060,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "control-weather",
+        "icon": controlWeather,
         "name": {
             "en": "Control Weather",
             "fr": "Contrôle du climat"
@@ -4016,6 +4099,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "counterspell",
+        "icon": counterspell,
         "name": {
             "en": "Counterspell",
             "fr": "Contresort"
@@ -4046,6 +4130,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "create-food-and-water",
+        "icon": createFoodAndWater,
         "name": {
             "en": "Create Food and Water",
             "fr": "Création de nourriture et d'eau"
@@ -4076,6 +4161,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "create-or-destroy-water",
+        "icon": createOrDestroyWater,
         "name": {
             "en": "Create or Destroy Water",
             "fr": "Création ou destruction d'eau"
@@ -4110,6 +4196,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "create-undead",
+        "icon": createUndead,
         "name": {
             "en": "Create Undead",
             "fr": "Création de mort-vivant"
@@ -4148,6 +4235,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "creation",
+        "icon": creation,
         "name": {
             "en": "Creation",
             "fr": "Création"
@@ -4185,6 +4273,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "cure-wounds",
+        "icon": cureWounds,
         "name": {
             "en": "Cure Wounds",
             "fr": "Soins"
@@ -4215,6 +4304,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "dancing-lights",
+        "icon": dancingLights,
         "name": {
             "en": "Dancing Lights",
             "fr": "Lumières dansantes"
@@ -4253,6 +4343,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "darkness",
+        "icon": darkness,
         "name": {
             "en": "Darkness",
             "fr": "Ténèbres"
@@ -4290,6 +4381,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "darkvision",
+        "icon": darkvision,
         "name": {
             "en": "Darkvision",
             "fr": "Vision dans le noir"
@@ -4326,6 +4418,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "daylight",
+        "icon": daylight,
         "name": {
             "en": "Daylight",
             "fr": "Lumière du jour"
@@ -4362,6 +4455,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "death-ward",
+        "icon": deathWard,
         "name": {
             "en": "Death Ward",
             "fr": "Protection contre la mort"
@@ -4392,6 +4486,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "delayed-blast-fireball",
+        "icon": delayedBlastFireball,
         "name": {
             "en": "Delayed Blast Fireball",
             "fr": "Boule de feu à retardement"
@@ -4429,6 +4524,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "demiplane",
+        "icon": demiplane,
         "name": {
             "en": "Demiplane",
             "fr": "Demi-plan"
@@ -4462,6 +4558,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "detect-evil-and-good",
+        "icon": detectEvilAndGood,
         "name": {
             "en": "Detect Evil and Good",
             "fr": "Détection du mal et du bien"
@@ -4492,6 +4589,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "detect-magic",
+        "icon": detectMagic,
         "name": {
             "en": "Detect Magic",
             "fr": "Détection de la magie"
@@ -4529,6 +4627,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "detect-poison-and-disease",
+        "icon": detectPoisonAndDisease,
         "name": {
             "en": "Detect Poison and Disease",
             "fr": "Détection du poison et des maladies"
@@ -4566,6 +4665,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "detect-thoughts",
+        "icon": detectThoughts,
         "name": {
             "en": "Detect Thoughts",
             "fr": "Détection des pensées"
@@ -4601,6 +4701,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "dimension-door",
+        "icon": dimensionDoor,
         "name": {
             "en": "Dimension Door",
             "fr": "Porte dimensionnelle"
@@ -4632,6 +4733,7 @@ export const spellList: ISpell[] = [
     },
     {
         "id": "disguise-self",
+        "icon": disguiseSelf,
         "name": {
             "en": "Disguise Self",
             "fr": "Déguisement"

@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0a8e748c-3889-46cb-abc2-cd03c8fec980" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,7 +18,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="/opt/homebrew/Cellar/php@7.3/7.3.33_9/bin/php" />
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:\Users\jonathan\scoop\shims\php.exe" />
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="2" />
   </component>
@@ -39,18 +39,19 @@
     "ignore.virus.scanning.warn.message": "true",
     "js.debugger.nextJs.config.created.client": "true",
     "js.debugger.nextJs.config.created.server": "true",
-    "last_opened_file_path": "/Users/jjorand/perso/spellbook-dnd",
+    "last_opened_file_path": "C:/Users/jonathan/projets/spellbook-dnd/src/i18n/fr",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2023.2.5\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
+    "ts.external.directory.path": "C:\\Users\\jonathan\\projets\\spellbook-dnd\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\jonathan\projets\spellbook-dnd\src\i18n\fr" />
       <recent name="C:\Users\jonathan\projets\spellbook-dnd\src\data" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -90,6 +91,9 @@
       <workItem from="1750878269377" duration="183000" />
       <workItem from="1750878582439" duration="10162000" />
       <workItem from="1750934022401" duration="5665000" />
+      <workItem from="1751015871184" duration="56000" />
+      <workItem from="1751016090443" duration="4484000" />
+      <workItem from="1751097484192" duration="10956000" />
     </task>
     <servers />
   </component>

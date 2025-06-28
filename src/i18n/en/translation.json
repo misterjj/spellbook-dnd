@@ -1,0 +1,9 @@
+{
+  "layout": {
+    "settings": {
+      "title": "Settings",
+      "language": "Language",
+      "theme": "Theme"
+    }
+  }
+}
