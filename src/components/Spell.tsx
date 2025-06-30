@@ -1,12 +1,16 @@
-import {ISpell, SpellCastingTime, SpellRange, TimeDuration} from "@/data/Spell";
+import {ISpell, SpellCastingTime, SpellComponents, SpellDuration, SpellRange, TimeDuration} from "@/data/Spell";
 import Image from 'next/image'
 import {Trans, useTranslation} from "react-i18next";
 import {JSX} from "react";
 import {FaCircle} from "react-icons/fa6";
 import {TbTriangleFilled} from "react-icons/tb";
 import {MdPentagon} from "react-icons/md";
-import {HiOutlineClock} from "react-icons/hi";
+import {HiCube, HiOutlineClock} from "react-icons/hi";
 import {IoIosResize} from "react-icons/io";
+import {FaSquare} from "react-icons/fa";
+import {GiLips} from "react-icons/gi";
+import {IoHandLeft} from "react-icons/io5";
+import {BsHourglassSplit} from "react-icons/bs";
 
 export type SpellSize = | "sm" | "md" | "lg"
 export const spellSizes: SpellSize[] = ["sm", "md", "lg"];
@@ -19,12 +23,12 @@ interface ISpellRangeRendererPros {
 function RangeRenderer({range}: ISpellRangeRendererPros): JSX.Element {
     const {t, i18n} = useTranslation();
 
-    return <div className={`flex items-center gap-1`}>
+    return <div className={`flex items-center gap-1 whitespace-nowrap`}>
         <IoIosResize size={15}/>
         {range === 'self' && <Trans t={t}>spell-layout.range.self</Trans>}
         {range === 'touch' && <Trans t={t}>spell-layout.range.touch</Trans>}
-        {typeof range === 'object' && range !== null &&  i18n.language === 'en' && <span>{range.feet} ft</span>}
-        {typeof range === 'object' && range !== null &&  i18n.language === 'fr' && <span>{range.meter} m</span>}
+        {typeof range === 'object' && range !== null && i18n.language === 'en' && <span>{range.feet} ft</span>}
+        {typeof range === 'object' && range !== null && i18n.language === 'fr' && <span>{range.meter} m</span>}
     </div>
 }
 
@@ -76,7 +80,8 @@ function CastingTimeRenderer({castingTimes}: ISpellCastingTimeRendererPros): JSX
                             {!!i && <span className={`text-xs`}>ou</span>}
                             <div key={i} className={`flex items-center gap-1`}>
                                 <HiOutlineClock size={13}/>
-                                <span className={`text-sm`}>{(ct as TimeDuration).value} <Trans>{`spell-layout.casting-time.duration.${(ct as TimeDuration).unit}`}</Trans></span>
+                                <span className={`text-sm`}>{(ct as TimeDuration).value}
+                                    <Trans>{`spell-layout.casting-time.duration.${(ct as TimeDuration).unit}`}</Trans></span>
                             </div>
                         </>
                     )
@@ -85,6 +90,64 @@ function CastingTimeRenderer({castingTimes}: ISpellCastingTimeRendererPros): JSX
                 }
             })
         }
+    </div>
+}
+
+interface ILevelRendererProps {
+    level: number;
+}
+
+function LevelRenderer({level}: ILevelRendererProps): JSX.Element {
+    const {t} = useTranslation();
+    return <>
+        {level > 0 &&
+            <div className={`flex items-center gap-1`}>
+                <FaSquare size={13} className={`text-info`}/>
+                <Trans t={t} values={{level: level}}>spell-layout.level</Trans>
+            </div>
+        }
+    </>
+}
+
+interface IComponentsRendererProps {
+    components: SpellComponents
+}
+
+function ComponentsRenderer({components}: IComponentsRendererProps): JSX.Element {
+    return (
+        <div className={`flex items-center gap-1`}>
+            {components.map((c, i) => {
+                if (c === "V") {
+                    return <GiLips key={i} size={15}/>
+                } else if (c === "S") {
+                    return <IoHandLeft key={i} size={15}/>
+                } else {
+                    return <div key={i} className={`flex items-center gap-1`}>
+                        <HiCube size={15}/>
+                    </div>
+                }
+            })}
+        </div>
+    )
+}
+
+interface IDurationRendererProps {
+    duration: SpellDuration
+}
+
+function DurationRenderer({duration}: IDurationRendererProps): JSX.Element {
+    const {t} = useTranslation()
+    return <div className={`flex items-center gap-1`}>
+        <BsHourglassSplit size={15}/>
+        {duration === "Instantaneous" && <Trans t={t}>spell-layout.duration.instantaneous</Trans>}
+        {duration === "Until dispelled" && <Trans t={t}>spell-layout.duration.until-dispelled</Trans>}
+        {typeof duration === "object" && duration !== null &&
+            <>
+                <div className={`flex items-center gap-1`}>
+                    <span className={`text-sm`}>{(duration as TimeDuration).value}</span>
+                    <span><Trans>{`spell-layout.casting-time.duration.${(duration as TimeDuration).unit}`}</Trans></span>
+                </div>
+            </>}
     </div>
 }
 
@@ -110,22 +173,33 @@ export function Spell({size, spell}: ISpellProps) {
             </div>
         )}
         {size === "md" && (
-            <div className={`flex flex-col w-full border border-primary rounded-lg overflow-hidden `}>
-                <div className={`relative w-full flex gap-3`}>
+            <div className={`flex flex-col w-full bg-base-300 border border-primary rounded-lg overflow-hidden `}>
+                <div className={`relative w-full flex gap-3 pt-2 px-2`}>
                     {spell.icon &&
-                        <Image className={""} src={spell.icon} width={128} height={128} alt={spell.name.en}/>}
-                    <div className={`flex flex-col`}>
+                        <Image className={"rounded-lg"} src={spell.icon} width={128} height={128} alt={spell.name.en}/>}
+                    <div className={`flex flex-col w-full`}>
                         <div className={`text-lg text-primary font-semibold`}>{spell.name[i18n.language] || ""}</div>
-                        <div className={`text-sm`}>{t("spell-layout.subtitle", {
-                            school: t(`data.spell.school.${spell.school}`),
-                            level: spell.level
-                        })}</div>
-                        <div className={`text-sm`}></div>
+                        <div className={`text-sm`}>{t(`data.spell.school.${spell.school}`)}</div>
+                        <div className={`grow relative overflow-hidden`}>
+                            <div className={`absolute bottom-0 w-full h-6 bg-linear-to-t from-base-300 to-base-300/0 z-2`}>
+                            </div>
+                            <div className={`absolute text-xs text-justify z-1`}>
+                                {spell.description[i18n.language] || ""}
+
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div className={`bg-primary text-primary-content px-3 text-sm flex gap-3 py-1`}>
-                    <CastingTimeRenderer castingTimes={spell.castingTime}/>
-                    <RangeRenderer range={spell.range}/>
+                <div className={`flex flex-col gap-1 pt-1 text-sm`}>
+                    <div className={`flex gap-3  px-3`}>
+                        <RangeRenderer range={spell.range}/>
+                        <ComponentsRenderer components={spell.components}/>
+                        <DurationRenderer duration={spell.duration}/>
+                    </div>
+                    <div className={`flex gap-3 py-1 px-3 bg-primary text-primary-content`}>
+                        <CastingTimeRenderer castingTimes={spell.castingTime}/>
+                        <LevelRenderer level={spell.level}/>
+                    </div>
                 </div>
             </div>
         )}

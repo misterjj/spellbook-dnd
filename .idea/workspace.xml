@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0a8e748c-3889-46cb-abc2-cd03c8fec980" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/spell-list/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/spell-list/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Spell.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Spell.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/i18n/fr/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/i18n/fr/translation.json" afterDir="false" />
     </list>
@@ -47,7 +49,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "/Users/jjorand/perso/spellbook-dnd/node_modules/typescript/lib",
+    "ts.external.directory.path": "C:\\Users\\jonathan\\projets\\spellbook-dnd\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
