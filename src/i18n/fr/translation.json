@@ -17,6 +17,17 @@
       "phrase": "<bold>Portée</bold> : {{value}}",
       "self": "Personnelle",
       "touch": "Contact"
+    },
+    "casting-time" : {
+      "phrase": "<bold>Temps d'incantation</bold> : {{value}}",
+      "bonus-action": "Action bonus",
+      "action": "Action",
+      "ritual": "Rituel",
+      "duration": {
+        "minutes": "min.",
+        "hours": "H",
+        "days": "J"
+      }
     }
   },
   "data": {
