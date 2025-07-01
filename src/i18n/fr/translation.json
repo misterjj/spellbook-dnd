@@ -21,19 +21,23 @@
     "casting-time" : {
       "bonus-action": "Action bonus",
       "action": "Action",
-      "ritual": "Rituel",
-      "duration": {
-        "minutes": "minute(s)",
-        "hours": "heure(s)",
-        "days": "jour(s)"
-      }
+      "ritual": "Rituel"
     },
     "duration": {
       "instantaneous": "Instantanée",
       "until-dispelled": "Jusqu'à dissipation"
-    }
+    },
+    "concentration" : "Concentration"
   },
   "data": {
+    "duration": {
+      "minutes_one": "minute",
+      "minutes_other": "minutes",
+      "hours_one": "heure",
+      "hours_other": "heures",
+      "days_one": "jour",
+      "days_other": "jours"
+    },
     "spell": {
       "school": {
         "Abjuration": "Abjuration",
@@ -45,6 +49,16 @@
         "Necromancy": "Nécromancie",
         "Transmutation": "Transmutation"
       }
+    },
+    "breed" : {
+      "Bard" : "Barde",
+      "Cleric" : "Clerc",
+      "Druid" : "Druide",
+      "Paladin" : "Paladin",
+      "Ranger" : "Rôdeur",
+      "Sorcerer" : "Ensorceleur",
+      "Warlock" : "Occultiste",
+      "Wizard" : "Magicien"
     }
   }
 }

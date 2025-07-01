@@ -113,7 +113,7 @@ export default function RootLayout({
                 </div>
             </div>
         </div>
-        <div className={`drawer drawer-end fixed right-6 top-6 w-10 ${drawerActive === "settings" ? "z-20" : "z-10"}`}>
+        <div className={`drawer drawer-end fixed right-6 bottom-6 w-10 ${drawerActive === "settings" ? "z-20" : "z-10"}`}>
             <input id="my-drawer-settings" type="checkbox" className="drawer-toggle" onChange={(e) => {
                 setDrawerActive(e.target.checked ? "settings" : "")
             }
