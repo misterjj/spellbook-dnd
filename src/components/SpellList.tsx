@@ -46,26 +46,39 @@ export function SpellList({grid, spells}: ISpellListProps) {
     const [spellSize, setSpellSize] = useState<SpellSize>("md")
     const [spellModalActive, setSpellModalActive] = useState<ISpell | null>(null)
     const modalRef = useRef<HTMLDialogElement | null>(null);
+    const [spendingChangeSize, setSpendingChangeSize] = useState(false)
 
     const onSelectHandler = useCallback((spell: ISpell) => {
         setSpellModalActive(spell)
         modalRef.current?.showModal()
     }, []);
 
+    const onSpellSizeChangeHandler = useCallback((size: SpellSize) => {
+        setSpendingChangeSize(true)
+        setTimeout(() => {
+            setSpellSize(size)
+            setSpendingChangeSize(false)
+        }, 100)
+
+    }, []);
+
     return <div className={`flex flex-col gap-4 w-full`}>
         <div className={`bg-white/10`}>
+            {spendingChangeSize && <span>pending</span>}
             <div className="join">
                 {spellSizes.map((size) => {
                     return <button key={size}
                                    className={`btn join-item ${size === spellSize ? "btn-primary" : ""}`}
-                                   onClick={() => setSpellSize(size)}
+                                   onClick={() => onSpellSizeChangeHandler(size)}
                     >
                         {size}
                     </button>
                 })}
             </div>
         </div>
-        <SpellGrid grid={grid} spells={spells} onSelect={onSelectHandler} spellSize={spellSize}/>
+        <div className={spendingChangeSize ? 'opacity-50 transition-opacity' : ''}>
+            <SpellGrid grid={grid} spells={spells} onSelect={onSelectHandler} spellSize={spellSize}/>
+        </div>
         <SpellModal spell={spellModalActive} ref={modalRef}/>
     </div>
 }
