@@ -182,27 +182,29 @@ function BreedRenderer({breeds}: IBreedRendererProps): JSX.Element {
 interface ISpellProps {
     size: SpellSize,
     spell: ISpell,
+    onSelect: (spell: ISpell) => void
 }
 
-export function Spell({size, spell}: ISpellProps) {
+export function Spell({size, spell, onSelect}: ISpellProps) {
     return <div>
-        {size === "sm" && SpellSm({spell})}
-        {size === "md" && SpellMd({spell})}
-        {size === "lg" && SpellLg({spell})}
+        {size === "sm" && <SpellSm spell={spell} onSelect={onSelect}/>}
+        {size === "md" && <SpellMd spell={spell} onSelect={onSelect}/>}
+        {size === "lg" && <SpellLg spell={spell}/>}
     </div>
 }
 
 interface ISpellSmProps {
     spell: ISpell,
+    onSelect: (spell: ISpell) => void
 }
 
-export function SpellSm({spell}: ISpellSmProps) {
+export function SpellSm({spell, onSelect}: ISpellSmProps) {
     const {i18n} = useTranslation();
 
 
     return <>
         <div className={`indicator w-full cursor-pointer`}
-             onClick={() => (document.getElementById(`spell_modal_${spell.id}`) as HTMLDialogElement)?.showModal()}>
+             onClick={() => onSelect(spell)}>
             <span
                 className="indicator-item indicator-center badge badge-primary px-2 gap-1">
                     <TbRectangleVerticalFilled size={15} className={`text-info`}/>
@@ -215,29 +217,22 @@ export function SpellSm({spell}: ISpellSmProps) {
                     className={`absolute bg-primary/70 text-primary-content font-bold text-xs text-center p-2 w-full bottom-0 `}>{spell.name[i18n.language] || ""}</div>
             </div>
         </div>
-        <dialog id={`spell_modal_${spell.id}`} className="modal">
-            <div className="modal-box bg-transparent shadow-none p-0">
-                <SpellLg spell={spell}/>
-            </div>
-            <form method="dialog" className="modal-backdrop">
-                <button>close</button>
-            </form>
-        </dialog>
     </>
 }
 
 interface ISpellMdProps {
     spell: ISpell,
+    onSelect: (spell: ISpell) => void
 }
 
-export function SpellMd({spell}: ISpellMdProps) {
+export function SpellMd({spell, onSelect}: ISpellMdProps) {
     const {t, i18n} = useTranslation();
 
     const description = spell.description[i18n.language] || "";
 
     return <>
         <div className={`flex flex-col w-full bg-base-300 border border-primary rounded-lg overflow-hidden cursor-pointer`}
-             onClick={() => (document.getElementById(`spell_modal_${spell.id}`) as HTMLDialogElement)?.showModal()}>
+             onClick={() => onSelect(spell)}>
             <div className={`relative w-full flex gap-3 pt-2 px-2`}>
                 {spell.icon &&
                     <Image className={"rounded-lg"} src={spell.icon} width={128} height={128} alt={spell.name.en}/>}
@@ -266,14 +261,6 @@ export function SpellMd({spell}: ISpellMdProps) {
                 </div>
             </div>
         </div>
-        <dialog id={`spell_modal_${spell.id}`} className="modal">
-            <div className="modal-box bg-transparent shadow-none p-0">
-                <SpellLg spell={spell}/>
-            </div>
-            <form method="dialog" className="modal-backdrop">
-                <button>close</button>
-            </form>
-        </dialog>
     </>
 }
 
