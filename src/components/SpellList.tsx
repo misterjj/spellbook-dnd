@@ -1,7 +1,9 @@
 import {ISpell} from "@/data/Spell";
 import {Spell, SpellLg, SpellSize, spellSizes} from "@/components/Spell";
-import {memo, Ref, useCallback, useRef, useState} from "react";
+import {memo, Ref, useCallback, useEffect, useRef, useState} from "react";
 import Fuse from "fuse.js";
+import {useDebouncedCallback} from "use-debounce";
+import {useTranslation} from "react-i18next";
 
 export type SpellGridSized = Record<SpellSize, string>
 
@@ -44,11 +46,15 @@ interface ISpellListProps {
 }
 
 export function SpellList({grid, initSpells}: ISpellListProps) {
+    const {i18n} = useTranslation();
     const [spells, setSpells] = useState<ISpell[]>(initSpells)
     const [spellSize, setSpellSize] = useState<SpellSize>("md")
     const [spellModalActive, setSpellModalActive] = useState<ISpell | null>(null)
-    const modalRef = useRef<HTMLDialogElement | null>(null);
     const [spendingChangeSize, setSpendingChangeSize] = useState(false)
+    const [fuse, setFuse] = useState<Fuse<ISpell> | null>(null)
+
+    const modalRef = useRef<HTMLDialogElement | null>(null);
+    const searchRef = useRef<HTMLInputElement | null>(null);
 
     const onSelectHandler = useCallback((spell: ISpell) => {
         setSpellModalActive(spell)
@@ -63,17 +69,30 @@ export function SpellList({grid, initSpells}: ISpellListProps) {
         }, 100)
     }, []);
 
-    const options = {
-        includeScore: true,
-        keys: ['name.fr']
-    }
 
-    const fuse = new Fuse(spells, options)
+    const search = useDebouncedCallback(() => {
+        const text = searchRef.current?.value || ""
+        setSpendingChangeSize(true)
+        setTimeout(() => {
+            if ("" === text) {
+                setSpells(initSpells)
+            } else if (fuse) {
+                setSpells(fuse.search(text).slice(0, 30).map(r => r.item))
+            }
+            setSpendingChangeSize(false)
+        }, 100)
+    }, 500);
 
-    const search = useCallback((text: string) => {
-        setSpells(fuse.search(text).sort((a, b) => b.score - a.score).reverse().map(r => r.item))
-        console.log("fuse", fuse.search(text).sort((a, b) => b.score - a.score).map(r => r.item))
-    }, [fuse]);
+    useEffect(() => {
+        const options = {
+            ignoreDiacritics: true,
+            keys: [{name: `name.${i18n.language}`, weight: 10}, {name: `description.${i18n.language}`, weight: 10}]
+        }
+        const f = new Fuse(initSpells, options)
+
+        setFuse(f)
+        search()
+    }, [initSpells, i18n.language, search])
 
     return <div className={`flex flex-col gap-4 w-full`}>
         <div className={`bg-white/10 p-2 flex gap-2`}>
@@ -101,7 +120,7 @@ export function SpellList({grid, initSpells}: ISpellListProps) {
                         <path d="m21 21-4.3-4.3"></path>
                     </g>
                 </svg>
-                <input type="search" required placeholder="Search" onChange={(e) => search(e.target.value)}/>
+                <input type="search" required placeholder="Search" onChange={(e) => search()} ref={searchRef}/>
             </label>
         </div>
         <div className={spendingChangeSize ? 'opacity-50 transition-opacity' : ''}>
