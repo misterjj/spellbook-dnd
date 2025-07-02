@@ -231,7 +231,7 @@ export function SpellMd({spell, onSelect}: ISpellMdProps) {
     const description = spell.description[i18n.language] || "";
 
     return <>
-        <div className={`flex flex-col w-full bg-base-300 border border-primary rounded-lg overflow-hidden cursor-pointer`}
+        <div className={`flex flex-col w-full bg-base-300 border-2 border-primary rounded-lg overflow-hidden cursor-pointer`}
              onClick={() => onSelect(spell)}>
             <div className={`relative w-full flex gap-3 pt-2 px-2`}>
                 {spell.icon &&
@@ -252,7 +252,7 @@ export function SpellMd({spell, onSelect}: ISpellMdProps) {
                 <div className={`flex gap-3  px-3`}>
                     <RangeRenderer range={spell.range}/>
                     <DurationRenderer duration={spell.duration}/>
-                    <ConcentrationRenderer/>
+                    {spell.concentration && <ConcentrationRenderer/>}
                     <ComponentsRenderer components={spell.components}/>
                 </div>
                 <div className={`flex gap-3 py-1 px-3 bg-primary text-primary-content`}>
@@ -274,7 +274,7 @@ export function SpellLg({spell}: ISpellLgProps) {
     const description = spell.description[i18n.language] || "";
 
     return <div
-        className={`flex flex-col w-full bg-base-300 border border-primary rounded-lg overflow-hidden h-full min-h-150`}>
+        className={`flex flex-col w-full bg-base-300 border-2 border-primary rounded-lg overflow-hidden h-full min-h-150`}>
         <div className={`relative w-full flex gap-3 pt-2 px-2`}>
             <div className={`flex flex-col w-full`}>
                 <div className={`text-lg text-primary font-semibold`}>{spell.name[i18n.language] || ""}</div>
@@ -291,7 +291,7 @@ export function SpellLg({spell}: ISpellLgProps) {
             <div className={`flex gap-3  px-3`}>
                 <RangeRenderer range={spell.range}/>
                 <DurationRenderer duration={spell.duration}/>
-                <ConcentrationRenderer/>
+                {spell.concentration && <ConcentrationRenderer/>}
                 <ComponentsRenderer components={spell.components}/>
             </div>
             <div className={`flex gap-3 py-1 px-3 bg-primary text-primary-content`}>

@@ -8,7 +8,7 @@ interface IBreed{
 export function Breed({id}: IBreed) {
     const {t} = useTranslation();
 
-    let breedClazz = "bg-white-400 text-black"
+    let breedClazz = "bg-gray-200 text-black"
 
     if (id === "Druid") {
         breedClazz = "bg-orange-400 text-white"

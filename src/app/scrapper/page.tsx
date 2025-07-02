@@ -15,10 +15,17 @@ import {
 
 
 const spellsToScrap = ["arcane-gate", "arcane-vigor", "armor-of-agathys", "arms-of-hadar", "aura-of-purity", "aura-of-vitality", "banishing-smite", "beast-sense", "blade-ward", "blinding-smite", "circle-of-power", "cloud-of-daggers", "compelled-duel", "conjure-barrage", "conjure-volley", "cordon-of-arrows", "crown-of-madness", "crusader-s-mantle", "destructive-wave", "elemental-weapon", "feign-death", "fount-of-moonlight", "friends", "grasping-vine", "hail-of-thorns", "hunger-of-hadar", "jallarzi-s-storm-of-radiance", "lightning-arrow", "mind-sliver", "power-word-fortify", "staggering-smite", "steel-wind-strike", "summon-aberration", "summon-beast", "summon-celestial", "summon-construct", "summon-elemental", "summon-fey", "summon-fiend", "summon-undead", "swift-quiver", "synaptic-static", "tasha-s-bubbling-cauldron", "telepathy", "thorn-whip", "thunderclap", "thunderous-smite", "toll-the-dead", "witch-bolt", "word-of-radiance", "wrathful-smite", "yolande-s-regal-presence", "acid-splash", "aid", "alarm", "alter-self", "animal-friendship", "animal-messenger", "animal-shapes", "animate-dead", "animate-objects", "antilife-shell", "antimagic-field", "antipathy-sympathy", "arcane-eye", "arcane-lock", "astral-projection", "augury", "aura-of-life", "awaken", "bane", "banishment", "barkskin", "beacon-of-hope", "befuddlement", "bestow-curse", "bigby-s-hand", "blade-barrier", "bless", "blight", "blindness-deafness", "blink", "blur", "burning-hands", "call-lightning", "calm-emotions", "chain-lightning", "charm-monster", "charm-person", "chill-touch", "chromatic-orb", "circle-of-death", "clairvoyance", "clone", "cloudkill", "color-spray", "command", "commune", "commune-with-nature", "comprehend-languages", "compulsion", "cone-of-cold", "confusion", "conjure-animals", "conjure-celestial", "conjure-elemental", "conjure-fey", "conjure-minor-elementals", "conjure-woodland-beings", "contact-other-plane", "contagion", "contingency", "continual-flame", "control-water", "control-weather", "counterspell", "create-food-and-water", "create-or-destroy-water", "create-undead", "creation", "cure-wounds", "dancing-lights", "darkness", "darkvision", "daylight", "death-ward", "delayed-blast-fireball", "demiplane", "detect-evil-and-good", "detect-magic", "detect-poison-and-disease", "detect-thoughts", "dimension-door", "disguise-self", "disintegrate", "dispel-evil-and-good", "dispel-magic", "dissonant-whispers", "divination", "divine-favor", "divine-smite", "divine-word", "dominate-beast", "dominate-monster", "dominate-person", "dragon-s-breath", "drawmij-s-instant-summons", "dream", "druidcraft", "earthquake", "eldritch-blast", "elementalism", "enhance-ability", "enlarge-reduce", "ensnaring-strike", "entangle", "enthrall", "etherealness", "evard-s-black-tentacles", "expeditious-retreat", "eyebite", "fabricate", "faerie-fire", "false-life", "fear", "feather-fall", "find-familiar", "find-steed", "find-the-path", "find-traps", "finger-of-death", "fire-bolt", "fire-shield", "fire-storm", "fireball", "flame-blade", "flame-strike", "flaming-sphere", "flesh-to-stone", "fly", "fog-cloud", "forbiddance", "forcecage", "foresight", "freedom-of-movement", "gaseous-form", "gate", "geas", "gentle-repose", "giant-insect", "glibness", "globe-of-invulnerability", "glyph-of-warding", "goodberry", "grease", "greater-invisibility", "greater-restoration", "guardian-of-faith", "guards-and-wards", "guidance", "guiding-bolt", "gust-of-wind", "hallow", "hallucinatory-terrain", "harm", "haste", "heal", "healing-word", "heat-metal", "hellish-rebuke", "heroes--feast", "heroism", "hex", "hold-monster", "hold-person", "holy-aura", "hunter-s-mark", "hypnotic-pattern", "ice-knife", "ice-storm", "identify", "illusory-script", "imprisonment", "incendiary-cloud", "inflict-wounds", "insect-plague", "invisibility", "jump", "knock", "legend-lore", "leomund-s-secret-chest", "leomund-s-tiny-hut", "lesser-restoration", "levitate", "light", "lightning-bolt", "locate-animals-or-plants", "locate-creature", "locate-object", "longstrider", "mage-armor", "mage-hand", "magic-circle", "magic-jar", "magic-missile", "magic-mouth", "magic-weapon", "major-image", "mass-cure-wounds", "mass-heal", "mass-healing-word", "mass-suggestion", "maze", "meld-into-stone", "melf-s-acid-arrow", "mending", "message", "meteor-swarm", "mind-blank", "mind-spike", "minor-illusion", "mirage-arcane", "mirror-image", "mislead", "misty-step", "modify-memory", "moonbeam", "mordenkainen-s-faithful-hound", "mordenkainen-s-magnificent-mansion", "mordenkainen-s-private-sanctum", "mordenkainen-s-sword", "move-earth", "nondetection", "nystul-s-magic-aura", "otiluke-s-freezing-sphere", "otiluke-s-resilient-sphere", "otto-s-irresistible-dance", "pass-without-trace", "passwall", "phantasmal-force", "phantasmal-killer", "phantom-steed", "planar-ally", "planar-binding", "plane-shift", "plant-growth", "poison-spray", "polymorph", "power-word-heal", "power-word-kill", "power-word-stun", "prayer-of-healing", "prestidigitation", "prismatic-spray", "prismatic-wall", "produce-flame", "programmed-illusion", "project-image", "protection-from-energy", "protection-from-evil-and-good", "protection-from-poison", "purify-food-and-drink", "raise-dead", "rary-s-telepathic-bond", "ray-of-enfeeblement", "ray-of-frost", "ray-of-sickness", "regenerate", "reincarnate", "remove-curse", "resistance", "resurrection", "reverse-gravity", "revivify", "rope-trick", "sacred-flame", "sanctuary", "scorching-ray", "scrying", "searing-smite", "see-invisibility", "seeming", "sending", "sequester", "shapechange", "shatter", "shield", "shield-of-faith", "shillelagh", "shining-smite", "shocking-grasp", "silence", "silent-image", "simulacrum", "sleep", "sleet-storm", "slow", "sorcerous-burst", "spare-the-dying", "speak-with-animals", "speak-with-dead", "speak-with-plants", "spider-climb", "spike-growth", "spirit-guardians", "spiritual-weapon", "starry-wisp", "stinking-cloud", "stone-shape", "stoneskin", "storm-of-vengeance", "suggestion", "summon-dragon", "sunbeam", "sunburst", "symbol", "tasha-s-hideous-laughter", "telekinesis", "teleport", "teleportation-circle", "tenser-s-floating-disk", "thaumaturgy", "thunderwave", "time-stop", "tongues", "transport-via-plants", "tree-stride", "true-polymorph", "true-resurrection", "true-seeing", "true-strike", "tsunami", "unseen-servant", "vampiric-touch", "vicious-mockery", "vitriolic-sphere", "wall-of-fire", "wall-of-force", "wall-of-ice", "wall-of-stone", "wall-of-thorns", "warding-bond", "water-breathing", "water-walk", "web", "weird", "wind-walk", "wind-wall", "wish", "word-of-recall", "zone-of-truth"];
+// const spellsToScrap = ['alter-self', "alarm"]
 const spellBaseUrl = "https://www.aidedd.org/spell/";
 
 export default function Scrapper() {
     const [spells, setSpells] = useState<ISpell[]>([])
+
+    function camelize(str: string) {
+        return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function(word, index) {
+            return index === 0 ? word.toLowerCase() : word.toUpperCase();
+        }).replace(/\s+/g, '');
+    }
 
     const parseCastingTime = (text: string): SpellCastingTime => {
         const result: SpellCastingTime = [];
@@ -116,6 +123,11 @@ export default function Scrapper() {
         return "Instantaneous";
     };
 
+    const parseConcentration = (text: string): boolean => {
+        console.log("ici", text, text.toLowerCase().includes("concentration"))
+        return text.toLowerCase().includes("concentration")
+    }
+
     const scrapSpells = useCallback(async (): Promise<ISpell[]> => {
         const spells: ISpell[] = [];
 
@@ -169,11 +181,13 @@ export default function Scrapper() {
                 const castingTime = parseCastingTime(castingTimeText);
                 const Range = parseRange(rangeText, rangeFrText);
                 const duration = parseDuration(durationText);
+                const concentration = parseConcentration(durationText);
                 const components = parseConponents(componentsTextEn)
                 const materials = parseMaterials(componentsTextEn, componentsTextFR);
 
                 const spellData: ISpell = {
                     id: spell as SpellId,
+                    icon: camelize(spell).replaceAll("-",""),
                     name: {en: nameEn, fr: nameFr},
                     level,
                     breeds,
@@ -183,6 +197,7 @@ export default function Scrapper() {
                     components,
                     materials,
                     duration,
+                    concentration,
                     description: {en: descriptionEn, fr: descriptionFr}
                 };
 
@@ -205,7 +220,7 @@ export default function Scrapper() {
     }, []); // Tableau vide = exécution une seule fois au montage
 
     return (
-        <pre>
+        <pre className={"mt-10"}>
             {JSON.stringify(spells, null, 2)}
         </pre>
     );
