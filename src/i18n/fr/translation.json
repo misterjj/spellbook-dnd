@@ -9,6 +9,18 @@
       "title": "Menu",
       "characters-list": "Liste des personnages",
       "spells-list": "Liste des sorts"
+    },
+    "filter": {
+      "breed": {
+        "title": "Classes",
+        "all": "Tous"
+      },
+      "spell-level": {
+        "title": "Niveau de sort"
+      },
+      "casting-time": {
+        "title": "Temps d'incantation"
+      }
     }
   },
   "spell-layout": {
@@ -59,6 +71,7 @@
       "Sorcerer" : "Ensorceleur",
       "Warlock" : "Occultiste",
       "Wizard" : "Magicien"
-    }
+    },
+    "casting-time": {}
   }
 }
