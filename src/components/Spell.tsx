@@ -12,6 +12,8 @@ import {IoHandLeft} from "react-icons/io5";
 import {BsHourglassSplit} from "react-icons/bs";
 import {BreedId} from "@/data/Breed";
 import {Breed} from "@/components/Breed";
+import {PiStarFourFill} from "react-icons/pi";
+import {CastingTime} from "@/components/CastingTime";
 
 export type SpellSize = | "sm" | "md" | "lg"
 export const spellSizes: SpellSize[] = ["sm", "md", "lg"];
@@ -34,63 +36,17 @@ function RangeRenderer({range}: ISpellRangeRendererPros): JSX.Element {
 }
 
 interface ISpellCastingTimeRendererPros {
-    castingTimes: SpellCastingTime
+    castingTimes: SpellCastingTime[]
 }
 
 function CastingTimeRenderer({castingTimes}: ISpellCastingTimeRendererPros): JSX.Element {
-    const {t} = useTranslation();
-
     return <div className={`flex items-center gap-1`}>
         {
             castingTimes.map((ct, i) => {
-
-                if (ct === "Action") {
-                    return (
-                        <>
-                            {!!i && <span className={`text-xs`}>ou</span>}
-                            <div key={i} className={`flex items-center gap-1`}>
-                                <FaCircle size={10} className={`text-success`}/>
-                                <span className={`text-sm`}><Trans t={t}>spell-layout.casting-time.action</Trans></span>
-                            </div>
-                        </>
-                    )
-                } else if (ct === "Bonus Action") {
-                    return (
-                        <>
-                            {!!i && <span className={`text-xs`}>ou</span>}
-                            <div key={i} className={`flex items-center gap-1`}>
-                                <TbTriangleFilled size={13} className={`text-warning`}/>
-                                <span className={`text-sm`}><Trans
-                                    t={t}>spell-layout.casting-time.bonus-action</Trans></span>
-                            </div>
-                        </>
-                    )
-                } else if (ct === "Ritual") {
-                    return (
-                        <>
-                            {!!i && <span className={`text-xs`}>ou</span>}
-                            <div key={i} className={`flex items-center gap-1`}>
-                                <MdPentagon size={13} className={`text-error`}/>
-                                <span className={`text-sm`}><Trans t={t}>spell-layout.casting-time.ritual</Trans></span>
-                            </div>
-                        </>
-                    )
-                } else if (typeof ct === 'object' && ct !== null) {
-                    return (
-                        <>
-                            {!!i && <span className={`text-xs`}>ou</span>}
-                            <div key={i} className={`flex items-center gap-1`}>
-                                <HiOutlineClock size={13}/>
-                                <span className={`text-sm`}>{(ct as TimeDuration).value}
-                                    <span><Trans
-                                        count={(ct as TimeDuration).value}>{`data.duration.${(ct as TimeDuration).unit}`}</Trans></span>
-                                </span>
-                            </div>
-                        </>
-                    )
-                } else {
-                    return
-                }
+                return <div key={i} className={`flex items-center gap-1`}>
+                    {!!i && <span className={`text-xs`}>ou</span>}
+                    <CastingTime ct={ct}></CastingTime>
+                </div>
             })
         }
     </div>

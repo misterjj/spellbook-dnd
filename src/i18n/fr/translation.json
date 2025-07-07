@@ -19,7 +19,8 @@
         "title": "Niveau de sort"
       },
       "casting-time": {
-        "title": "Temps d'incantation"
+        "title": "Temps d'incantation",
+        "all": "Tous"
       }
     }
   },
@@ -33,7 +34,8 @@
     "casting-time" : {
       "bonus-action": "Action bonus",
       "action": "Action",
-      "ritual": "Rituel"
+      "ritual": "Rituel",
+      "reaction": "Reaction"
     },
     "duration": {
       "instantaneous": "Instantanée",

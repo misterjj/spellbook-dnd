@@ -1,12 +1,16 @@
-import {ISpell} from "@/data/Spell";
+import {ISpell, SpellCastingTime, spellCastingTimes} from "@/data/Spell";
 import {Spell, SpellLg, SpellSize, spellSizes} from "@/components/Spell";
-import {memo, Ref, useCallback, useEffect, useRef, useState} from "react";
+import {memo, ReactNode, Ref, useCallback, useEffect, useRef, useState} from "react";
 import Fuse from "fuse.js";
 import {useDebouncedCallback} from "use-debounce";
 import {useTranslation} from "react-i18next";
 import {HiFilter, HiOutlineFilter} from "react-icons/hi";
 import {BreedId, breeds} from "@/data/Breed";
 import {Breed} from "@/components/Breed";
+import Slider from "rc-slider";
+import 'rc-slider/assets/index.css';
+import {MarkObj} from "rc-slider/es/Marks";
+import {CastingTime} from "@/components/CastingTime";
 
 export type SpellGridSized = Record<SpellSize, string>
 
@@ -56,7 +60,9 @@ export function SpellList({grid, initSpells}: ISpellListProps) {
     const [spendingChangeSize, setSpendingChangeSize] = useState(false)
     const [fuse, setFuse] = useState<Fuse<ISpell> | null>(null)
     const [breedFilter, setBreedFilter] = useState<BreedId[]>([])
+    const [castingTimeFilter, setCastingTimeFilter] = useState<SpellCastingTime[]>([])
     const [isFiltered, setIsFiltered] = useState(false)
+    const [levelFilter, setLevelFilter] = useState<number[]>([0, 9])
 
     const modalRef = useRef<HTMLDialogElement | null>(null);
     const searchRef = useRef<HTMLInputElement | null>(null);
@@ -76,6 +82,7 @@ export function SpellList({grid, initSpells}: ISpellListProps) {
 
 
     const refreshList = useDebouncedCallback(() => {
+        console.log("refreshing list")
         setSpendingChangeSize(true)
         setTimeout(() => {
             const applySearch = (spells: ISpell[]): ISpell[] => {
@@ -90,7 +97,7 @@ export function SpellList({grid, initSpells}: ISpellListProps) {
             }
 
             const applyBreedFilter = (spells: ISpell[]): ISpell[] => {
-                if (breedFilter.length === 0) return spells
+                if (breedFilter.length === 0 || breedFilter.length === breeds.length) return spells
                 return spells.filter(spell => {
                     return spell.breeds.some(breed => {
                         return breedFilter.includes(breed)
@@ -98,15 +105,34 @@ export function SpellList({grid, initSpells}: ISpellListProps) {
                 })
             }
 
-            setSpells(applyBreedFilter(applySearch(initSpells)))
+            const applyCastingTimeFilter = (spells: ISpell[]): ISpell[] => {
+                if (castingTimeFilter.length === 0 || castingTimeFilter.length === spellCastingTimes.length) return spells
+                return spells.filter(spell => {
+                    return spell.castingTime.some(ct => {
+                        return castingTimeFilter.includes(ct)
+                    })
+                })
+            }
+
+            const applyLevelFilter = (spells: ISpell[]): ISpell[] => {
+                if (levelFilter.length === 1) {
+                    return spells.filter(spell => spell.level === levelFilter[0])
+                }
+                if (levelFilter.length === 2) {
+                    return spells.filter(spell => spell.level >= levelFilter[0] && spell.level <= levelFilter[1])
+                }
+                return spells
+            }
+
+            setSpells(applyBreedFilter(applyCastingTimeFilter(applyLevelFilter(applySearch(initSpells)))))
             setSpendingChangeSize(false)
         }, 100)
     }, 500)
 
     useEffect(() => {
-        setIsFiltered(breedFilter.length !== breeds.length && breedFilter.length > 0)
+        setIsFiltered(spells.length !== initSpells.length)
         refreshList()
-    }, [initSpells, breedFilter, refreshList])
+    }, [initSpells, breedFilter, levelFilter, castingTimeFilter, refreshList, spells.length])
 
     useEffect(() => {
         const options = {
@@ -118,6 +144,14 @@ export function SpellList({grid, initSpells}: ISpellListProps) {
         setFuse(f)
         refreshList()
     }, [initSpells, i18n.language, refreshList])
+
+    const selectSpellLevelHandler = useCallback((value: number | number[]) => {
+        if (Array.isArray(value)) {
+            setLevelFilter(value)
+        } else {
+            setLevelFilter([value])
+        }
+    }, []);
 
     return <div className={`flex flex-col gap-4 w-full`}>
         <div className={`bg-white/10 p-2 flex gap-2 justify-end items-center`}>
@@ -144,9 +178,9 @@ export function SpellList({grid, initSpells}: ISpellListProps) {
                     <label htmlFor="drawer-filter"
                            className={`btn btn-ghost hover:bg-transparent hover:border-none !shadow-none drawer-button btn-square text-primary`}>
                         <div className={`indicator`}>
-                            {isFiltered && <span className="indicator-item status status-secondary"></span> }
-                            {isFiltered && <HiFilter size={30}/> }
-                            {!isFiltered && <HiOutlineFilter size={30}/> }
+                            {isFiltered && <span className="indicator-item status status-secondary"></span>}
+                            {isFiltered && <HiFilter size={30}/>}
+                            {!isFiltered && <HiOutlineFilter size={30}/>}
                         </div>
                     </label>
                 </div>
@@ -202,10 +236,67 @@ export function SpellList({grid, initSpells}: ISpellListProps) {
                             <fieldset
                                 className="fieldset bg-base-100 border-base-300 rounded-box w-full border px-4 pb-3">
                                 <legend className="fieldset-legend">{t("layout.filter.spell-level.title")}</legend>
+                                <div className={`h-12`}>
+                                    <Slider range
+                                            dots={true}
+                                            step={1}
+                                            min={0}
+                                            max={9}
+                                            pushable={false}
+                                            allowCross={false}
+                                            value={levelFilter}
+                                            marks={levelFilter.reduce<Record<string | number, ReactNode | MarkObj>>((acc, value) => {
+                                                acc[value] = value;
+                                                return acc
+                                            }, {})}
+                                            onChange={selectSpellLevelHandler}/>
+                                </div>
                             </fieldset>
                             <fieldset
                                 className="fieldset bg-base-100 border-base-300 rounded-box w-full border px-4 pb-3">
                                 <legend className="fieldset-legend">{t("layout.filter.casting-time.title")}</legend>
+                                <div className={`flex flex-col gap-2`}>
+                                    <div className={`flex items-center gap-2`}>
+                                        <input
+                                            type="checkbox"
+                                            checked={castingTimeFilter.length === spellCastingTimes.length}
+                                            id={`casting-filter-all`}
+                                            className="checkbox checkbox-sm checkbox-primary"
+                                            onChange={() => {
+                                                if (castingTimeFilter.length === spellCastingTimes.length) {
+                                                    setCastingTimeFilter([])
+                                                } else {
+                                                    setCastingTimeFilter(spellCastingTimes)
+                                                }
+                                            }}
+                                        />
+                                        <label htmlFor={`casting-filter-all`}
+                                               className={`cursor-pointer select-none`}>{t("layout.filter.casting-time.all")}</label>
+                                    </div>
+                                    {spellCastingTimes.map((ct, i) => {
+                                        const isChecked = castingTimeFilter.includes(ct)
+                                        const handlerChange = () => {
+                                            if (isChecked) {
+                                                setCastingTimeFilter(castingTimeFilter.filter(b => b !== ct))
+                                            } else {
+                                                setCastingTimeFilter([...castingTimeFilter, ct])
+                                            }
+                                        }
+
+                                        return <div key={i} className={`flex items-center gap-2`}>
+                                            <input
+                                                type="checkbox"
+                                                checked={isChecked}
+                                                id={`casting-time-filter-${ct}`}
+                                                className="checkbox checkbox-sm checkbox-primary"
+                                                onChange={handlerChange}
+                                            />
+                                            <label htmlFor={`casting-time-filter-${ct}`}
+                                                   className={`cursor-pointer select-none`}><CastingTime
+                                                ct={ct}/></label>
+                                        </div>
+                                    })}
+                                </div>
                             </fieldset>
                         </div>
                     </ul>

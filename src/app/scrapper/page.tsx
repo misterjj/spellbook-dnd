@@ -27,8 +27,8 @@ export default function Scrapper() {
         }).replace(/\s+/g, '');
     }
 
-    const parseCastingTime = (text: string): SpellCastingTime => {
-        const result: SpellCastingTime = [];
+    const parseCastingTime = (text: string): SpellCastingTime[] => {
+        const result: SpellCastingTime[] = [];
 
         if (text.includes("Action")) {
             if (text.includes("Bonus Action")) {
@@ -36,6 +36,10 @@ export default function Scrapper() {
             } else {
                 result.push("Action");
             }
+        }
+
+        if (text.includes("Reaction")) {
+            result.push("Reaction");
         }
 
         if (text.includes("Ritual")) {
