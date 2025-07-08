@@ -17,6 +17,38 @@
         "Illusion": "Illusion",
         "Necromancy": "Necromancy",
         "Transmutation": "Transmutation"
+      },
+      "tag": {
+        "Teleportation & Movement": "Teleportation & Movement",
+        "Utility": "Utility",
+        "Healing": "Healing",
+        "Temporary Hit Points": "Temporary Hit Points",
+        "Defensive Buff": "Defensive Buff",
+        "Damage": "Damage",
+        "Cold Damage": "Cold Damage",
+        "Necrotic Damage": "Necrotic Damage",
+        "Area Denial": "Area Denial",
+        "Control": "Control",
+        "Condition Inflicting": "Condition Inflicting",
+        "Condition Removal": "Condition Removal",
+        "Offensive Buff": "Offensive Buff",
+        "Force Damage": "Force Damage",
+        "Information Gathering": "Information Gathering",
+        "Radiant Damage": "Radiant Damage",
+        "Slashing Damage": "Slashing Damage",
+        "Mind-Altering": "Mind-Altering",
+        "Social Interaction": "Social Interaction",
+        "Piercing Damage": "Piercing Damage",
+        "Thunder Damage": "Thunder Damage",
+        "Illusion & Deception": "Illusion & Deception",
+        "Summoning & Creation": "Summoning & Creation",
+        "Movement Impairing": "Movement Impairing",
+        "Bludgeoning Damage": "Bludgeoning Damage",
+        "Acid Damage": "Acid Damage",
+        "Lightning Damage": "Lightning Damage",
+        "Psychic Damage": "Psychic Damage",
+        "Fire Damage": "Fire Damage",
+        "Poison Damage": "Poison Damage"
       }
     }
   }

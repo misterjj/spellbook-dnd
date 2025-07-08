@@ -14,6 +14,7 @@ import {BreedId} from "@/data/Breed";
 import {Breed} from "@/components/Breed";
 import {PiStarFourFill} from "react-icons/pi";
 import {CastingTime} from "@/components/CastingTime";
+import {Tag} from "@/components/Tag";
 
 export type SpellSize = | "sm" | "md" | "lg"
 export const spellSizes: SpellSize[] = ["sm", "md", "lg"];
@@ -48,6 +49,17 @@ function CastingTimeRenderer({castingTimes}: ISpellCastingTimeRendererPros): JSX
                     <CastingTime ct={ct}></CastingTime>
                 </div>
             })
+        }
+    </div>
+}
+
+interface ISpellTagRenderer {
+    tags: string[]
+}
+function SpellTagRenderer({tags}: ISpellTagRenderer): JSX.Element {
+    return <div className={`flex flex-wrap items-center gap-1 px-2`}>
+        {
+            tags.map((t, i) => <Tag key={i} value={t}/>)
         }
     </div>
 }
@@ -240,9 +252,11 @@ export function SpellLg({spell}: ISpellLgProps) {
             {spell.icon &&
                 <Image className={"rounded-lg"} src={spell.icon} width={128} height={128} alt={spell.name.en}/>}
         </div>
-        <div className={`text-justify p-3 grow ${description.length > 1000 ? "text-sm" : ""}`}>
+        <div className={`text-justify p-3  ${description.length > 1000 ? "text-sm" : ""}`}>
             {description}
         </div>
+        <SpellTagRenderer tags={spell.tags}/>
+        <div className={`grow`}></div>
         <div className={`flex flex-col gap-1 pt-1 text-sm`}>
             <div className={`flex gap-3  px-3`}>
                 <RangeRenderer range={spell.range}/>
