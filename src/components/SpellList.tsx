@@ -3,7 +3,7 @@ import {Spell, SpellLg, SpellSize, spellSizes} from "@/components/Spell";
 import {memo, ReactNode, Ref, useCallback, useEffect, useMemo, useRef, useState} from "react";
 import Fuse from "fuse.js";
 import {useDebouncedCallback} from "use-debounce";
-import {useTranslation} from "react-i18next";
+import {Trans, useTranslation} from "react-i18next";
 import {HiFilter, HiOutlineFilter} from "react-icons/hi";
 import {BreedId, breeds} from "@/data/Breed";
 import {Breed} from "@/components/Breed";
@@ -170,9 +170,15 @@ export function SpellList({grid, initSpells}: ISpellListProps) {
     }, [t]);
 
     return <div className={`flex flex-col gap-4 w-full`}>
-        <div className={`bg-white/10 p-2 flex gap-2 justify-end items-center`}>
-            {spendingChangeSize && <span>pending</span>}
-            <div>{spells.length} / {initSpells.length}</div>
+        <div className={`bg-white/10 flex gap-2 justify-end items-center`}>
+            <div className={`grow text-2xl font-semibold`}>
+                <Trans t={t}
+                       values={{count: spells.length, max: initSpells.length}}
+                       components={{ small: <span className={`text-sm`}/>}}
+                >
+                    layout.spell-list.title
+                </Trans>
+            </div>
             <label className="input !outline-none">
                 <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                     <g

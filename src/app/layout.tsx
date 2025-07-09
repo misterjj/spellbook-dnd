@@ -92,7 +92,7 @@ export default function RootLayout({
         <body
             className={`antialiased relative w-full bg-base-100`}
         >
-        <div className={`drawer fixed left-6 top-6 w-10 ${drawerActive === "menu" ? "z-20" : "z-10"}`}>
+        <div className={`drawer fixed left-4 top-4 w-10 ${drawerActive === "menu" ? "z-20" : "z-10"}`}>
             <input id="my-drawer-menu" type="checkbox" className="drawer-toggle" onChange={(e) => {
                 setDrawerActive(e.target.checked ? "menu" : "")
             }
@@ -113,7 +113,7 @@ export default function RootLayout({
                 </div>
             </div>
         </div>
-        <div className={`drawer drawer-end fixed right-6 bottom-6 w-10 ${drawerActive === "settings" ? "z-20" : "z-10"}`}>
+        <div className={`drawer drawer-end fixed right-4 bottom-4 w-10 ${drawerActive === "settings" ? "z-20" : "z-10"}`}>
             <input id="my-drawer-settings" type="checkbox" className="drawer-toggle" onChange={(e) => {
                 setDrawerActive(e.target.checked ? "settings" : "")
             }
@@ -201,7 +201,7 @@ export default function RootLayout({
                 </div>
             </div>
         </div>
-        <div className={`pt-10 px-10`}>
+        <div className={`py-15 px-10`}>
             {children}
         </div>
         </body>

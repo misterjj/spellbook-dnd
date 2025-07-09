@@ -26,12 +26,14 @@
         "title": "Etiquette",
         "placeholder": "Sélectionner..."
       }
+    },
+    "spell-list": {
+      "title": "Liste des sorts <small>({{count}}/{{max}})</small>"
     }
   },
   "spell-layout": {
     "level": "Nv. {{level}} empl. de sort",
     "range": {
-      "phrase": "<bold>Portée</bold> : {{value}}",
       "self": "Personnelle",
       "touch": "Contact"
     },

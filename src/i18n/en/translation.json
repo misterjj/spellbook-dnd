@@ -26,12 +26,14 @@
         "title": "Tag",
         "placeholder": "Select..."
       }
+    },
+    "spell-list": {
+      "title": "Spell List <small>({{count}}/{{max}})</small>"
     }
   },
   "spell-layout": {
     "level": "Lvl. {{level}} spell slot",
     "range": {
-      "phrase": "<bold>Range</bold>: {{value}}",
       "self": "Self",
       "touch": "Touch"
     },
@@ -48,6 +50,14 @@
     "concentration": "Concentration"
   },
   "data": {
+    "duration": {
+      "minutes_one": "minute",
+      "minutes_other": "minutes",
+      "hours_one": "hour",
+      "hours_other": "hours",
+      "days_one": "day",
+      "days_other": "days"
+    },
     "spell": {
       "school": {
         "Abjuration": "Abjuration",
