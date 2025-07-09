@@ -1,6 +1,6 @@
-import {ISpell, SpellCastingTime, spellCastingTimes} from "@/data/Spell";
+import {ISpell, SpellCastingTime, spellCastingTimes, spellTags} from "@/data/Spell";
 import {Spell, SpellLg, SpellSize, spellSizes} from "@/components/Spell";
-import {memo, ReactNode, Ref, useCallback, useEffect, useRef, useState} from "react";
+import {memo, ReactNode, Ref, useCallback, useEffect, useMemo, useRef, useState} from "react";
 import Fuse from "fuse.js";
 import {useDebouncedCallback} from "use-debounce";
 import {useTranslation} from "react-i18next";
@@ -11,6 +11,7 @@ import Slider from "rc-slider";
 import 'rc-slider/assets/index.css';
 import {MarkObj} from "rc-slider/es/Marks";
 import {CastingTime} from "@/components/CastingTime";
+import Select from 'react-select'
 
 export type SpellGridSized = Record<SpellSize, string>
 
@@ -37,12 +38,13 @@ interface ISpellListGridProps {
     spells: ISpell[],
     spellSize: SpellSize,
     onSelect: (spell: ISpell) => void,
+    onTagClick: (tag: string) => void,
 }
 
-const SpellGrid = memo(function SpellGrid({grid, spells, spellSize, onSelect}: ISpellListGridProps) {
+const SpellGrid = memo(function SpellGrid({grid, spells, spellSize, onSelect, onTagClick}: ISpellListGridProps) {
     return <div className={`grid ${grid[spellSize]} gap-4`}>
         {spells.map(spell => {
-            return <Spell key={spell.id} spell={spell} size={spellSize} onSelect={onSelect}/>
+            return <Spell key={spell.id} spell={spell} size={spellSize} onSelect={onSelect} onTagClick={onTagClick}/>
         })}
     </div>
 })
@@ -63,6 +65,7 @@ export function SpellList({grid, initSpells}: ISpellListProps) {
     const [castingTimeFilter, setCastingTimeFilter] = useState<SpellCastingTime[]>([])
     const [isFiltered, setIsFiltered] = useState(false)
     const [levelFilter, setLevelFilter] = useState<number[]>([0, 9])
+    const [tagFilter, setTagFilter] = useState<string[]>([])
 
     const modalRef = useRef<HTMLDialogElement | null>(null);
     const searchRef = useRef<HTMLInputElement | null>(null);
@@ -124,7 +127,16 @@ export function SpellList({grid, initSpells}: ISpellListProps) {
                 return spells
             }
 
-            setSpells(applyBreedFilter(applyCastingTimeFilter(applyLevelFilter(applySearch(initSpells)))))
+            const applyTagFilter = (spells: ISpell[]): ISpell[] => {
+                if (tagFilter.length === 0) return spells
+                return spells.filter(spell => {
+                    return spell.tags.some(tag => {
+                        return tagFilter.includes(tag)
+                    })
+                })
+            }
+
+            setSpells(applyBreedFilter(applyTagFilter(applyCastingTimeFilter(applyLevelFilter(applySearch(initSpells))))))
             setSpendingChangeSize(false)
         }, 100)
     }, 500)
@@ -132,7 +144,7 @@ export function SpellList({grid, initSpells}: ISpellListProps) {
     useEffect(() => {
         setIsFiltered(spells.length !== initSpells.length)
         refreshList()
-    }, [initSpells, breedFilter, levelFilter, castingTimeFilter, refreshList, spells.length])
+    }, [initSpells, breedFilter, levelFilter, castingTimeFilter, tagFilter, refreshList, spells.length])
 
     useEffect(() => {
         const options = {
@@ -152,6 +164,10 @@ export function SpellList({grid, initSpells}: ISpellListProps) {
             setLevelFilter([value])
         }
     }, []);
+
+    const tagsOptions = useMemo(() => {
+        return spellTags.map(tag => {return {value: tag, label: t(`data.spell.tag.${tag}`)}})
+    }, [t]);
 
     return <div className={`flex flex-col gap-4 w-full`}>
         <div className={`bg-white/10 p-2 flex gap-2 justify-end items-center`}>
@@ -298,6 +314,21 @@ export function SpellList({grid, initSpells}: ISpellListProps) {
                                     })}
                                 </div>
                             </fieldset>
+                            <fieldset
+                                className="fieldset bg-base-100 border-base-300 rounded-box w-full border px-4 pb-3">
+                                <legend className="fieldset-legend">{t("layout.filter.tag.title")}</legend>
+                                <div>
+                                    <Select
+                                        isMulti
+                                        options={tagsOptions}
+                                        classNamePrefix="select-react"
+                                        menuPlacement={"top"}
+                                        value={tagsOptions.filter(option => tagFilter.includes(option.value))}
+                                        placeholder={t("layout.filter.tag.placeholder")}
+                                        onChange={values => setTagFilter(values.map(v => v.value))}
+                                    />
+                                </div>
+                            </fieldset>
                         </div>
                     </ul>
                 </div>
@@ -314,7 +345,7 @@ export function SpellList({grid, initSpells}: ISpellListProps) {
             </div>
         </div>
         <div className={spendingChangeSize ? 'opacity-50 transition-opacity' : ''}>
-            <SpellGrid grid={grid} spells={spells} onSelect={onSelectHandler} spellSize={spellSize}/>
+            <SpellGrid grid={grid} spells={spells} onSelect={onSelectHandler} spellSize={spellSize} onTagClick={(tag: string) => setTagFilter([tag])}/>
         </div>
         <SpellModal spell={spellModalActive} ref={modalRef}/>
     </div>

@@ -2,17 +2,15 @@ import {ISpell, SpellCastingTime, SpellComponents, SpellDuration, SpellRange, Ti
 import Image from 'next/image'
 import {Trans, useTranslation} from "react-i18next";
 import {JSX} from "react";
-import {FaBrain, FaCircle} from "react-icons/fa6";
-import {TbRectangleVerticalFilled, TbTriangleFilled} from "react-icons/tb";
-import {MdPentagon} from "react-icons/md";
-import {HiCube, HiOutlineClock} from "react-icons/hi";
+import {FaBrain} from "react-icons/fa6";
+import {TbRectangleVerticalFilled} from "react-icons/tb";
+import {HiCube} from "react-icons/hi";
 import {IoIosResize} from "react-icons/io";
 import {GiLips} from "react-icons/gi";
 import {IoHandLeft} from "react-icons/io5";
 import {BsHourglassSplit} from "react-icons/bs";
 import {BreedId} from "@/data/Breed";
 import {Breed} from "@/components/Breed";
-import {PiStarFourFill} from "react-icons/pi";
 import {CastingTime} from "@/components/CastingTime";
 import {Tag} from "@/components/Tag";
 
@@ -54,12 +52,14 @@ function CastingTimeRenderer({castingTimes}: ISpellCastingTimeRendererPros): JSX
 }
 
 interface ISpellTagRenderer {
-    tags: string[]
+    tags: string[],
+    onTagClick: (tag: string) => void,
 }
-function SpellTagRenderer({tags}: ISpellTagRenderer): JSX.Element {
+
+function SpellTagRenderer({tags, onTagClick}: ISpellTagRenderer): JSX.Element {
     return <div className={`flex flex-wrap items-center gap-1 px-2`}>
         {
-            tags.map((t, i) => <Tag key={i} value={t}/>)
+            tags.map((t, i) => <Tag key={i} value={t} onClick={onTagClick}/>)
         }
     </div>
 }
@@ -150,14 +150,15 @@ function BreedRenderer({breeds}: IBreedRendererProps): JSX.Element {
 interface ISpellProps {
     size: SpellSize,
     spell: ISpell,
-    onSelect: (spell: ISpell) => void
+    onSelect: (spell: ISpell) => void,
+    onTagClick: (tag: string) => void,
 }
 
-export function Spell({size, spell, onSelect}: ISpellProps) {
+export function Spell({size, spell, onSelect, onTagClick}: ISpellProps) {
     return <div>
         {size === "sm" && <SpellSm spell={spell} onSelect={onSelect}/>}
         {size === "md" && <SpellMd spell={spell} onSelect={onSelect}/>}
-        {size === "lg" && <SpellLg spell={spell}/>}
+        {size === "lg" && <SpellLg spell={spell} onTagClick={onTagClick}/>}
     </div>
 }
 
@@ -199,8 +200,9 @@ export function SpellMd({spell, onSelect}: ISpellMdProps) {
     const description = spell.description[i18n.language] || "";
 
     return <>
-        <div className={`flex flex-col w-full bg-base-300 border-2 border-primary rounded-lg overflow-hidden cursor-pointer`}
-             onClick={() => onSelect(spell)}>
+        <div
+            className={`flex flex-col w-full bg-base-300 border-2 border-primary rounded-lg overflow-hidden cursor-pointer`}
+            onClick={() => onSelect(spell)}>
             <div className={`relative w-full flex gap-3 pt-2 px-2`}>
                 {spell.icon &&
                     <Image className={"rounded-lg"} src={spell.icon} width={128} height={128} alt={spell.name.en}/>}
@@ -234,9 +236,10 @@ export function SpellMd({spell, onSelect}: ISpellMdProps) {
 
 interface ISpellLgProps {
     spell: ISpell,
+    onTagClick: (tag: string) => void,
 }
 
-export function SpellLg({spell}: ISpellLgProps) {
+export function SpellLg({spell, onTagClick}: ISpellLgProps) {
     const {t, i18n} = useTranslation();
 
     const description = spell.description[i18n.language] || "";
@@ -255,7 +258,7 @@ export function SpellLg({spell}: ISpellLgProps) {
         <div className={`text-justify p-3  ${description.length > 1000 ? "text-sm" : ""}`}>
             {description}
         </div>
-        <SpellTagRenderer tags={spell.tags}/>
+        <SpellTagRenderer tags={spell.tags} onTagClick={onTagClick}/>
         <div className={`grow`}></div>
         <div className={`flex flex-col gap-1 pt-1 text-sm`}>
             <div className={`flex gap-3  px-3`}>

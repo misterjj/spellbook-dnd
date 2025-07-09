@@ -21,6 +21,10 @@
       "casting-time": {
         "title": "Temps d'incantation",
         "all": "Tous"
+      },
+      "tag": {
+        "title": "Etiquette",
+        "placeholder": "Sélectionner..."
       }
     }
   },
@@ -105,7 +109,6 @@
       "Sorcerer" : "Ensorceleur",
       "Warlock" : "Occultiste",
       "Wizard" : "Magicien"
-    },
-    "casting-time": {}
+    }
   }
 }

@@ -60,3 +60,38 @@
     }
   }
 }
+
+.select-react__control {
+  @apply !input !h-auto;
+
+  .select-react__multi-value {
+    @apply !bg-primary !text-primary-content badge;
+
+    .select-react__multi-value__label {
+      @apply !text-primary-content;
+    }
+
+    .select-react__multi-value__remove:hover {
+      @apply !bg-transparent cursor-pointer;
+    }
+  }
+
+  .select-react__indicator{
+    @apply !bg-transparent cursor-pointer;
+  }
+
+  .select-react__input{
+    @apply !text-base-content;
+  }
+}
+.select-react__menu {
+  @apply !bg-base-100;
+
+  .select-react__option {
+    @apply !cursor-pointer;
+
+    &.select-react__option--is-focused {
+      @apply !bg-base-200;
+    }
+  }
+}

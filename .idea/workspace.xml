@@ -6,7 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="0a8e748c-3889-46cb-abc2-cd03c8fec980" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/spell-list/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/spell-list/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/tmp/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/tmp/_page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Spell.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Spell.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SpellList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SpellList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Tag.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Tag.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/data/Spell.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/Spell.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/i18n/en/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/i18n/en/translation.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/i18n/fr/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/i18n/fr/translation.json" afterDir="false" />
@@ -106,6 +113,7 @@
       <workItem from="1751380748793" duration="483000" />
       <workItem from="1751455186720" duration="2510000" />
       <workItem from="1751884767103" duration="4748000" />
+      <workItem from="1752056921001" duration="4077000" />
     </task>
     <servers />
   </component>

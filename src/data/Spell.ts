@@ -16290,3 +16290,5 @@ export const spellList: ISpell[] = [
 
 
 export const spellCastingTimes: SpellCastingTime[] = ["Action", "Bonus Action", "Ritual", "Reaction"]
+
+export const spellTags: string[] = ["Teleportation & Movement", "Utility", "Healing", "Temporary Hit Points", "Defensive Buff", "Damage", "Cold Damage", "Necrotic Damage", "Area Denial", "Control", "Condition Inflicting", "Condition Removal", "Offensive Buff", "Force Damage", "Information Gathering", "Radiant Damage", "Slashing Damage", "Mind-Altering", "Social Interaction", "Piercing Damage", "Thunder Damage", "Illusion & Deception", "Summoning & Creation", "Movement Impairing", "Bludgeoning Damage", "Acid Damage", "Lightning Damage", "Psychic Damage", "Fire Damage", "Poison Damage"]

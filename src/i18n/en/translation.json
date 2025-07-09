@@ -4,7 +4,48 @@
       "title": "Settings",
       "language": "Language",
       "theme": "Theme"
+    },
+    "menu": {
+      "title": "Menu",
+      "characters-list": "Characters List",
+      "spells-list": "Spells List"
+    },
+    "filter": {
+      "breed": {
+        "title": "Classes",
+        "all": "All"
+      },
+      "spell-level": {
+        "title": "Spell Level"
+      },
+      "casting-time": {
+        "title": "Casting Time",
+        "all": "All"
+      },
+      "tag": {
+        "title": "Tag",
+        "placeholder": "Select..."
+      }
     }
+  },
+  "spell-layout": {
+    "level": "Lvl. {{level}} spell slot",
+    "range": {
+      "phrase": "<bold>Range</bold>: {{value}}",
+      "self": "Self",
+      "touch": "Touch"
+    },
+    "casting-time": {
+      "bonus-action": "Bonus Action",
+      "action": "Action",
+      "ritual": "Ritual",
+      "reaction": "Reaction"
+    },
+    "duration": {
+      "instantaneous": "Instantaneous",
+      "until-dispelled": "Until Dispelled"
+    },
+    "concentration": "Concentration"
   },
   "data": {
     "spell": {
@@ -50,6 +91,16 @@
         "Fire Damage": "Fire Damage",
         "Poison Damage": "Poison Damage"
       }
+    },
+    "breed": {
+      "Bard": "Bard",
+      "Cleric": "Cleric",
+      "Druid": "Druid",
+      "Paladin": "Paladin",
+      "Ranger": "Ranger",
+      "Sorcerer": "Sorcerer",
+      "Warlock": "Warlock",
+      "Wizard": "Wizard"
     }
   }
 }
