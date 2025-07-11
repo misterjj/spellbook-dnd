@@ -6,7 +6,7 @@ import { DragAndDropContext } from './DragAndDropContext';
 
 interface Target {
     id: string | number;
-    ref: React.RefObject<HTMLDivElement>;
+    ref: React.RefObject<HTMLDivElement | null>;
 }
 
 interface DragAndDropAreaProps {
@@ -14,8 +14,8 @@ interface DragAndDropAreaProps {
 }
 
 export function DragAndDropArea({ children }: DragAndDropAreaProps) {
-    const [targets, setTargets] = useState<Target[]>([]);
-    const [hoveredTargetId, setHoveredTargetId] = useState<string | number | null>(null);
+    const [targets, setTargets] = useState<Array<Target>>([]);
+    const [isDragging, setDragging] = useState<boolean>(false)
 
     // Fonction pour qu'une cible s'enregistre
     const registerTarget = useCallback((target: Target) => {
@@ -31,8 +31,8 @@ export function DragAndDropArea({ children }: DragAndDropAreaProps) {
         registerTarget,
         unregisterTarget,
         targets,
-        hoveredTargetId,
-        setHoveredTargetId,
+        isDragging,
+        setDragging
     };
 
     return (

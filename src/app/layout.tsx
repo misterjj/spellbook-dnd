@@ -10,6 +10,7 @@ import {availableLangue} from "@/i18n/config";
 import {FaHatWizard} from "react-icons/fa";
 import {GiTiedScroll} from "react-icons/gi";
 import Link from "next/link";
+import {DragAndDropArea} from "@/components/Draggable/DragAndDropArea";
 
 export default function RootLayout({
                                        children,
@@ -107,13 +108,16 @@ export default function RootLayout({
                 <div className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
                     <div className={`font-semibold text-2xl text-center`}>{t("layout.menu.title")}</div>
                     <ul>
-                        <li className={`text-xl`}><Link href={"/"}><FaHatWizard size={20} /> {t("layout.menu.characters-list")}</Link></li>
-                        <li className={`text-xl`}><Link href={"/spell-list"}><GiTiedScroll size={20} /> {t("layout.menu.spells-list")}</Link></li>
+                        <li className={`text-xl`}><Link href={"/"}><FaHatWizard
+                            size={20}/> {t("layout.menu.characters-list")}</Link></li>
+                        <li className={`text-xl`}><Link href={"/spell-list"}><GiTiedScroll
+                            size={20}/> {t("layout.menu.spells-list")}</Link></li>
                     </ul>
                 </div>
             </div>
         </div>
-        <div className={`drawer drawer-end fixed right-4 bottom-4 w-10 ${drawerActive === "settings" ? "z-20" : "z-10"}`}>
+        <div
+            className={`drawer drawer-end fixed right-4 bottom-4 w-10 ${drawerActive === "settings" ? "z-20" : "z-10"}`}>
             <input id="my-drawer-settings" type="checkbox" className="drawer-toggle" onChange={(e) => {
                 setDrawerActive(e.target.checked ? "settings" : "")
             }
@@ -146,7 +150,7 @@ export default function RootLayout({
                                     Object.keys(availableLangue)
                                         .map((code, i) => {
                                             return <li key={i} onClick={() => setSelectedLanguage(code)}>
-                                                <div  className={`flex items-center`}>
+                                                <div className={`flex items-center`}>
                                                     <div className={`w-4 h-4 rounded overflow-hidden`} style={{
                                                         backgroundSize: 'cover',
                                                         backgroundPosition: 'center center',
@@ -164,7 +168,8 @@ export default function RootLayout({
                     <fieldset className="fieldset bg-base-100 border-base-300 rounded-box w-full border px-4 pb-3">
                         <legend className="fieldset-legend">{t("layout.settings.theme")}</legend>
                         <label className="text-base-content flex items-center justify-center gap-2">
-                            <button className="btn btn-ghost w-full bg-base-100 border-none" popoverTarget="popover-theme"
+                            <button className="btn btn-ghost w-full bg-base-100 border-none"
+                                    popoverTarget="popover-theme"
                                     style={{anchorName: "--anchor-2"} as React.CSSProperties}>
                                 <div data-theme={selectedTheme}
                                      className="bg-base-100 grid shrink-0 grid-cols-2 gap-0.5 rounded-md p-1 shadow-sm border border-base-content/20">
@@ -202,7 +207,9 @@ export default function RootLayout({
             </div>
         </div>
         <div className={`py-15 px-10`}>
-            {children}
+            <DragAndDropArea>
+                {children}
+            </DragAndDropArea>
         </div>
         </body>
         </html>

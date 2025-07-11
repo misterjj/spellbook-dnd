@@ -5,11 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0a8e748c-3889-46cb-abc2-cd03c8fec980" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/Draggable/DraggableTarget.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/tmp/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/tmp/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Draggable/DragAndDropArea.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Draggable/DragAndDropArea.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Draggable/DragAndDropContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Draggable/DragAndDropContext.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Draggable/Draggable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Draggable/Draggable.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Draggable/DraggableTarget.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Draggable/DraggableTarget.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,6 +110,7 @@
       <workItem from="1751455186720" duration="2510000" />
       <workItem from="1751884767103" duration="4748000" />
       <workItem from="1752056921001" duration="5183000" />
+      <workItem from="1752229875703" duration="3828000" />
     </task>
     <servers />
   </component>

@@ -1,7 +1,17 @@
 // DraggableTarget.tsx
 "use client"
 
-import {isValidElement, useRef, useContext, useEffect, ReactNode, cloneElement, ReactElement, Children} from "react";
+import {
+    isValidElement,
+    useRef,
+    useContext,
+    useEffect,
+    ReactNode,
+    cloneElement,
+    ReactElement,
+    Children,
+    RefObject
+} from "react";
 import { DragAndDropContext } from "./DragAndDropContext";
 
 interface DraggableTargetProps {
@@ -30,7 +40,7 @@ export function DraggableTarget({ id, children }: DraggableTargetProps) {
         return <>{child}</>;
     }
 
-    return cloneElement(child as ReactElement<any>, {
+    return cloneElement(child as ReactElement<{ ref?: RefObject<HTMLDivElement | null> }>, {
         ref: targetRef
     });
 }

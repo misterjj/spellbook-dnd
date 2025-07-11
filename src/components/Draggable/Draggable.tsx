@@ -1,8 +1,18 @@
 // Draggable.tsx
 "use client"
 
-import {Children, cloneElement, isValidElement, JSX, ReactElement, useContext, useRef, RefObject} from "react";
-import {bounds, BoundsFrom, events, threshold, useDraggable} from '@neodrag/react';
+import {
+    Children,
+    cloneElement,
+    isValidElement,
+    JSX,
+    ReactElement,
+    useContext,
+    useRef,
+    RefObject,
+    useState
+} from "react";
+import {bounds, BoundsFrom, events, threshold, position, useCompartment, useDraggable} from '@neodrag/react';
 import {DragAndDropContext} from "./DragAndDropContext";
 
 interface DraggableProps {
@@ -20,27 +30,34 @@ const checkCollision = (rect1: DOMRect, rect2: DOMRect) => {
 };
 
 export default function Draggable({children, onDrop}: DraggableProps) {
+    const [currentPos, setCurrentPos] = useState<{x: number, y: number}| null>(null)
+    const [currentIsDragging, setCurrentIsDragging] = useState<boolean>()
     const draggableRef = useRef<HTMLDivElement>(null);
-    const {targets} = useContext(DragAndDropContext);
+    const {targets, setDragging} = useContext(DragAndDropContext);
 
-    // 1. Créer une ref pour stocker la version la plus récente des targets
     const targetsRef = useRef(targets);
 
-    // 2. Mettre à jour la ref à chaque fois que les targets changent.
-    // Cette affectation se fait à chaque rendu, garantissant que targetsRef.current est toujours à jour.
     targetsRef.current = targets;
 
-    useDraggable(draggableRef, [
+    const currentPosComp = useCompartment(
+        () => position({ current: currentPos }),
+        [currentPos],
+    );
+
+    const staticPlugins = [
         threshold({distance: 10}),
         bounds(BoundsFrom.viewport()),
         events({
+            onDragStart: (data) => {
+                setCurrentPos(data.offset)
+                setDragging(true)
+                setCurrentIsDragging(true)
+            },
             onDragEnd: (data) => {
                 const domRect = data.currentNode.getBoundingClientRect();
                 let droppedOnTarget = false;
-
-                // 3. Utiliser la ref ici pour obtenir la liste la plus récente des cibles
-                // au moment où le drag se termine.
-                console.log('Targets from ref on drop:', targetsRef.current);
+                setDragging(false)
+                setCurrentIsDragging(false)
 
                 for (const target of targetsRef.current) {
                     if (target.ref.current) {
@@ -54,12 +71,16 @@ export default function Draggable({children, onDrop}: DraggableProps) {
                 }
 
                 if (!droppedOnTarget) {
-                    onDrop(null);
+                    setCurrentPos({x : 0, y: 0})
                 }
             }
         })
-    ]);
+    ]
 
+    useDraggable(draggableRef, () => [
+        currentPosComp, // High priority - runs first
+        ...staticPlugins,
+    ]);
 
     const child = Children.only(children);
 
@@ -71,6 +92,6 @@ export default function Draggable({children, onDrop}: DraggableProps) {
 
     return cloneElement(child as ReactElement<{ className?: string, ref?: RefObject<HTMLDivElement | null> }>, {
         ref: draggableRef,
-        className: `${childClassName} cursor-grab`
+        className: `${childClassName} cursor-grab selection-none ${currentIsDragging ? 'z-50' : ''}`
     });
 }
