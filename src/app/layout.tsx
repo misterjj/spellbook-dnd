@@ -108,8 +108,8 @@ export default function RootLayout({
                 <div className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
                     <div className={`font-semibold text-2xl text-center`}>{t("layout.menu.title")}</div>
                     <ul>
-                        <li className={`text-xl`}><Link href={"/"}><FaHatWizard
-                            size={20}/> {t("layout.menu.characters-list")}</Link></li>
+                        <li className={`text-xl`}><Link href={"/spell-books"}><FaHatWizard
+                            size={20}/> {t("layout.menu.spell-books")}</Link></li>
                         <li className={`text-xl`}><Link href={"/spell-list"}><GiTiedScroll
                             size={20}/> {t("layout.menu.spells-list")}</Link></li>
                     </ul>
