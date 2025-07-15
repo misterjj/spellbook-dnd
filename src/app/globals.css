@@ -23,6 +23,14 @@
   }
 }
 
+@utility drag-none {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-select: none;
+}
+
 .rc-slider {
   @apply !h-8 !p-0 translate-y-1/2;
 

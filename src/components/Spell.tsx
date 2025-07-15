@@ -1,7 +1,7 @@
 import {ISpell, SpellCastingTime, SpellComponents, SpellDuration, SpellRange, TimeDuration} from "@/data/Spell";
 import Image from 'next/image'
 import {Trans, useTranslation} from "react-i18next";
-import {JSX} from "react";
+import {forwardRef, JSX} from "react";
 import {FaBrain} from "react-icons/fa6";
 import {TbRectangleVerticalFilled} from "react-icons/tb";
 import {HiCube} from "react-icons/hi";
@@ -152,15 +152,22 @@ interface ISpellProps {
     spell: ISpell,
     onSelect: (spell: ISpell) => void,
     onTagClick: (tag: string) => void,
+    className?: string,
 }
 
-export function Spell({size, spell, onSelect, onTagClick}: ISpellProps) {
-    return <div>
-        {size === "sm" && <SpellSm spell={spell} onSelect={onSelect}/>}
-        {size === "md" && <SpellMd spell={spell} onSelect={onSelect}/>}
-        {size === "lg" && <SpellLg spell={spell} onTagClick={onTagClick}/>}
-    </div>
-}
+export const Spell = forwardRef<HTMLDivElement, ISpellProps>(
+    ({ size, spell, onSelect, onTagClick, className }, ref) => {
+        return (
+            <div ref={ref} className={className}> {/* La ref est attachée ici */}
+                {size === "sm" && <SpellSm spell={spell} onSelect={onSelect} />}
+                {size === "md" && <SpellMd spell={spell} onSelect={onSelect} />}
+                {size === "lg" && <SpellLg spell={spell} onTagClick={onTagClick} />}
+            </div>
+        );
+    }
+);
+
+Spell.displayName = "Spell";
 
 interface ISpellSmProps {
     spell: ISpell,
@@ -181,7 +188,7 @@ export function SpellSm({spell, onSelect}: ISpellSmProps) {
                 </span>
             <div className={`border border-primary rounded-lg overflow-hidden relative w-full`}>
                 {spell.icon &&
-                    <Image className={`w-full`} src={spell.icon} width={128} height={128} alt={spell.name.en}/>}
+                    <Image className={`w-full drag-none`} src={spell.icon} width={128} height={128} alt={spell.name.en}/>}
                 <div
                     className={`absolute bg-primary/70 text-primary-content font-bold text-xs text-center p-2 w-full bottom-0 `}>{spell.name[i18n.language] || ""}</div>
             </div>
@@ -205,7 +212,7 @@ export function SpellMd({spell, onSelect}: ISpellMdProps) {
             onClick={() => onSelect(spell)}>
             <div className={`relative w-full flex gap-3 pt-2 px-2`}>
                 {spell.icon &&
-                    <Image className={"rounded-lg"} src={spell.icon} width={128} height={128} alt={spell.name.en}/>}
+                    <Image className={"rounded-lg drag-none"} src={spell.icon} width={128} height={128} alt={spell.name.en}/>}
                 <div className={`flex flex-col w-full`}>
                     <div className={`text-lg text-primary font-semibold`}>{spell.name[i18n.language] || ""}</div>
                     <div className={`text-sm`}>{t(`data.spell.school.${spell.school}`)}</div>
@@ -253,7 +260,7 @@ export function SpellLg({spell, onTagClick}: ISpellLgProps) {
                 <BreedRenderer breeds={spell.breeds}/>
             </div>
             {spell.icon &&
-                <Image className={"rounded-lg"} src={spell.icon} width={128} height={128} alt={spell.name.en}/>}
+                <Image className={"rounded-lg drag-none"} src={spell.icon} width={128} height={128} alt={spell.name.en}/>}
         </div>
         <div className={`text-justify p-3  ${description.length > 1000 ? "text-sm" : ""}`}>
             {description}

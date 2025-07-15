@@ -12,19 +12,21 @@ import 'rc-slider/assets/index.css';
 import {MarkObj} from "rc-slider/es/Marks";
 import {CastingTime} from "@/components/CastingTime";
 import Select from 'react-select'
+import Draggable from "@/components/Draggable/Draggable";
 
 export type SpellGridSized = Record<SpellSize, string>
 
 
 interface ISpellModalProps {
     spell: ISpell | null,
-    ref: Ref<HTMLDialogElement | null>
+    ref: Ref<HTMLDialogElement | null>,
+    onTagClick: (tag: string) => void,
 }
 
-function SpellModal({spell, ref}: ISpellModalProps) {
+function SpellModal({spell, ref, onTagClick}: ISpellModalProps) {
     return <dialog id={`spell_modal`} className="modal" ref={ref}>
         <div className="modal-box bg-transparent shadow-none p-0 max-w-110">
-            {spell && <SpellLg spell={spell}/>}
+            {spell && <SpellLg onTagClick={onTagClick} spell={spell}/>}
         </div>
         <form method="dialog" className="modal-backdrop">
             <button>close</button>
@@ -39,11 +41,15 @@ interface ISpellListGridProps {
     spellSize: SpellSize,
     onSelect: (spell: ISpell) => void,
     onTagClick: (tag: string) => void,
+    onDrop?: (spell: ISpell) => void
 }
 
-const SpellGrid = memo(function SpellGrid({grid, spells, spellSize, onSelect, onTagClick}: ISpellListGridProps) {
+const SpellGrid = memo(function SpellGrid({grid, spells, spellSize, onSelect, onTagClick, onDrop}: ISpellListGridProps) {
     return <div className={`grid ${grid[spellSize]} gap-4`}>
         {spells.map(spell => {
+            if (onDrop) {
+                return <Draggable key={spell.id} onDrop={() => onDrop(spell)}><Spell spell={spell} size={spellSize} onSelect={onSelect} onTagClick={onTagClick}/></Draggable>
+            }
             return <Spell key={spell.id} spell={spell} size={spellSize} onSelect={onSelect} onTagClick={onTagClick}/>
         })}
     </div>
@@ -52,9 +58,10 @@ const SpellGrid = memo(function SpellGrid({grid, spells, spellSize, onSelect, on
 interface ISpellListProps {
     grid: SpellGridSized,
     initSpells: ISpell[],
+    onDrop?: (spell: ISpell) => void
 }
 
-export function SpellList({grid, initSpells}: ISpellListProps) {
+export function SpellList({grid, initSpells, onDrop}: ISpellListProps) {
     const {t, i18n} = useTranslation();
     const [spells, setSpells] = useState<ISpell[]>(initSpells)
     const [spellSize, setSpellSize] = useState<SpellSize>("md")
@@ -351,8 +358,8 @@ export function SpellList({grid, initSpells}: ISpellListProps) {
             </div>
         </div>
         <div className={spendingChangeSize ? 'opacity-50 transition-opacity' : ''}>
-            <SpellGrid grid={grid} spells={spells} onSelect={onSelectHandler} spellSize={spellSize} onTagClick={(tag: string) => setTagFilter([tag])}/>
+            <SpellGrid onDrop={onDrop} grid={grid} spells={spells} onSelect={onSelectHandler} spellSize={spellSize} onTagClick={(tag: string) => setTagFilter([tag])}/>
         </div>
-        <SpellModal spell={spellModalActive} ref={modalRef}/>
+        <SpellModal onTagClick={(tag: string) => setTagFilter([tag])} spell={spellModalActive} ref={modalRef}/>
     </div>
 }
