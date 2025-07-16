@@ -1,28 +1,54 @@
 "use client"
 
 import {useParams} from 'next/navigation'
-import {SpellGridSized, SpellList} from "@/components/SpellList";
+import {SpellGridSized, SpellList, SpellModal} from "@/components/SpellList";
 import {ISpell, SpellId, spellList} from "@/data/Spell";
 import {DraggableTarget} from "@/components/Draggable/DraggableTarget";
-import {useMemo, useState} from "react";
+import {useCallback, useMemo, useRef, useState} from "react";
+import {SpellSm} from "@/components/Spell";
+
+interface ISpellMap {
+    [key: `level${number}`]: ISpell[];
+}
 
 interface ISpellByLevel {
-    level0 : ISpell[],
-    level1 : ISpell[],
-    level2 : ISpell[],
-    level3 : ISpell[],
-    level4 : ISpell[],
-    level5 : ISpell[],
-    level6 : ISpell[],
-    level7 : ISpell[],
-    level8 : ISpell[],
-    level9 : ISpell[],
+    level: number
+    spells: ISpell[]
+    onSelect: (spell: ISpell) => void
+    onDelete: (spell: ISpell) => void
+}
+
+function SavedSpellLevel({level, spells, onSelect, onDelete}: ISpellByLevel) {
+    if (spells.length === 0) {
+        return ""
+    }
+
+    return (
+        <div>
+            <fieldset className="fieldset bg-base-200 border-base-300 rounded-box border p-4">
+                <legend className="fieldset-legend">Sort de niveau {level}</legend>
+                <div className={`flex flex-wrap justify-center gap-4`}>
+                    {spells.map(spell => <div key={spell.id}>
+                        <SpellSm spell={spell} onSelect={onSelect} onDelete={onDelete}/>
+                    </div>)}
+                </div>
+            </fieldset>
+        </div>
+    )
 }
 
 export default function SpellBookEditPage() {
     const [selectedSpells, setSelectedSpells] = useState<SpellId[]>([])
     const params = useParams()
     const id = params.slug
+    const [spellModalActive, setSpellModalActive] = useState<ISpell | null>(null)
+
+    const modalRef = useRef<HTMLDialogElement | null>(null);
+
+    const onSelectHandler = useCallback((spell: ISpell) => {
+        setSpellModalActive(spell)
+        modalRef.current?.showModal()
+    }, []);
 
 
     const grid: SpellGridSized = {
@@ -31,7 +57,7 @@ export default function SpellBookEditPage() {
         "lg": "grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3"
     }
 
-    const spells: ISpellByLevel = useMemo(() => {
+    const spells: ISpellMap = useMemo(() => {
         const t = Object.groupBy(spellList.filter(spell => selectedSpells.includes(spell.id)), (spell) => spell.level.toString())
 
         return {
@@ -46,9 +72,11 @@ export default function SpellBookEditPage() {
             level8: t['8'] || [],
             level9: t['9'] || [],
         }
-    }, [selectedSpells, spellList]);
+    }, [selectedSpells]);
 
-
+    const onDeleteHandler = (spell: ISpell) => {
+        setSelectedSpells(prev => prev.filter(s => s !== spell.id))
+    }
 
     return (<>
             <div>Edit SpellBook Page : {id}</div>
@@ -60,18 +88,31 @@ export default function SpellBookEditPage() {
                     />
                 </div>
                 <DraggableTarget id={"sidebar"}>
-                    <div className={`w-2/5 bg-red-500 hidden lg:block grow`}>
-                        {
-                            Array.from({length: 10}, (_, i) => i).map(level => {
-                                return <div>
-                                    <div>{level}</div>
-                                    <div>{(spells["level" + level] || []).map(spell => <div>{spell.id}</div>)}</div>
-                                </div>
-                            })
-                        }
+                    <div className={`w-2/5 hidden lg:block grow`}>
+                        <div className={`p-2`}>
+                            <div className={`text-2xl font-semibold`}>Liste des sorts préparés pour {id}</div>
+                            <div className={`w-full border border-dashed rounded-lg mt-4 px-4 pb-4 min-h-102`}>
+                                {selectedSpells.length == 0 &&
+                                    <div className={`h-98 flex items-center justify-center`}>
+                                        <div>
+                                            <div className={`text-xl`}>Vous n'avez pas encore de sort préparés</div>
+                                            <div className={`text-xl text-center text-primary font-semibold`}>Glissez des sorts ici</div>
+                                        </div>
+                                    </div>}
+                                {
+                                    Array.from({length: 10}, (_, i) => i).map(level => {
+                                        return <SavedSpellLevel key={level} level={level}
+                                                                spells={spells[`level${level}`] || []}
+                                                                onSelect={onSelectHandler} onDelete={onDeleteHandler}/>
+                                    })
+                                }
+                            </div>
+                        </div>
                     </div>
                 </DraggableTarget>
             </div>
+            <SpellModal onTagClick={() => {
+            }} spell={spellModalActive} ref={modalRef}/>
         </>
     )
 }

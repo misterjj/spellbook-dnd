@@ -4,7 +4,7 @@ import {Trans, useTranslation} from "react-i18next";
 import {forwardRef, JSX} from "react";
 import {FaBrain} from "react-icons/fa6";
 import {TbRectangleVerticalFilled} from "react-icons/tb";
-import {HiCube} from "react-icons/hi";
+import {HiCube, HiTrash} from "react-icons/hi";
 import {IoIosResize} from "react-icons/io";
 import {GiLips} from "react-icons/gi";
 import {IoHandLeft} from "react-icons/io5";
@@ -172,11 +172,11 @@ Spell.displayName = "Spell";
 interface ISpellSmProps {
     spell: ISpell,
     onSelect: (spell: ISpell) => void
+    onDelete?: (spell: ISpell) => void
 }
 
-export function SpellSm({spell, onSelect}: ISpellSmProps) {
+export function SpellSm({spell, onSelect, onDelete}: ISpellSmProps) {
     const {i18n} = useTranslation();
-
 
     return <>
         <div className={`indicator w-full cursor-pointer`}
@@ -186,6 +186,15 @@ export function SpellSm({spell, onSelect}: ISpellSmProps) {
                     <TbRectangleVerticalFilled size={15} className={`text-info`}/>
                 {spell.level}
                 </span>
+            {undefined !== onDelete && <span
+                    className="indicator-item " onClick={(e) => {
+                        e.stopPropagation()
+                        onDelete(spell)
+                    }}>
+                    <span className={"btn btn-square btn-xs btn-error"}>
+                    <HiTrash size={15} className={`text-error-content`}/>
+                    </span>
+                </span>}
             <div className={`border border-primary rounded-lg overflow-hidden relative w-full`}>
                 {spell.icon &&
                     <Image className={`w-full drag-none`} src={spell.icon} width={128} height={128} alt={spell.name.en}/>}

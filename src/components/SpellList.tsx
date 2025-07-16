@@ -23,7 +23,7 @@ interface ISpellModalProps {
     onTagClick: (tag: string) => void,
 }
 
-function SpellModal({spell, ref, onTagClick}: ISpellModalProps) {
+export function SpellModal({spell, ref, onTagClick}: ISpellModalProps) {
     return <dialog id={`spell_modal`} className="modal" ref={ref}>
         <div className="modal-box bg-transparent shadow-none p-0 max-w-110">
             {spell && <SpellLg onTagClick={onTagClick} spell={spell}/>}
@@ -177,7 +177,7 @@ export function SpellList({grid, initSpells, onDrop}: ISpellListProps) {
     }, [t]);
 
     return <div className={`flex flex-col gap-4 w-full`}>
-        <div className={`bg-white/10 flex gap-2 justify-end items-center`}>
+        <div className={`flex gap-2 justify-end items-center`}>
             <div className={`grow text-2xl font-semibold`}>
                 <Trans t={t}
                        values={{count: spells.length, max: initSpells.length}}
