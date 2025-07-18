@@ -12,7 +12,7 @@ import {
     useState
 } from "react";
 import {bounds, BoundsFrom, events, threshold, position, useCompartment, useDraggable} from '@neodrag/react';
-import {DragAndDropContext} from "./DragAndDropContext";
+import {DragAndDropContext} from "@/contexts/draggable/DragAndDropContext";
 
 interface DraggableProps {
     children: JSX.Element;

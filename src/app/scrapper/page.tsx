@@ -128,7 +128,6 @@ export default function Scrapper() {
     };
 
     const parseConcentration = (text: string): boolean => {
-        console.log("ici", text, text.toLowerCase().includes("concentration"))
         return text.toLowerCase().includes("concentration")
     }
 

@@ -1,6 +1,6 @@
 import {createContext, RefObject} from 'react';
 
-interface Target {
+export interface Target {
     id: string | number;
     ref: RefObject<HTMLDivElement | null>;
 }

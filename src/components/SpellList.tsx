@@ -12,7 +12,7 @@ import 'rc-slider/assets/index.css';
 import {MarkObj} from "rc-slider/es/Marks";
 import {CastingTime} from "@/components/CastingTime";
 import Select from 'react-select'
-import Draggable from "@/components/Draggable/Draggable";
+import Draggable from "@/components/draggable/Draggable";
 
 export type SpellGridSized = Record<SpellSize, string>
 
@@ -92,7 +92,6 @@ export function SpellList({grid, initSpells, onDrop}: ISpellListProps) {
 
 
     const refreshList = useDebouncedCallback(() => {
-        console.log("refreshing list")
         setSpendingChangeSize(true)
         setTimeout(() => {
             const applySearch = (spells: ISpell[]): ISpell[] => {

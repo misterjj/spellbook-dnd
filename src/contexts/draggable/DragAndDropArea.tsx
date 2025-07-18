@@ -2,12 +2,7 @@
 "use client"
 
 import React, { useState, useCallback, ReactNode } from 'react';
-import { DragAndDropContext } from './DragAndDropContext';
-
-interface Target {
-    id: string | number;
-    ref: React.RefObject<HTMLDivElement | null>;
-}
+import {DragAndDropContext, Target} from './DragAndDropContext';
 
 interface DragAndDropAreaProps {
     children: ReactNode;

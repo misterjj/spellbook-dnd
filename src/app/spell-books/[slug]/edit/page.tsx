@@ -3,9 +3,11 @@
 import {useParams} from 'next/navigation'
 import {SpellGridSized, SpellList, SpellModal} from "@/components/SpellList";
 import {ISpell, SpellId, spellList} from "@/data/Spell";
-import {DraggableTarget} from "@/components/Draggable/DraggableTarget";
-import {useCallback, useMemo, useRef, useState} from "react";
+import {DraggableTarget} from "@/components/draggable/DraggableTarget";
+import {useCallback, useContext, useEffect, useMemo, useRef, useState} from "react";
 import {SpellSm} from "@/components/Spell";
+import {SaveManagerContext} from "@/contexts/spellBookSaver/SaveManagerContext";
+import {ISpellBookSaved} from "@/data/SpellBook";
 
 interface ISpellMap {
     [key: `level${number}`]: ISpell[];
@@ -40,15 +42,11 @@ function SavedSpellLevel({level, spells, onSelect, onDelete}: ISpellByLevel) {
 export default function SpellBookEditPage() {
     const [selectedSpells, setSelectedSpells] = useState<SpellId[]>([])
     const params = useParams()
-    const id = params.slug
+    const id = params.slug?.toString() || "unknown"
     const [spellModalActive, setSpellModalActive] = useState<ISpell | null>(null)
+    const {saveData, addSpell, removeSpell, persist} = useContext(SaveManagerContext)
 
     const modalRef = useRef<HTMLDialogElement | null>(null);
-
-    const onSelectHandler = useCallback((spell: ISpell) => {
-        setSpellModalActive(spell)
-        modalRef.current?.showModal()
-    }, []);
 
 
     const grid: SpellGridSized = {
@@ -75,8 +73,27 @@ export default function SpellBookEditPage() {
     }, [selectedSpells]);
 
     const onDeleteHandler = (spell: ISpell) => {
-        setSelectedSpells(prev => prev.filter(s => s !== spell.id))
+        // setSelectedSpells(prev => prev.filter(s => s !== spell.id))
+        removeSpell(id, spell.id);
+        persist();
     }
+
+    const onSelectHandler = useCallback((spell: ISpell) => {
+        setSpellModalActive(spell)
+        modalRef.current?.showModal()
+    }, []);
+
+    const onDropHandler = (spell: ISpell) => {
+        // setSelectedSpells(prev => [...prev, spell.id])
+        addSpell(id, spell.id);
+        persist();
+    }
+
+    useEffect(() => {
+        const spellBook = saveData.spellsBooks.filter(sb => sb.id == id).pop()
+
+        setSelectedSpells(spellBook?.spells || [])
+    }, [setSelectedSpells, id, saveData.spellsBooks])
 
     return (<>
             <div>Edit SpellBook Page : {id}</div>
@@ -84,7 +101,7 @@ export default function SpellBookEditPage() {
                 <div className={`w-full lg:w-3/5`}>
                     <SpellList grid={grid}
                                initSpells={spellList.filter(spell => !selectedSpells.includes(spell.id))}
-                               onDrop={(spell) => setSelectedSpells(prev => [...prev, spell.id])}
+                               onDrop={onDropHandler}
                     />
                 </div>
                 <DraggableTarget id={"sidebar"}>

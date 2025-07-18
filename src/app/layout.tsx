@@ -10,7 +10,8 @@ import {availableLangue} from "@/i18n/config";
 import {FaHatWizard} from "react-icons/fa";
 import {GiTiedScroll} from "react-icons/gi";
 import Link from "next/link";
-import {DragAndDropArea} from "@/components/Draggable/DragAndDropArea";
+import {DragAndDropArea} from "@/contexts/draggable/DragAndDropArea";
+import {SaveManagerArea} from "@/contexts/spellBookSaver/SaveManagerArea";
 
 export default function RootLayout({
                                        children,
@@ -93,6 +94,7 @@ export default function RootLayout({
         <body
             className={`antialiased relative w-full bg-base-100`}
         >
+        <SaveManagerArea>
         <div className={`drawer fixed left-4 top-4 w-10 ${drawerActive === "menu" ? "z-20" : "z-10"}`}>
             <input id="my-drawer-menu" type="checkbox" className="drawer-toggle" onChange={(e) => {
                 setDrawerActive(e.target.checked ? "menu" : "")
@@ -211,6 +213,7 @@ export default function RootLayout({
                 {children}
             </DragAndDropArea>
         </div>
+        </SaveManagerArea>
         </body>
         </html>
     );
