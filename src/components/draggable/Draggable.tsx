@@ -6,17 +6,18 @@ import {
     isValidElement,
     JSX,
     ReactElement,
+    RefObject,
     useContext,
     useRef,
-    RefObject,
     useState
 } from "react";
-import {bounds, BoundsFrom, events, threshold, position, useCompartment, useDraggable} from '@neodrag/react';
+import {bounds, BoundsFrom, events, position, threshold, useCompartment, useDraggable} from '@neodrag/react';
 import {DragAndDropContext} from "@/contexts/draggable/DragAndDropContext";
 
 interface DraggableProps {
     children: JSX.Element;
-    onDrop: (targetId: string | number | null) => void;
+    onDrop: (ref: RefObject<HTMLDivElement | null>) => void;
+    onDrag: () => void;
 }
 
 const checkCollision = (rect1: DOMRect, rect2: DOMRect) => {
@@ -28,9 +29,9 @@ const checkCollision = (rect1: DOMRect, rect2: DOMRect) => {
     );
 };
 
-export default function Draggable({children, onDrop}: DraggableProps) {
-    const [currentPos, setCurrentPos] = useState<{x: number, y: number}| null>(null)
-    const [currentIsDragging, setCurrentIsDragging] = useState<boolean>()
+export default function Draggable({children, onDrop, onDrag}: DraggableProps) {
+    const [currentPos, setCurrentPos] = useState<{ x: number, y: number } | null>(null)
+    const [currentIsDragging, setCurrentIsDragging] = useState<boolean>(false)
     const draggableRef = useRef<HTMLDivElement>(null);
     const {targets, setDragging} = useContext(DragAndDropContext);
 
@@ -39,7 +40,7 @@ export default function Draggable({children, onDrop}: DraggableProps) {
     targetsRef.current = targets;
 
     const currentPosComp = useCompartment(
-        () => position({ current: currentPos }),
+        () => position({current: currentPos}),
         [currentPos],
     );
 
@@ -51,6 +52,7 @@ export default function Draggable({children, onDrop}: DraggableProps) {
                 setCurrentPos(data.offset)
                 setDragging(true)
                 setCurrentIsDragging(true)
+                onDrag()
             },
             onDragEnd: (data) => {
                 const domRect = data.currentNode.getBoundingClientRect();
@@ -62,7 +64,7 @@ export default function Draggable({children, onDrop}: DraggableProps) {
                     if (target.ref.current) {
                         const targetRect = target.ref.current.getBoundingClientRect();
                         if (checkCollision(domRect, targetRect)) {
-                            onDrop(target.id);
+                            onDrop(draggableRef);
                             droppedOnTarget = true;
                             break;
                         }
@@ -70,14 +72,14 @@ export default function Draggable({children, onDrop}: DraggableProps) {
                 }
 
                 if (!droppedOnTarget) {
-                    setCurrentPos({x : 0, y: 0})
+                    setCurrentPos({x: 0, y: 0})
                 }
             }
         })
     ]
 
     useDraggable(draggableRef, () => [
-        currentPosComp, // High priority - runs first
+        currentPosComp,
         ...staticPlugins,
     ]);
 
@@ -91,6 +93,6 @@ export default function Draggable({children, onDrop}: DraggableProps) {
 
     return cloneElement(child as ReactElement<{ className?: string, ref?: RefObject<HTMLDivElement | null> }>, {
         ref: draggableRef,
-        className: `${childClassName} cursor-grab selection-none ${currentIsDragging ? 'z-50' : ''}`
+        className: `${childClassName} cursor-grab selection-none ${currentIsDragging ? 'z-50' : 'z-0'}`
     });
 }

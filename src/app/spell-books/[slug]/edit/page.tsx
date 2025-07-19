@@ -73,7 +73,6 @@ export default function SpellBookEditPage() {
     }, [selectedSpells]);
 
     const onDeleteHandler = (spell: ISpell) => {
-        // setSelectedSpells(prev => prev.filter(s => s !== spell.id))
         removeSpell(id, spell.id);
         persist();
     }
@@ -84,7 +83,6 @@ export default function SpellBookEditPage() {
     }, []);
 
     const onDropHandler = (spell: ISpell) => {
-        // setSelectedSpells(prev => [...prev, spell.id])
         addSpell(id, spell.id);
         persist();
     }

@@ -1,6 +1,17 @@
 import {ISpell, SpellCastingTime, spellCastingTimes, spellTags} from "@/data/Spell";
 import {Spell, SpellLg, SpellSize, spellSizes} from "@/components/Spell";
-import {memo, ReactNode, Ref, useCallback, useEffect, useMemo, useRef, useState} from "react";
+import {
+    memo,
+    ReactNode,
+    Ref,
+    RefObject,
+    useCallback,
+    useEffect,
+    useLayoutEffect,
+    useMemo,
+    useRef,
+    useState
+} from "react";
 import Fuse from "fuse.js";
 import {useDebouncedCallback} from "use-debounce";
 import {Trans, useTranslation} from "react-i18next";
@@ -13,9 +24,9 @@ import {MarkObj} from "rc-slider/es/Marks";
 import {CastingTime} from "@/components/CastingTime";
 import Select from 'react-select'
 import Draggable from "@/components/draggable/Draggable";
+import {useWindowVirtualizer, VirtualItem, Virtualizer} from "@tanstack/react-virtual";
 
 export type SpellGridSized = Record<SpellSize, string>
-
 
 interface ISpellModalProps {
     spell: ISpell | null,
@@ -34,6 +45,71 @@ export function SpellModal({spell, ref, onTagClick}: ISpellModalProps) {
     </dialog>
 }
 
+interface ISpellRowProps {
+    row: ISpell[],
+    virtualRow: VirtualItem,
+    rowVirtualizer: Virtualizer<Window, Element>
+    gridClassName: string,
+    spellSize: SpellSize,
+    onSelect: (spell: ISpell) => void,
+    onTagClick: (tag: string) => void,
+    onDrop?: (spell: ISpell) => void
+}
+
+function SpellRow({
+                      row,
+                      virtualRow,
+                      rowVirtualizer,
+                      gridClassName,
+                      spellSize,
+                      onSelect,
+                      onTagClick,
+                      onDrop
+                  }: ISpellRowProps) {
+    const [isDragging, setIsDragging] = useState(false)
+
+    const onDragHandler = () => {
+        setIsDragging(true)
+    }
+
+    const onDropHandler = (ref: RefObject<HTMLDivElement | null>,spell: ISpell) => {
+        if (ref.current) {
+            ref.current.style.visibility = "hidden";
+        }
+        setIsDragging(false)
+        if (onDrop) {
+            onDrop(spell)
+        }
+    }
+
+    return (
+        <div
+            key={virtualRow.index}
+            className={`absolute top-0 left-0 w-full ${isDragging ? 'z-40' : 'z-0'}`}
+            data-index={virtualRow.index}
+            ref={rowVirtualizer.measureElement}
+            style={{
+                transform: `translateY(${virtualRow.start}px)`,
+            }}
+        >
+            <div className={`grid ${gridClassName} gap-4 h-full mb-4 z-0`}>
+                {row.map((spell) => {
+                    if (onDrop) {
+                        return (
+                            <Draggable key={spell.id} onDrop={(ref) => onDropHandler(ref, spell)} onDrag={onDragHandler}>
+                                <Spell spell={spell} size={spellSize} onSelect={onSelect}
+                                       onTagClick={onTagClick}/>
+                            </Draggable>
+                        );
+                    }
+                    return <Spell key={spell.id} spell={spell} size={spellSize} onSelect={onSelect}
+                                  onTagClick={onTagClick}/>;
+                })}
+            </div>
+        </div>
+    );
+}
+
 
 interface ISpellListGridProps {
     grid: SpellGridSized,
@@ -44,16 +120,98 @@ interface ISpellListGridProps {
     onDrop?: (spell: ISpell) => void
 }
 
-const SpellGrid = memo(function SpellGrid({grid, spells, spellSize, onSelect, onTagClick, onDrop}: ISpellListGridProps) {
-    return <div className={`grid ${grid[spellSize]} gap-4`}>
-        {spells.map(spell => {
-            if (onDrop) {
-                return <Draggable key={spell.id} onDrop={() => onDrop(spell)}><Spell spell={spell} size={spellSize} onSelect={onSelect} onTagClick={onTagClick}/></Draggable>
+const SpellGrid = memo(function SpellGrid({
+                                              grid,
+                                              spells,
+                                              spellSize,
+                                              onSelect,
+                                              onTagClick,
+                                              onDrop
+                                          }: ISpellListGridProps) {
+    const [columnCount, setColumnCount] = useState(1);
+    const gridRef = useRef<HTMLDivElement | null>(null);
+
+    useLayoutEffect(() => {
+        const gridElement = gridRef.current;
+        if (!gridElement) return;
+
+        const resizeObserver = new ResizeObserver(() => {
+            if (gridElement.firstChild) {
+                const gridWidth = gridElement.clientWidth;
+                const firstItemWidth = (gridElement.firstChild as HTMLElement).clientWidth;
+
+                if (firstItemWidth > 0) {
+                    const newColumnCount = Math.max(1, Math.round(gridWidth / firstItemWidth));
+                    setColumnCount(newColumnCount);
+                }
             }
-            return <Spell key={spell.id} spell={spell} size={spellSize} onSelect={onSelect} onTagClick={onTagClick}/>
-        })}
-    </div>
-})
+        });
+
+        resizeObserver.observe(gridElement);
+
+        return () => resizeObserver.disconnect();
+
+    }, [grid, spellSize]);
+
+    const rows = useMemo(() => {
+        if (columnCount === 0) return [];
+        const result = [];
+        for (let i = 0; i < spells.length; i += columnCount) {
+            result.push(spells.slice(i, i + columnCount));
+        }
+        return result;
+    }, [spells, columnCount]);
+
+    let estimatedSize = 0
+    switch (spellSize) {
+        case "sm":
+            estimatedSize = 150;
+            break;
+        case "md":
+            estimatedSize = 200;
+            break;
+        case "lg":
+            estimatedSize = 300;
+            break;
+    }
+
+    const rowVirtualizer = useWindowVirtualizer({
+        count: rows.length,
+        estimateSize: () => estimatedSize,
+        overscan: 5,
+    });
+
+    const gridClassName = grid[spellSize];
+
+    return (
+        <div className="relative w-full" style={{height: `${rowVirtualizer.getTotalSize()}px`}}>
+            <div ref={gridRef} className={`absolute top-0 left-0 w-full opacity-0 z-0 grid ${gridClassName}`}>
+                {spells[0] && <Spell spell={spells[0]} size={spellSize} onSelect={() => {
+                }} onTagClick={() => {
+                }}/>}
+            </div>
+
+            <div className="w-full">
+                {rowVirtualizer.getVirtualItems().map((virtualRow) => {
+                    const row = rows[virtualRow.index];
+                    if (!row) return null;
+
+                    return <SpellRow
+                        key={virtualRow.index}
+                        row={row}
+                        virtualRow={virtualRow}
+                        rowVirtualizer={rowVirtualizer}
+                        gridClassName={gridClassName}
+                        spellSize={spellSize}
+                        onSelect={onSelect}
+                        onTagClick={onTagClick}
+                        onDrop={onDrop}
+                    />
+                })}
+            </div>
+        </div>
+    );
+});
 
 interface ISpellListProps {
     grid: SpellGridSized,
@@ -172,7 +330,9 @@ export function SpellList({grid, initSpells, onDrop}: ISpellListProps) {
     }, []);
 
     const tagsOptions = useMemo(() => {
-        return spellTags.map(tag => {return {value: tag, label: t(`data.spell.tag.${tag}`)}})
+        return spellTags.map(tag => {
+            return {value: tag, label: t(`data.spell.tag.${tag}`)}
+        })
     }, [t]);
 
     return <div className={`flex flex-col gap-4 w-full`}>
@@ -180,7 +340,7 @@ export function SpellList({grid, initSpells, onDrop}: ISpellListProps) {
             <div className={`grow text-2xl font-semibold`}>
                 <Trans t={t}
                        values={{count: spells.length, max: initSpells.length}}
-                       components={{ small: <span className={`text-sm`}/>}}
+                       components={{small: <span className={`text-sm`}/>}}
                 >
                     layout.spell-list.title
                 </Trans>
@@ -357,7 +517,8 @@ export function SpellList({grid, initSpells, onDrop}: ISpellListProps) {
             </div>
         </div>
         <div className={spendingChangeSize ? 'opacity-50 transition-opacity' : ''}>
-            <SpellGrid onDrop={onDrop} grid={grid} spells={spells} onSelect={onSelectHandler} spellSize={spellSize} onTagClick={(tag: string) => setTagFilter([tag])}/>
+            <SpellGrid onDrop={onDrop} grid={grid} spells={spells} onSelect={onSelectHandler} spellSize={spellSize}
+                       onTagClick={(tag: string) => setTagFilter([tag])}/>
         </div>
         <SpellModal onTagClick={(tag: string) => setTagFilter([tag])} spell={spellModalActive} ref={modalRef}/>
     </div>
