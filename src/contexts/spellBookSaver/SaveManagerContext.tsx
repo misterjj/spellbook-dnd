@@ -14,7 +14,7 @@ interface SaveMangerContextProps {
     saveData: SaveData,
     addSpell: (id: string, spell: SpellId) => void
     removeSpell: (id: string, spell: SpellId) => void
-    persist: () => void
+    cleanSpells: (id: string) => void
 }
 
 export const SaveManagerContext = createContext<SaveMangerContextProps>(
@@ -22,7 +22,7 @@ export const SaveManagerContext = createContext<SaveMangerContextProps>(
         saveData: emptySave,
         addSpell: () => {},
         removeSpell: () => {},
-        persist: () => {}
+        cleanSpells: () => {}
     }
 )
 

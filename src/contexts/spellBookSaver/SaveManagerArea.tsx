@@ -84,12 +84,32 @@ export function SaveManagerArea({children}: SpellBookSaverAreaProps) {
 
     }, []);
 
+    const cleanSpells = useCallback((bookId: string) => {
+        setSaveData(currentSaveData => {
+            const updatedSpellsBooks = currentSaveData.spellsBooks.map(book => {
+                if (book.id !== bookId) {
+                    return book;
+                }
+
+                return {
+                    ...book,
+                    spells: []
+                };
+            });
+
+            return {
+                ...currentSaveData,
+                spellsBooks: updatedSpellsBooks
+            };
+        });
+    }, []);
+
 
     const contextValue = {
         saveData,
         addSpell,
         removeSpell,
-        persist: () => {}
+        cleanSpells
     };
 
     return (

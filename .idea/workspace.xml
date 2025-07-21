@@ -5,12 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0a8e748c-3889-46cb-abc2-cd03c8fec980" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/DivFixer.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/spell-books/[slug]/edit/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/spell-books/[slug]/edit/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SpellList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SpellList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/draggable/Draggable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/draggable/Draggable.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/contexts/spellBookSaver/SaveManagerArea.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/contexts/spellBookSaver/SaveManagerArea.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/contexts/spellBookSaver/SaveManagerContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/contexts/spellBookSaver/SaveManagerContext.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,7 +22,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:\Users\jonathan\scoop\shims\php.exe" />
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="/opt/homebrew/Cellar/php@7.3/7.3.33_9/bin/php" />
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="2" />
   </component>
@@ -51,7 +50,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "C:\\Users\\jonathan\\projets\\spellbook-dnd\\node_modules\\typescript\\lib",
+    "ts.external.directory.path": "/Users/jjorand/perso/spellbook-dnd/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -88,8 +87,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.26927.53" />
-        <option value="bundled-js-predefined-d6986cc7102b-09060db00ec0-JavaScript-IU-251.26927.53" />
+        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.25410.129" />
+        <option value="bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-IU-251.25410.129" />
       </set>
     </attachedChunks>
   </component>
@@ -117,6 +116,7 @@
       <workItem from="1752662181019" duration="4447000" />
       <workItem from="1752746656376" duration="4776000" />
       <workItem from="1752835435077" duration="1991000" />
+      <workItem from="1753094520866" duration="4751000" />
     </task>
     <servers />
   </component>
