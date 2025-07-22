@@ -9,6 +9,7 @@ import {SpellSm} from "@/components/Spell";
 import {SaveManagerContext} from "@/contexts/spellBookSaver/SaveManagerContext";
 import {DivFixer} from "@/components/DivFixer";
 import {HiTrash} from "react-icons/hi";
+import {Trans, useTranslation} from "react-i18next";
 
 interface ISpellMap {
     [key: `level${number}`]: ISpell[];
@@ -46,6 +47,7 @@ export default function SpellBookEditPage() {
     const id = params.slug?.toString() || "unknown"
     const [spellModalActive, setSpellModalActive] = useState<ISpell | null>(null)
     const {saveData, addSpell, removeSpell, cleanSpells} = useContext(SaveManagerContext)
+    const {t} = useTranslation()
 
     const modalRef = useRef<HTMLDialogElement | null>(null);
 
@@ -109,7 +111,9 @@ export default function SpellBookEditPage() {
                     <div className={`w-2/5 hidden lg:block grow`}>
                         <div className={`p-2`}>
                             <div className={`flex justify-between items-center`}>
-                                <div className={`text-2xl font-semibold`}>Liste des sorts préparés pour {id}</div>
+                                <div className={`text-2xl font-semibold`}>
+                                    <Trans t={t} values={{id}}>layout.spell-book.edit.title</Trans>
+                                </div>
                                 <div className={`btn btn-ghost hover:btn-error btn-sm flex items-center gap-1`}
                                     onClick={deleteAllHandler}>
                                     <HiTrash/>
@@ -117,25 +121,28 @@ export default function SpellBookEditPage() {
                                 </div>
                             </div>
                             <DivFixer>
-                                <div className={`border border-dashed rounded-lg mt-4 px-4 pb-4 min-h-102`}>
-                                    {selectedSpells.length == 0 &&
-                                        <div className={`h-98 flex items-center justify-center`}>
-                                            <div>
-                                                <div className={`text-xl`}>Vous n'avez pas encore de sort préparés</div>
-                                                <div
-                                                    className={`text-xl text-center text-primary font-semibold`}>Glissez
-                                                    des sorts ici
+                                <div className={`right-0 w-full pb-4 group-[.is-fixed]/div-fixer:w-2/5 group-[.is-fixed]/div-fixer:pr-12`}>
+                                    <div className={`border border-dashed rounded-lg mt-4 px-4 pb-4 min-h-102`}>
+                                        {selectedSpells.length == 0 &&
+                                            <div className={`h-98 flex items-center justify-center`}>
+                                                <div>
+                                                    <div className={`text-xl text-center`}>
+                                                        <Trans t={t}>layout.spell-book.edit.empty</Trans>
+                                                    </div>
+                                                    <div className={`text-xl text-center text-primary font-semibold`}>
+                                                        <Trans t={t}>layout.spell-book.edit.drag-spell</Trans>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>}
-                                    {
-                                        Array.from({length: 10}, (_, i) => i).map(level => {
-                                            return <SavedSpellLevel key={level} level={level}
-                                                                    spells={spells[`level${level}`] || []}
-                                                                    onSelect={onSelectHandler}
-                                                                    onDelete={onDeleteHandler}/>
-                                        })
-                                    }
+                                            </div>}
+                                        {
+                                            Array.from({length: 10}, (_, i) => i).map(level => {
+                                                return <SavedSpellLevel key={level} level={level}
+                                                                        spells={spells[`level${level}`] || []}
+                                                                        onSelect={onSelectHandler}
+                                                                        onDelete={onDeleteHandler}/>
+                                            })
+                                        }
+                                    </div>
                                 </div>
                             </DivFixer>
                         </div>

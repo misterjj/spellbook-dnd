@@ -29,6 +29,13 @@
     },
     "spell-list": {
       "title": "Liste des sorts <small>({{count}}/{{max}})</small>"
+    },
+    "spell-book": {
+      "edit": {
+        "title" : "Liste des sorts préparés pour {{id}}",
+        "empty" : "Vous n'avez pas encore de sort préparés",
+        "drag-spell" : "Glissez des sorts ici"
+      }
     }
   },
   "spell-layout": {

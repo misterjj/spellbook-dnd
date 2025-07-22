@@ -14,9 +14,9 @@
 // };
 
 import {useContext, useState} from "react";
-import Draggable from "@/components/Draggable/Draggable";
-import {DraggableTarget} from "@/components/Draggable/DraggableTarget";
-import {DragAndDropContext} from "@/components/Draggable/DragAndDropContext";
+import {DragAndDropContext} from "@/contexts/draggable/DragAndDropContext";
+import {DraggableTarget} from "@/components/draggable/DraggableTarget";
+import Draggable from "@/components/draggable/Draggable";
 
 interface Item {
     id: string

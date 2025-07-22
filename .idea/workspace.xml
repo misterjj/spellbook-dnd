@@ -5,11 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0a8e748c-3889-46cb-abc2-cd03c8fec980" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/DivFixer.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/spell-books/[slug]/edit/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/spell-books/[slug]/edit/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/contexts/spellBookSaver/SaveManagerArea.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/contexts/spellBookSaver/SaveManagerArea.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/contexts/spellBookSaver/SaveManagerContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/contexts/spellBookSaver/SaveManagerContext.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/DivFixer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DivFixer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SpellList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SpellList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/i18n/fr/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/i18n/fr/translation.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,26 +34,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "js.debugger.nextJs.config.created.client": "true",
-    "js.debugger.nextJs.config.created.server": "true",
-    "js.last.introduce.type": "CONST",
-    "last_opened_file_path": "/Users/jjorand/perso/spellbook-dnd/src/app/spell-books/[slug]/edit",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "/Users/jjorand/perso/spellbook-dnd/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;js.debugger.nextJs.config.created.client&quot;: &quot;true&quot;,
+    &quot;js.debugger.nextJs.config.created.server&quot;: &quot;true&quot;,
+    &quot;js.last.introduce.type&quot;: &quot;CONST&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/jjorand/perso/spellbook-dnd/src/app/spell-books/[slug]/edit&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/jjorand/perso/spellbook-dnd/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/app/spell-books/[slug]/edit" />
@@ -117,6 +117,7 @@
       <workItem from="1752746656376" duration="4776000" />
       <workItem from="1752835435077" duration="1991000" />
       <workItem from="1753094520866" duration="4751000" />
+      <workItem from="1753181444054" duration="2943000" />
     </task>
     <servers />
   </component>

@@ -336,7 +336,7 @@ export function SpellList({grid, initSpells, onDrop}: ISpellListProps) {
     }, [t]);
 
     return <div className={`flex flex-col gap-4 w-full`}>
-        <div className={`flex gap-2 justify-end items-center`}>
+        <div className={`flex flex-wrap gap-2 justify-end items-center`}>
             <div className={`grow text-2xl font-semibold`}>
                 <Trans t={t}
                        values={{count: spells.length, max: initSpells.length}}

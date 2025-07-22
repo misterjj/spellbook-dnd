@@ -36,9 +36,11 @@ export function DivFixer({children}: DivFixerProps) {
 
     const childClassName = isValidElement(child) ? (child.props as { className?: string }).className || '' : '';
 
-    return <div className={"relative w-full"} ref={ref}>
+    const isFixed = scrollY > initY;
+
+    return <div className={`relative w-full group/div-fixer ${isFixed ? "is-fixed" : ""}`} ref={ref}>
         {cloneElement(child as ReactElement<{ className?: string }>, {
-            className: `${childClassName} ${scrollY > initY ? "fixed max-h-screen overflow-y-auto top-0 !m-0" : ""}`
+            className: `${childClassName} ${isFixed? "fixed max-h-screen overflow-y-auto top-0 !m-0" : ""}`
         })}
     </div>
 }
