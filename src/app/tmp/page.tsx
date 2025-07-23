@@ -50,7 +50,7 @@ export default function Tmp() {
                         if (targetId !== null) {
                             setItemsSaved(prev => [...prev, item])
                         }
-                    }}>
+                    }} onDrag={() => {}}>
                         <div className={`w-50 bg-red-500 p-4 text-white`}>
                             {item.id}
                         </div>

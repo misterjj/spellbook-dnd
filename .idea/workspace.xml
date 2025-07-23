@@ -7,9 +7,9 @@
     <list default="true" id="0a8e748c-3889-46cb-abc2-cd03c8fec980" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/spell-books/[slug]/edit/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/spell-books/[slug]/edit/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/DivFixer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DivFixer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/tmp/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/tmp/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/SpellList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SpellList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/i18n/fr/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/i18n/fr/translation.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/draggable/Draggable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/draggable/Draggable.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

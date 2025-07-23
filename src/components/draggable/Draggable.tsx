@@ -7,7 +7,7 @@ import {
     JSX,
     ReactElement,
     RefObject,
-    useContext,
+    useContext, useEffect,
     useRef,
     useState
 } from "react";
@@ -17,7 +17,6 @@ import {DragAndDropContext} from "@/contexts/draggable/DragAndDropContext";
 interface DraggableProps {
     children: JSX.Element;
     onDrop: (ref: RefObject<HTMLDivElement | null>) => void;
-    onDrag: () => void;
 }
 
 const checkCollision = (rect1: DOMRect, rect2: DOMRect) => {
@@ -29,11 +28,14 @@ const checkCollision = (rect1: DOMRect, rect2: DOMRect) => {
     );
 };
 
-export default function Draggable({children, onDrop, onDrag}: DraggableProps) {
+export default function Draggable({children, onDrop}: DraggableProps) {
     const [currentPos, setCurrentPos] = useState<{ x: number, y: number } | null>(null)
     const [currentIsDragging, setCurrentIsDragging] = useState<boolean>(false)
     const draggableRef = useRef<HTMLDivElement>(null);
     const {targets, setDragging} = useContext(DragAndDropContext);
+    const [clone, setClone] = useState<HTMLDivElement|null>(null)
+    const [clonePosition, setClonePosition] = useState({x: 0, y: 0})
+    const [cloneOffsetPosition, setCloneOffsetPosition] = useState({x: 0, y: 0})
 
     const targetsRef = useRef(targets);
 
@@ -44,6 +46,13 @@ export default function Draggable({children, onDrop, onDrag}: DraggableProps) {
         [currentPos],
     );
 
+    useEffect(() => {
+        if (clone) {
+            clone.style.left = (clonePosition.x - cloneOffsetPosition.x) + 'px'
+            clone.style.top = (clonePosition.y - cloneOffsetPosition.y) + 'px'
+        }
+    }, [clonePosition, cloneOffsetPosition, clone])
+
     const staticPlugins = [
         threshold({distance: 10}),
         bounds(BoundsFrom.viewport()),
@@ -52,13 +61,43 @@ export default function Draggable({children, onDrop, onDrag}: DraggableProps) {
                 setCurrentPos(data.offset)
                 setDragging(true)
                 setCurrentIsDragging(true)
-                onDrag()
+
+                if (draggableRef.current) {
+                    const elem = draggableRef.current
+                    const cloneElem = elem.cloneNode(true) as HTMLDivElement;
+                    cloneElem.style.position = 'absolute'
+                    cloneElem.style.top = (data.event.pageY - data.event.offsetY) + 'px'
+                    cloneElem.style.left = (data.event.pageX - data.event.offsetX) + 'px'
+                    cloneElem.style.zIndex = '50'
+                    cloneElem.style.width = elem.offsetWidth + 'px'
+                    cloneElem.style.height = elem.offsetHeight + 'px'
+                    document.body.appendChild(cloneElem)
+                    setClone(cloneElem)
+                    elem.style.visibility = 'hidden'
+                    setClonePosition({x: data.event.pageX, y: data.event.pageY})
+                    setCloneOffsetPosition({x: data.event.offsetX, y: data.event.offsetY})
+                }
+            },
+            onDrag: (data) => {
+                setClonePosition({x: data.event.pageX, y: data.event.pageY})
+                setCloneOffsetPosition({x: data.event.offsetX, y: data.event.offsetY})
             },
             onDragEnd: (data) => {
                 const domRect = data.currentNode.getBoundingClientRect();
                 let droppedOnTarget = false;
                 setDragging(false)
                 setCurrentIsDragging(false)
+                setClone(clone => {
+                        if (clone) {
+                            clone.remove()
+                        }
+
+                        return null;
+                    }
+                )
+                if (draggableRef.current) {
+                    draggableRef.current.style.visibility = 'visible'
+                }
 
                 for (const target of targetsRef.current) {
                     if (target.ref.current) {

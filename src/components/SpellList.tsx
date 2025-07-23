@@ -66,17 +66,11 @@ function SpellRow({
                       onTagClick,
                       onDrop
                   }: ISpellRowProps) {
-    const [isDragging, setIsDragging] = useState(false)
-
-    const onDragHandler = () => {
-        setIsDragging(true)
-    }
 
     const onDropHandler = (ref: RefObject<HTMLDivElement | null>,spell: ISpell) => {
         if (ref.current) {
             ref.current.style.visibility = "hidden";
         }
-        setIsDragging(false)
         if (onDrop) {
             onDrop(spell)
         }
@@ -85,7 +79,7 @@ function SpellRow({
     return (
         <div
             key={virtualRow.index}
-            className={`absolute top-0 left-0 w-full ${isDragging ? 'z-40' : 'z-0'}`}
+            className={`absolute top-0 left-0 w-full`}
             data-index={virtualRow.index}
             ref={rowVirtualizer.measureElement}
             style={{
@@ -96,7 +90,7 @@ function SpellRow({
                 {row.map((spell) => {
                     if (onDrop) {
                         return (
-                            <Draggable key={spell.id} onDrop={(ref) => onDropHandler(ref, spell)} onDrag={onDragHandler}>
+                            <Draggable key={spell.id} onDrop={(ref) => onDropHandler(ref, spell)}>
                                 <Spell spell={spell} size={spellSize} onSelect={onSelect}
                                        onTagClick={onTagClick}/>
                             </Draggable>
