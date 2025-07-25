@@ -210,10 +210,11 @@ const SpellGrid = memo(function SpellGrid({
 interface ISpellListProps {
     grid: SpellGridSized,
     initSpells: ISpell[],
-    onDrop?: (spell: ISpell) => void
+    onDrop?: (spell: ISpell) => void,
+    customHeaderElement?: React.ReactNode,
 }
 
-export function SpellList({grid, initSpells, onDrop}: ISpellListProps) {
+export function SpellList({grid, initSpells, onDrop, customHeaderElement}: ISpellListProps) {
     const {t, i18n} = useTranslation();
     const [spells, setSpells] = useState<ISpell[]>(initSpells)
     const [spellSize, setSpellSize] = useState<SpellSize>("md")
@@ -354,6 +355,7 @@ export function SpellList({grid, initSpells, onDrop}: ISpellListProps) {
                 </svg>
                 <input type="search" required placeholder="Search" onChange={() => refreshList()} ref={searchRef}/>
             </label>
+            {customHeaderElement}
             <div className="drawer drawer-end w-10">
                 <input id="drawer-filter" type="checkbox" className="drawer-toggle"/>
                 <div className="drawer-content">

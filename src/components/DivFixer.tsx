@@ -12,8 +12,6 @@ export function DivFixer({children}: DivFixerProps) {
 
     useEffect(() => {
         setTimeout(() => {
-            console.log(ref.current)
-            console.log(ref.current?.offsetTop)
             setInitY(ref.current?.getBoundingClientRect().top ?? 0)
         }, 500)
         const logit = () => {

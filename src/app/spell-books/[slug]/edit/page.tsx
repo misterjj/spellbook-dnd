@@ -83,6 +83,7 @@ export default function SpellBookEditPage() {
     const id = params.slug?.toString() || "unknown"
     const [spellModalActive, setSpellModalActive] = useState<ISpell | null>(null)
     const {saveData, addSpell, removeSpell, cleanSpells} = useContext(SaveManagerContext)
+    const seeSpellsBtnRef = useRef<HTMLLabelElement | null>(null);
     const {t} = useTranslation()
     const {isDragging} = useContext(DragAndDropContext);
 
@@ -135,41 +136,59 @@ export default function SpellBookEditPage() {
         setSelectedSpells(spellBook?.spells || [])
     }, [setSelectedSpells, id, saveData.spellsBooks])
 
-    return (<>
-            <div className={`drawer ${isDragging ? 'drawer-open' : ''} lg:hidden fixed right-0 top-0 w-full h-10 z-30`}>
-                <input id="my-drawer-4" type="checkbox" className="drawer-toggle"/>
-                {!isDragging && <div className="drawer-content">
-                    {/* Page content here */}
-                    <label htmlFor="my-drawer-4" className="drawer-button btn btn-primary">Open drawer</label>
-                </div>}
-                <DraggableTarget id={"titi"}>
-                    <div className="drawer-side lg:hidden">
-                        <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
-                        <div className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
-                            <div className={`flex justify-between items-center`}>
-                                <div className={`text-sm font-semibold`}>
-                                    <Trans t={t} values={{id}}>layout.spell-book.edit.title</Trans>
-                                </div>
-                                <div className={`btn btn-ghost hover:btn-error btn-sm flex items-center gap-1`}
-                                     onClick={deleteAllHandler}>
-                                    <HiTrash/>
-                                    <span>Tout effacer</span>
-                                </div>
-                            </div>
-                            <SpellListTarget
-                                selectedSpells={selectedSpells}
-                                spells={spells}
-                                onDeleteHandler={onDeleteHandler}
-                                onSelectHandler={onSelectHandler}/>
-                        </div>
-                    </div>
-                </DraggableTarget>
+    useEffect(() => {
+        if (isDragging) {
+            console.log(seeSpellsBtnRef.current)
+            seeSpellsBtnRef.current?.click()
+        }
+    }, [isDragging, seeSpellsBtnRef]);
+
+    const saveSpellDrawer = useMemo(() => {
+        return <div className={`drawer lg:hidden w-full h-10 z-11`}>
+            <input id="my-drawer-4" type="checkbox" className="drawer-toggle"/>
+            <div className="drawer-content">
+                {/* Page content here */}
+                <DivFixer>
+                    <label htmlFor="my-drawer-4"
+                           className="drawer-button btn btn-primary z-1 left-8 top-8 btn-outline bg-base-100 origin-bottom-right h-8
+                           group-[.is-fixed]/div-fixer:-rotate-90 group-[.is-fixed]/div-fixer:-translate-x-full active:group-[.is-fixed]/div-fixer:-translate-x-full"
+                           ref={seeSpellsBtnRef}>
+                        Voir les sorts préparées
+                    </label>
+                </DivFixer>
             </div>
+            <DraggableTarget id={"titi"}>
+                <div className="drawer-side lg:hidden">
+                    <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
+                    <div className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
+                        <div className={`flex justify-between items-center`}>
+                            <div className={`text-sm font-semibold`}>
+                                <Trans t={t} values={{id}}>layout.spell-book.edit.title</Trans>
+                            </div>
+                            <div className={`btn btn-ghost hover:btn-error btn-sm flex items-center gap-1`}
+                                 onClick={deleteAllHandler}>
+                                <HiTrash/>
+                                <span>Tout effacer</span>
+                            </div>
+                        </div>
+                        <SpellListTarget
+                            selectedSpells={selectedSpells}
+                            spells={spells}
+                            onDeleteHandler={onDeleteHandler}
+                            onSelectHandler={onSelectHandler}/>
+                    </div>
+                </div>
+            </DraggableTarget>
+        </div>
+    }, [deleteAllHandler, id, onDeleteHandler, onSelectHandler, selectedSpells, spells, t])
+
+    return (<>
             <div className={`flex gap-4`}>
                 <div className={`w-full lg:w-3/5`}>
                     <SpellList grid={grid}
                                initSpells={spellList.filter(spell => !selectedSpells.includes(spell.id))}
                                onDrop={onDropHandler}
+                               customHeaderElement={saveSpellDrawer}
                     />
                 </div>
                 <DraggableTarget id={"sidebar"}>
