@@ -103,6 +103,8 @@ export default function Draggable({children, onDrop}: DraggableProps) {
                     if (target.ref.current) {
                         const targetRect = target.ref.current.getBoundingClientRect();
                         if (checkCollision(domRect, targetRect)) {
+                            console.log("ici")
+                            console.log(target.ref.current)
                             onDrop(draggableRef);
                             droppedOnTarget = true;
                             break;

@@ -156,7 +156,6 @@ function SpellIcon({spell, className}: ISpellIconProps) {
     return <ImageWithFallback
         className={className}
         src={`/images/spells/${spell.id}.webp`}
-        // src={spell.blurDataURL}
         fallbackSrc={`/images/spells/unknown.webp`}
         placeholder={spell.blurDataURL ? 'blur' : 'empty'}
         blurDataURL={spell.blurDataURL}
@@ -199,7 +198,7 @@ export function SpellSm({spell, onSelect, onDelete}: ISpellSmProps) {
     const {i18n} = useTranslation();
 
     return <>
-        <div className={`indicator w-full cursor-pointer`}
+        <div className={`indicator w-full min-w-32 cursor-pointer`}
              onClick={() => onSelect(spell)}>
             <span
                 className="indicator-item indicator-center badge badge-primary px-2 gap-1">

@@ -3,6 +3,8 @@
 import {SpellGridSized, SpellList} from "@/components/SpellList";
 import {useContext, useEffect} from "react";
 import {SpellLoaderContext} from "@/contexts/spellLoader/SpellLoaderContext";
+// import ImageWithFallback from "@/components/ImageWithFallBack";
+// import Image from "next/image";
 
 
 export default function SpellListPage() {
@@ -26,16 +28,23 @@ export default function SpellListPage() {
 
     return (
         <SpellList grid={grid} initSpells={spells}/>
-        // <div className="relative bg-white">
+        // <div className="relative">
         //     <div className="fixed right-0 top-0">
-        //         {spellList.filter(item => item.icon !== undefined).length} / {spellList.length} ({Math.round((spellList.filter(item => item.icon !== undefined).length / spellList.length) * 10000) / 100} %)
         //     </div>
         //     {
-        //         spellList.map((spell, i) => (
+        //         spells.map((spell, i) => (
         //             <div key={i}>
         //                 <strong>{spell.id} {spell.name.fr}</strong>
-        //                 {spell.icon && <Image className={`rounded-lg border border-slate-500`} src={spell.icon} width={128} height={128} alt={spell.name.en}/>}
-        //                 {spell.icon == unknownIcon && <div>illustration rpg spell called {spell.name.en}. COLORS, symbolism, cloudcore, endercore, black background, wavy lines organic shapes, logo, no text</div>}
+        //                 <Image
+        //                     src={`/images/spells-original/${spell.id}.jpg`}
+        //                     placeholder={spell.blurDataURL ? 'blur' : 'empty'}
+        //                     blurDataURL={spell.blurDataURL}
+        //                     alt={spell.name.en}
+        //                     width="128"
+        //                     height="128"
+        //                     sizes={"128px"}
+        //                 />
+        //                 <div>illustration rpg spell called {spell.name.en}. COLORS, symbolism, cloudcore, endercore, black background, wavy lines organic shapes, logo, no text</div>
         //                 {/*{!spell.icon && <div>import {camelize(spell.id).replaceAll("-","")} from &quot;@/data/images/spells/{spell.id}.jpg&quot;;</div>}*/}
         //             </div>
         //         ))

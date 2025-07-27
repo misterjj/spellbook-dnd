@@ -303,7 +303,6 @@ export function SpellList({grid, initSpells, onDrop, customHeaderElement}: ISpel
     useEffect(() => {
         setIsFiltered(spells.length !== initSpells.length)
         refreshList()
-        console.log(initSpells)
     }, [initSpells, breedFilter, levelFilter, castingTimeFilter, tagFilter, refreshList, spells.length])
 
     useEffect(() => {

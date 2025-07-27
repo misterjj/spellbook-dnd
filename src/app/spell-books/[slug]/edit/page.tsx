@@ -26,7 +26,7 @@ interface ISpellByLevel {
 
 function SavedSpellLevel({level, spells, onSelect, onDelete}: ISpellByLevel) {
     if (spells.length === 0) {
-        return ""
+        return null // Retourner null est plus idiomatique en React pour ne rien rendre
     }
 
     return (
@@ -34,7 +34,7 @@ function SavedSpellLevel({level, spells, onSelect, onDelete}: ISpellByLevel) {
             <fieldset className="fieldset bg-base-200 border-base-300 rounded-box border p-4">
                 <legend className="fieldset-legend">Sort de niveau {level}</legend>
                 <div className={`flex flex-wrap justify-center gap-4`}>
-                    {spells.map(spell => <div key={spell.id}>
+                    {spells.map(spell => <div key={spell.id} className={"shrink-0"}>
                         <SpellSm spell={spell} onSelect={onSelect} onDelete={onDelete}/>
                     </div>)}
                 </div>
@@ -55,7 +55,7 @@ function SpellListTarget({selectedSpells, spells, onSelectHandler, onDeleteHandl
 
     return (
         <div className={`border border-dashed rounded-lg mt-4 px-4 pb-4 min-h-102`}>
-            {selectedSpells.length == 0 &&
+            {selectedSpells.length === 0 &&
                 <div className={`h-98 flex items-center justify-center`}>
                     <div>
                         <div className={`text-xl text-center`}>
@@ -88,6 +88,7 @@ export default function SpellBookEditPage() {
     const {t} = useTranslation()
     const {isDragging} = useContext(DragAndDropContext);
     const {spells, loadSpells} = useContext(SpellLoaderContext);
+    const [isButtonVisible, setIsButtonVisible] = useState(false)
 
     const modalRef = useRef<HTMLDialogElement | null>(null);
 
@@ -104,20 +105,8 @@ export default function SpellBookEditPage() {
     }
 
     const selectedSpells: ISpellMap = useMemo(() => {
-        const t = Object.groupBy(spells.filter(spell => selectedSpellIds.includes(spell.id)), (spell) => spell.level.toString())
-
-        return {
-            level0: t['0'] || [],
-            level1: t['1'] || [],
-            level2: t['2'] || [],
-            level3: t['3'] || [],
-            level4: t['4'] || [],
-            level5: t['5'] || [],
-            level6: t['6'] || [],
-            level7: t['7'] || [],
-            level8: t['8'] || [],
-            level9: t['9'] || [],
-        }
+        const t = Object.groupBy(spells.filter(spell => selectedSpellIds.includes(spell.id)), (spell) => `level${spell.level.toString()}`)
+        return t as ISpellMap;
     }, [selectedSpellIds, spells]);
 
     const onDeleteHandler = (spell: ISpell) => {
@@ -138,23 +127,46 @@ export default function SpellBookEditPage() {
     }
 
     useEffect(() => {
-        const spellBook = saveData.spellsBooks.filter(sb => sb.id == id).pop()
+        const spellBook = saveData.spellsBooks.find(sb => sb.id == id)
 
         setSelectedSpellIds(spellBook?.spells || [])
     }, [setSelectedSpellIds, id, saveData.spellsBooks])
 
+    // Hook pour observer la visibilité du bouton
     useEffect(() => {
-        if (isDragging) {
-            console.log(seeSpellsBtnRef.current)
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                setIsButtonVisible(entry.isIntersecting);
+            },
+            {
+                root: null, // par rapport au viewport
+                threshold: 0.1 // visible à 10%
+            }
+        );
+
+        const currentButton = seeSpellsBtnRef.current;
+        if (currentButton) {
+            observer.observe(currentButton);
+        }
+
+        return () => {
+            if (currentButton) {
+                observer.unobserve(currentButton);
+            }
+        };
+    }, []);
+
+
+    useEffect(() => {
+        if (isDragging && isButtonVisible) {
             seeSpellsBtnRef.current?.click()
         }
-    }, [isDragging, seeSpellsBtnRef]);
+    }, [isDragging, isButtonVisible]);
 
     const saveSpellDrawer = useMemo(() => {
         return <div className={`drawer lg:hidden w-full h-10 z-11`}>
             <input id="my-drawer-4" type="checkbox" className="drawer-toggle"/>
             <div className="drawer-content">
-                {/* Page content here */}
                 <DivFixer>
                     <label htmlFor="my-drawer-4"
                            className="drawer-button btn btn-primary z-1 left-8 top-8 btn-outline bg-base-100 origin-bottom-right h-8
@@ -164,9 +176,9 @@ export default function SpellBookEditPage() {
                     </label>
                 </DivFixer>
             </div>
-            <DraggableTarget id={"titi"}>
-                <div className="drawer-side lg:hidden">
-                    <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
+            <div className="drawer-side lg:hidden">
+                <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
+                <DraggableTarget id={"titi"}>
                     <div className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
                         <div className={`flex justify-between items-center`}>
                             <div className={`text-sm font-semibold`}>
@@ -184,8 +196,8 @@ export default function SpellBookEditPage() {
                             onDeleteHandler={onDeleteHandler}
                             onSelectHandler={onSelectHandler}/>
                     </div>
-                </div>
-            </DraggableTarget>
+                </DraggableTarget>
+            </div>
         </div>
     }, [deleteAllHandler, id, onDeleteHandler, onSelectHandler, selectedSpellIds, t, selectedSpells])
 
