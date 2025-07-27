@@ -1,5 +1,4 @@
 import {ISpell, SpellCastingTime, SpellComponents, SpellDuration, SpellRange, TimeDuration} from "@/data/Spell";
-import Image from 'next/image'
 import {Trans, useTranslation} from "react-i18next";
 import {forwardRef, JSX} from "react";
 import {FaBrain} from "react-icons/fa6";
@@ -13,6 +12,7 @@ import {BreedId} from "@/data/Breed";
 import {Breed} from "@/components/Breed";
 import {CastingTime} from "@/components/CastingTime";
 import {Tag} from "@/components/Tag";
+import ImageWithFallback from "@/components/ImageWithFallBack";
 
 export type SpellSize = | "sm" | "md" | "lg"
 export const spellSizes: SpellSize[] = ["sm", "md", "lg"];
@@ -147,6 +147,26 @@ function BreedRenderer({breeds}: IBreedRendererProps): JSX.Element {
     )
 }
 
+interface ISpellIconProps {
+    spell: ISpell,
+    className?: string
+}
+
+function SpellIcon({spell, className}: ISpellIconProps) {
+    return <ImageWithFallback
+        className={className}
+        src={`/images/spells/${spell.id}.webp`}
+        // src={spell.blurDataURL}
+        fallbackSrc={`/images/spells/unknown.webp`}
+        placeholder={spell.blurDataURL ? 'blur' : 'empty'}
+        blurDataURL={spell.blurDataURL}
+        alt={spell.name.en}
+        width="128"
+        height="128"
+        sizes={"128px"}
+    />
+}
+
 interface ISpellProps {
     size: SpellSize,
     spell: ISpell,
@@ -196,8 +216,7 @@ export function SpellSm({spell, onSelect, onDelete}: ISpellSmProps) {
                     </span>
                 </span>}
             <div className={`border border-primary rounded-lg overflow-hidden relative w-full`}>
-                {spell.icon &&
-                    <Image className={`w-full drag-none`} src={spell.icon} width={128} height={128} alt={spell.name.en}/>}
+                <SpellIcon className={`w-full drag-none`} spell={spell} />
                 <div
                     className={`absolute bg-primary/70 text-primary-content font-bold text-xs text-center p-2 w-full bottom-0 `}>{spell.name[i18n.language] || ""}</div>
             </div>
@@ -220,8 +239,7 @@ export function SpellMd({spell, onSelect}: ISpellMdProps) {
             className={`flex flex-col w-full bg-base-300 border-2 border-primary rounded-lg overflow-hidden cursor-pointer`}
             onClick={() => onSelect(spell)}>
             <div className={`relative w-full flex gap-3 pt-2 px-2`}>
-                {spell.icon &&
-                    <Image className={"rounded-lg drag-none"} src={spell.icon} width={128} height={128} alt={spell.name.en}/>}
+                <SpellIcon className={`rounded-lg drag-none shrink-0`} spell={spell} />
                 <div className={`flex flex-col w-full`}>
                     <div className={`text-lg text-primary font-semibold`}>{spell.name[i18n.language] || ""}</div>
                     <div className={`text-sm`}>{t(`data.spell.school.${spell.school}`)}</div>
@@ -268,8 +286,7 @@ export function SpellLg({spell, onTagClick}: ISpellLgProps) {
                 <div className={`text-sm`}>{t(`data.spell.school.${spell.school}`)}</div>
                 <BreedRenderer breeds={spell.breeds}/>
             </div>
-            {spell.icon &&
-                <Image className={"rounded-lg drag-none"} src={spell.icon} width={128} height={128} alt={spell.name.en}/>}
+            <SpellIcon className={`rounded-lg drag-none shrink-0`} spell={spell} />
         </div>
         <div className={`text-justify p-3  ${description.length > 1000 ? "text-sm" : ""}`}>
             {description}

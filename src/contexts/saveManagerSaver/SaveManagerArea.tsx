@@ -1,5 +1,5 @@
 import React, {ReactNode, useCallback, useEffect, useState} from "react";
-import {emptySave, SaveData, SaveManagerContext} from "@/contexts/spellBookSaver/SaveManagerContext";
+import {emptySave, SaveData, SaveManagerContext} from "@/contexts/saveManagerSaver/SaveManagerContext";
 import {SpellId} from "@/data/Spell";
 import {ISpellBookSaved} from "@/data/SpellBook";
 

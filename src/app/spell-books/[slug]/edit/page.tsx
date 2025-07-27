@@ -2,15 +2,16 @@
 
 import {useParams} from 'next/navigation'
 import {SpellGridSized, SpellList, SpellModal} from "@/components/SpellList";
-import {ISpell, SpellId, spellList} from "@/data/Spell";
+import {ISpell, SpellId} from "@/data/Spell";
 import {DraggableTarget} from "@/components/draggable/DraggableTarget";
 import {useCallback, useContext, useEffect, useMemo, useRef, useState} from "react";
 import {SpellSm} from "@/components/Spell";
-import {SaveManagerContext} from "@/contexts/spellBookSaver/SaveManagerContext";
+import {SaveManagerContext} from "@/contexts/saveManagerSaver/SaveManagerContext";
 import {DivFixer} from "@/components/DivFixer";
 import {HiTrash} from "react-icons/hi";
 import {Trans, useTranslation} from "react-i18next";
 import {DragAndDropContext} from "@/contexts/draggable/DragAndDropContext";
+import {SpellLoaderContext} from "@/contexts/spellLoader/SpellLoaderContext";
 
 interface ISpellMap {
     [key: `level${number}`]: ISpell[];
@@ -78,7 +79,7 @@ function SpellListTarget({selectedSpells, spells, onSelectHandler, onDeleteHandl
 }
 
 export default function SpellBookEditPage() {
-    const [selectedSpells, setSelectedSpells] = useState<SpellId[]>([])
+    const [selectedSpellIds, setSelectedSpellIds] = useState<SpellId[]>([])
     const params = useParams()
     const id = params.slug?.toString() || "unknown"
     const [spellModalActive, setSpellModalActive] = useState<ISpell | null>(null)
@@ -86,9 +87,15 @@ export default function SpellBookEditPage() {
     const seeSpellsBtnRef = useRef<HTMLLabelElement | null>(null);
     const {t} = useTranslation()
     const {isDragging} = useContext(DragAndDropContext);
+    const {spells, loadSpells} = useContext(SpellLoaderContext);
 
     const modalRef = useRef<HTMLDialogElement | null>(null);
 
+    useEffect(() => {
+        if (spells.length === 0) {
+            loadSpells();
+        }
+    }, [loadSpells, spells.length]);
 
     const grid: SpellGridSized = {
         "sm": "grid-cols-2 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-7",
@@ -96,8 +103,8 @@ export default function SpellBookEditPage() {
         "lg": "grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3"
     }
 
-    const spells: ISpellMap = useMemo(() => {
-        const t = Object.groupBy(spellList.filter(spell => selectedSpells.includes(spell.id)), (spell) => spell.level.toString())
+    const selectedSpells: ISpellMap = useMemo(() => {
+        const t = Object.groupBy(spells.filter(spell => selectedSpellIds.includes(spell.id)), (spell) => spell.level.toString())
 
         return {
             level0: t['0'] || [],
@@ -111,7 +118,7 @@ export default function SpellBookEditPage() {
             level8: t['8'] || [],
             level9: t['9'] || [],
         }
-    }, [selectedSpells]);
+    }, [selectedSpellIds, spells]);
 
     const onDeleteHandler = (spell: ISpell) => {
         removeSpell(id, spell.id);
@@ -133,8 +140,8 @@ export default function SpellBookEditPage() {
     useEffect(() => {
         const spellBook = saveData.spellsBooks.filter(sb => sb.id == id).pop()
 
-        setSelectedSpells(spellBook?.spells || [])
-    }, [setSelectedSpells, id, saveData.spellsBooks])
+        setSelectedSpellIds(spellBook?.spells || [])
+    }, [setSelectedSpellIds, id, saveData.spellsBooks])
 
     useEffect(() => {
         if (isDragging) {
@@ -172,21 +179,21 @@ export default function SpellBookEditPage() {
                             </div>
                         </div>
                         <SpellListTarget
-                            selectedSpells={selectedSpells}
-                            spells={spells}
+                            selectedSpells={selectedSpellIds}
+                            spells={selectedSpells}
                             onDeleteHandler={onDeleteHandler}
                             onSelectHandler={onSelectHandler}/>
                     </div>
                 </div>
             </DraggableTarget>
         </div>
-    }, [deleteAllHandler, id, onDeleteHandler, onSelectHandler, selectedSpells, spells, t])
+    }, [deleteAllHandler, id, onDeleteHandler, onSelectHandler, selectedSpellIds, t, selectedSpells])
 
     return (<>
             <div className={`flex gap-4`}>
                 <div className={`w-full lg:w-3/5`}>
                     <SpellList grid={grid}
-                               initSpells={spellList.filter(spell => !selectedSpells.includes(spell.id))}
+                               initSpells={spells.filter(spell => !selectedSpellIds.includes(spell.id))}
                                onDrop={onDropHandler}
                                customHeaderElement={saveSpellDrawer}
                     />
@@ -208,8 +215,8 @@ export default function SpellBookEditPage() {
                                 <div
                                     className={`right-0 w-full pb-4 group-[.is-fixed]/div-fixer:w-2/5 group-[.is-fixed]/div-fixer:pr-12`}>
                                     <SpellListTarget
-                                        selectedSpells={selectedSpells}
-                                        spells={spells}
+                                        selectedSpells={selectedSpellIds}
+                                        spells={selectedSpells}
                                         onDeleteHandler={onDeleteHandler}
                                         onSelectHandler={onSelectHandler}/>
                                 </div>

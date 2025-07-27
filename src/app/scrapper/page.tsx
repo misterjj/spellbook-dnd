@@ -21,11 +21,11 @@ const spellBaseUrl = "https://www.aidedd.org/spell/";
 export default function Scrapper() {
     const [spells, setSpells] = useState<ISpell[]>([])
 
-    function camelize(str: string) {
-        return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function(word, index) {
-            return index === 0 ? word.toLowerCase() : word.toUpperCase();
-        }).replace(/\s+/g, '');
-    }
+    // function camelize(str: string) {
+    //     return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function(word, index) {
+    //         return index === 0 ? word.toLowerCase() : word.toUpperCase();
+    //     }).replace(/\s+/g, '');
+    // }
 
     const parseCastingTime = (text: string): SpellCastingTime[] => {
         const result: SpellCastingTime[] = [];
@@ -190,7 +190,6 @@ export default function Scrapper() {
 
                 const spellData: ISpell = {
                     id: spell as SpellId,
-                    icon: camelize(spell).replaceAll("-",""),
                     name: {en: nameEn, fr: nameFr},
                     level,
                     breeds,
@@ -201,7 +200,8 @@ export default function Scrapper() {
                     materials,
                     duration,
                     concentration,
-                    description: {en: descriptionEn, fr: descriptionFr}
+                    description: {en: descriptionEn, fr: descriptionFr},
+                    tags: []
                 };
 
                 spells.push(spellData);
@@ -220,7 +220,7 @@ export default function Scrapper() {
             setSpells(scrapedSpells);
             console.log("All spells scraped:", scrapedSpells);
         });
-    }, []); // Tableau vide = exécution une seule fois au montage
+    }, [scrapSpells]); // Tableau vide = exécution une seule fois au montage
 
     return (
         <pre className={"mt-10"}>
