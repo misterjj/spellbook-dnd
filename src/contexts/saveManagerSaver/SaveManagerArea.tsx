@@ -7,6 +7,12 @@ interface SpellBookSaverAreaProps {
     children: ReactNode;
 }
 
+function uuidv4() {
+    return "10000000-1000-4000-8000-100000000000".replace(/[018]/g, c =>
+        (+c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> +c / 4).toString(16)
+    );
+}
+
 export function SaveManagerArea({children}: SpellBookSaverAreaProps) {
     const [saveData, setSaveData] = useState<SaveData>(emptySave)
 
@@ -22,6 +28,9 @@ export function SaveManagerArea({children}: SpellBookSaverAreaProps) {
         localStorage.setItem('my-save', JSON.stringify(saveData));
     }, [saveData])
 
+    const getSpellBook = useCallback((bookId: string) => {
+        return saveData.spellsBooks.find(book => book.id === bookId);
+    }, [saveData])
 
     const addSpell = useCallback((bookId: string, spell: SpellId) => {
         setSaveData(currentSaveData => {
@@ -52,6 +61,7 @@ export function SaveManagerArea({children}: SpellBookSaverAreaProps) {
             else {
                 const newBook: ISpellBookSaved = {
                     id: bookId,
+                    name: `book-name-${bookId}`,
                     spells: [spell]
                 };
 
@@ -104,12 +114,36 @@ export function SaveManagerArea({children}: SpellBookSaverAreaProps) {
         });
     }, []);
 
+    const addSpellBook = useCallback((name: string) => {
+        const uuid = uuidv4();
+
+        setSaveData(currentSaveDate => {
+            const updatedSpellBooks = [
+                ...currentSaveDate.spellsBooks,
+                {
+                    id: uuid,
+                    name: name,
+                    spells: []
+                }
+            ]
+
+            return {
+                ...currentSaveDate,
+                spellsBooks: updatedSpellBooks
+            }
+        })
+
+        return uuid;
+    }, [])
+
 
     const contextValue = {
         saveData,
         addSpell,
         removeSpell,
-        cleanSpells
+        cleanSpells,
+        getSpellBook,
+        addSpellBook,
     };
 
     return (

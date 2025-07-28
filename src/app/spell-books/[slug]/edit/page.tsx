@@ -8,10 +8,11 @@ import {useCallback, useContext, useEffect, useMemo, useRef, useState} from "rea
 import {SpellSm} from "@/components/Spell";
 import {SaveManagerContext} from "@/contexts/saveManagerSaver/SaveManagerContext";
 import {DivFixer} from "@/components/DivFixer";
-import {HiTrash} from "react-icons/hi";
+import {HiArrowLeft, HiTrash} from "react-icons/hi";
 import {Trans, useTranslation} from "react-i18next";
 import {DragAndDropContext} from "@/contexts/draggable/DragAndDropContext";
 import {SpellLoaderContext} from "@/contexts/spellLoader/SpellLoaderContext";
+import Link from "next/link";
 
 interface ISpellMap {
     [key: `level${number}`]: ISpell[];
@@ -201,7 +202,13 @@ export default function SpellBookEditPage() {
         </div>
     }, [deleteAllHandler, id, onDeleteHandler, onSelectHandler, selectedSpellIds, t, selectedSpells])
 
-    return (<>
+    return (<div className={`flex flex-col gap-4`}>
+            <div className={`flex`}>
+                <Link href={`/spell-books/${id}`} className={`flex items-center gap-1`}>
+                    <HiArrowLeft />
+                    <span>Retour à la liste</span>
+                </Link>
+            </div>
             <div className={`flex gap-4`}>
                 <div className={`w-full lg:w-3/5`}>
                     <SpellList grid={grid}
@@ -239,6 +246,6 @@ export default function SpellBookEditPage() {
             </div>
             <SpellModal onTagClick={() => {
             }} spell={spellModalActive} ref={modalRef}/>
-        </>
+        </div>
     )
 }
