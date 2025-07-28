@@ -103,3 +103,10 @@
     }
   }
 }
+
+.bg-black-500 {
+  @apply bg-black;
+}
+.bg-white-500 {
+  @apply bg-white;
+}

@@ -1,11 +1,11 @@
 "use client"
 
 
-import {useCallback, useContext, useMemo, useRef} from "react";
+import {useCallback, useContext, useRef, useState} from "react";
 import {SaveManagerContext} from "@/contexts/saveManagerSaver/SaveManagerContext";
 import Link from "next/link";
-import {ISpellBookSaved} from "@/data/SpellBook";
-import {HiCheck, HiPlus, HiOutlineXCircle} from "react-icons/hi";
+import {ISpellBookSaved, SpellBookCover, spellBookCovers} from "@/data/SpellBook";
+import {HiCheck, HiOutlineXCircle, HiPlus} from "react-icons/hi";
 
 interface SpellBookProps {
     spellBook: ISpellBookSaved
@@ -13,23 +13,41 @@ interface SpellBookProps {
 
 function SpellBook({spellBook}: SpellBookProps) {
     return <Link href={`spell-books/${spellBook.id}`}>
-        <div className={`w-70 h-100  bg-red-500`}>
+        <div className={`w-70 h-100  bg-black-500`}>
             {spellBook.id}
         </div>
     </Link>
 }
 
 function SpellBookAdd() {
-    const nameInputRef = useRef<HTMLInputElement|null>(null);
+    const nameInputRef = useRef<HTMLInputElement | null>(null);
+    const [coverActive, setCoverActive] = useState<SpellBookCover>(spellBookCovers[Math.floor(Math.random() * spellBookCovers.length)])
     const {addSpellBook} = useContext(SaveManagerContext)
 
 
-    const validateHandler= useCallback(() => {
+    const validateHandler = useCallback(() => {
         if (nameInputRef.current) {
             const uuid = addSpellBook(nameInputRef.current.value);
             (document.getElementById('add_spellbook_modal') as HTMLDialogElement).close()
         }
     }, [nameInputRef]);
+
+    const spellBookCoverClasses: Record<SpellBookCover, string> = {
+        red: "bg-red-500",
+        orange: "bg-orange-500",
+        yellow: "bg-yellow-500",
+        lime: "bg-lime-500",
+        green: "bg-green-500",
+        cyan: "bg-cyan-500",
+        blue: "bg-blue-500",
+        violet: "bg-violet-500",
+        fuchsia: "bg-fuchsia-500",
+        rose: "bg-rose-500",
+        slate: "bg-slate-500",
+        zinc: "bg-zinc-500",
+        black: "bg-black-500",
+        white: "bg-white-500"
+    };
 
     return <>
         <div
@@ -48,6 +66,17 @@ function SpellBookAdd() {
                         <input type="text" className={`input w-full !outline-none`}
                                placeholder={"Nom du livre de sort"} ref={nameInputRef}/>
                     </label>
+                </fieldset>
+                <fieldset className="fieldset bg-base-200 border-base-300 rounded-box  border p-4">
+                    <legend className="fieldset-legend">Coverture</legend>
+                    <div className={`flex flex-wrap gap-4 items-center justify-center`}>
+                        {spellBookCovers.map((cover,index) => {
+                            return <div
+                                key={index}
+                                className={`w-10 h-10 rounded-lg cursor-pointer shadow-lg ${spellBookCoverClasses[cover]} ${coverActive == cover ? 'outline-4 outline-offset-2' : ''}`}
+                                onClick={() => setCoverActive(cover)}/>
+                        })}
+                    </div>
                 </fieldset>
                 <div className="modal-action justify-between">
                     <form method="dialog">
