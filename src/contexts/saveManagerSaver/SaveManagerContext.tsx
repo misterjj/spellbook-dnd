@@ -18,6 +18,7 @@ interface SaveMangerContextProps {
     getSpellBook: (id: string) => ISpellBookSaved | undefined,
     addSpellBook: (name: string, cover: SpellBookCover) => string
     updateSpellBook: (id: string, name: string, cover: SpellBookCover) => void
+    deleteSpellBook: (id: string) => void
 }
 
 export const SaveManagerContext = createContext<SaveMangerContextProps>(
@@ -29,9 +30,11 @@ export const SaveManagerContext = createContext<SaveMangerContextProps>(
         },
         cleanSpells: () => {
         },
-        getSpellBook: (id: string) => undefined,
-        addSpellBook: (name: string, cover: SpellBookCover) => "",
-        updateSpellBook: (id: string, name: string, cover: SpellBookCover) => {
+        getSpellBook: () => undefined,
+        addSpellBook: () => "",
+        updateSpellBook: () => {
+        },
+        deleteSpellBook: () => {
         },
     }
 )

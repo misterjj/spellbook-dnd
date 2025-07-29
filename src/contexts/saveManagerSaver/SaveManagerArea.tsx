@@ -159,6 +159,15 @@ export function SaveManagerArea({children}: SpellBookSaverAreaProps) {
         });
     }, []);
 
+    const deleteSpellBook = useCallback((id: string) => {
+        setSaveData(currentSaveData => {
+            return {
+                ...currentSaveData,
+                spellsBooks: currentSaveData.spellsBooks.filter(spellBook => spellBook.id !== id),
+            };
+        });
+    }, []);
+
 
     const contextValue = {
         saveData,
@@ -168,6 +177,7 @@ export function SaveManagerArea({children}: SpellBookSaverAreaProps) {
         getSpellBook,
         addSpellBook,
         updateSpellBook,
+        deleteSpellBook
     };
 
     return (

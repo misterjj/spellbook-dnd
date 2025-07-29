@@ -112,30 +112,20 @@
 }
 
 .grimoire-title {
-  /* 1. Utiliser la police Griffy via notre variable CSS */
-  font-family: var(--font-griffy), cursive; /* 'cursive' est une bonne police de secours */
+  font-family: var(--font-griffy), cursive;
+  letter-spacing: 0.05em;
 
-  /* Améliorations visuelles pour cette police spécifique */
-  letter-spacing: 0.05em; /* Un léger espacement des lettres peut améliorer la lisibilité */
-  text-transform: capitalize; /* Met en majuscule la première lettre de chaque mot */
-
-  /* 2. Créer le dégradé doré */
   background-image: linear-gradient(
           to bottom,
-          #FFEEB7, /* Or clair en haut */
-          #E8B447  /* Or plus foncé en bas */
+          #FFEEB7,
+          #E8B447
   );
 
-  /* 3. Appliquer le dégradé comme couleur du texte */
-  -webkit-background-clip: text;
   background-clip: text;
-  color: transparent;
+  color: rgba(255, 200, 100, 0.9);
 
-  /* Pour les anciens navigateurs qui ne supportent pas background-clip */
-  -webkit-text-fill-color: transparent;
+  /*-webkit-text-fill-color: transparent;*/
 
-  /* 4. Créer l'effet de lueur ambiante */
   text-shadow:
-          0 0 6px rgba(255, 200, 100, 0.5), /* Lueur principale, un peu plus prononcée */
-          0 0 12px rgba(255, 160, 50, 0.3); /* Lueur externe plus large et orange */
+          0 0 3px rgba(0, 0, 0, 0.9);
 }
