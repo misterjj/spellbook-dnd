@@ -3,6 +3,7 @@
 import "./globals.css";
 import {HiAdjustmentsVertical, HiBars3} from "react-icons/hi2";
 import {useEffect, useState} from "react";
+import localFont from 'next/font/local';
 
 import '../i18n/config';
 import {useTranslation} from 'react-i18next';
@@ -13,6 +14,12 @@ import Link from "next/link";
 import {DragAndDropArea} from "@/contexts/draggable/DragAndDropArea";
 import SpellLoaderArea from "@/contexts/spellLoader/SpellLoaderArea";
 import {SaveManagerArea} from "@/contexts/saveManagerSaver/SaveManagerArea";
+
+const griffy = localFont({
+    src: '../fonts/Griffy-Regular.ttf', // Chemin vers votre fichier de police
+    display: 'swap', // Comportement de chargement
+    variable: '--font-griffy', // Crée la même variable CSS qu'avant
+});
 
 export default function RootLayout({
                                        children,
@@ -91,7 +98,10 @@ export default function RootLayout({
 
     return (
         <html data-theme={selectedTheme}
-              className={selectedTheme === undefined || selectedLanguage === undefined ? "hidden" : ""}>
+              className={`
+              ${selectedTheme === undefined || selectedLanguage === undefined ? "hidden" : ""}
+              ${griffy.variable}
+              `}>
         <body
             className={`antialiased relative w-full bg-base-100`}
         >

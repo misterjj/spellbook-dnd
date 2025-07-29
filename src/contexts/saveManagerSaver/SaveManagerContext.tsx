@@ -1,5 +1,5 @@
 import {createContext} from "react";
-import {ISpellBookSaved} from "@/data/SpellBook";
+import {ISpellBookSaved, SpellBookCover} from "@/data/SpellBook";
 import {SpellId} from "@/data/Spell";
 
 export interface SaveData {
@@ -16,7 +16,8 @@ interface SaveMangerContextProps {
     removeSpell: (id: string, spell: SpellId) => void
     cleanSpells: (id: string) => void
     getSpellBook: (id: string) => ISpellBookSaved | undefined,
-    addSpellBook: (name: string) => string
+    addSpellBook: (name: string, cover: SpellBookCover) => string
+    updateSpellBook: (id: string, name: string, cover: SpellBookCover) => void
 }
 
 export const SaveManagerContext = createContext<SaveMangerContextProps>(
@@ -29,7 +30,9 @@ export const SaveManagerContext = createContext<SaveMangerContextProps>(
         cleanSpells: () => {
         },
         getSpellBook: (id: string) => undefined,
-        addSpellBook: (name: string) => "",
+        addSpellBook: (name: string, cover: SpellBookCover) => "",
+        updateSpellBook: (id: string, name: string, cover: SpellBookCover) => {
+        },
     }
 )
 

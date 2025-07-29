@@ -1,7 +1,7 @@
 import React, {ReactNode, useCallback, useEffect, useState} from "react";
 import {emptySave, SaveData, SaveManagerContext} from "@/contexts/saveManagerSaver/SaveManagerContext";
 import {SpellId} from "@/data/Spell";
-import {ISpellBookSaved} from "@/data/SpellBook";
+import {ISpellBookSaved, SpellBookCover} from "@/data/SpellBook";
 
 interface SpellBookSaverAreaProps {
     children: ReactNode;
@@ -62,6 +62,7 @@ export function SaveManagerArea({children}: SpellBookSaverAreaProps) {
                 const newBook: ISpellBookSaved = {
                     id: bookId,
                     name: `book-name-${bookId}`,
+                    cover: "black",
                     spells: [spell]
                 };
 
@@ -114,7 +115,7 @@ export function SaveManagerArea({children}: SpellBookSaverAreaProps) {
         });
     }, []);
 
-    const addSpellBook = useCallback((name: string) => {
+    const addSpellBook = useCallback((name: string, cover: SpellBookCover) => {
         const uuid = uuidv4();
 
         setSaveData(currentSaveDate => {
@@ -123,6 +124,7 @@ export function SaveManagerArea({children}: SpellBookSaverAreaProps) {
                 {
                     id: uuid,
                     name: name,
+                    cover: cover,
                     spells: []
                 }
             ]
@@ -137,6 +139,27 @@ export function SaveManagerArea({children}: SpellBookSaverAreaProps) {
     }, [])
 
 
+    const updateSpellBook = useCallback((id: string, name: string, cover: SpellBookCover) => {
+        setSaveData(currentSaveData => {
+            const updatedSpellBooks = currentSaveData.spellsBooks.map(spellBook => {
+                if (spellBook.id === id) {
+                    return {
+                        ...spellBook,
+                        name: name,
+                        cover: cover,
+                    };
+                }
+                return spellBook;
+            });
+
+            return {
+                ...currentSaveData,
+                spellsBooks: updatedSpellBooks,
+            };
+        });
+    }, []);
+
+
     const contextValue = {
         saveData,
         addSpell,
@@ -144,6 +167,7 @@ export function SaveManagerArea({children}: SpellBookSaverAreaProps) {
         cleanSpells,
         getSpellBook,
         addSpellBook,
+        updateSpellBook,
     };
 
     return (
