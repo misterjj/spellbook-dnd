@@ -44,7 +44,7 @@ export default function ParametersPage() {
         <fieldset
             className="fieldset bg-base-100 border-base-300 rounded-box w-full border px-4 pb-3">
             <legend className="fieldset-legend">{t("layout.settings.theme")}</legend>
-            <div className={`flex gap-2 flex-wrap`}>
+            <div className={`flex flex-wrap`}>
                 {themes.map((theme, i) => {
                     return <div key={i} onClick={() => setTheme(theme)}
                                 className={`btn btn-ghost ${saveData.theme === theme ? "btn-outline" : ""}`}>

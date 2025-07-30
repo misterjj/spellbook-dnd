@@ -1,44 +1,78 @@
-import {Children, cloneElement, isValidElement, ReactElement, ReactNode, useEffect, useRef, useState} from "react";
+import {
+    Children,
+    cloneElement,
+    isValidElement,
+    ReactElement,
+    ReactNode,
+    useEffect,
+    useRef,
+    useState
+} from "react";
 
 interface DivFixerProps {
     children: ReactNode;
 }
 
-export function DivFixer({children}: DivFixerProps) {
-    const [scrollY, setScrollY] = useState(0)
-    const [initY, setInitY] = useState(0)
-    const ref = useRef<HTMLDivElement>(null)
+export function DivFixer({ children }: DivFixerProps) {
+    const [isFixed, setIsFixed] = useState(false);
+    const [width, setWidth] = useState(0);
+    const [height, setHeight] = useState(0);
+    const ref = useRef<HTMLDivElement>(null);
     const child = Children.only(children);
 
     useEffect(() => {
-        setTimeout(() => {
-            setInitY(ref.current?.getBoundingClientRect().top ?? 0)
-        }, 500)
-        const logit = () => {
-            setScrollY(window.pageYOffset);
+        const container = ref.current;
+        if (!container) return;
+
+        const updateDimensions = () => {
+            const top = container.getBoundingClientRect().top + window.scrollY;
+            setWidth(container.offsetWidth);
+            setHeight(container.offsetHeight);
+            return top;
         };
 
-        function watchScroll() {
-            window.addEventListener("scroll", logit);
-        }
-        watchScroll();
+        const initialTop = updateDimensions();
+
+        const handleScroll = () => {
+            setIsFixed(window.scrollY > initialTop);
+        };
+
+        const handleResize = () => {
+            updateDimensions();
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        window.addEventListener("resize", handleResize);
+
+        handleScroll();
 
         return () => {
-            window.removeEventListener("scroll", logit);
+            window.removeEventListener("scroll", handleScroll);
+            window.removeEventListener("resize", handleResize);
         };
-    }, [ref]);
+    }, []);
 
     if (!isValidElement(child)) {
         return <>{child}</>;
     }
 
-    const childClassName = isValidElement(child) ? (child.props as { className?: string }).className || '' : '';
+    const childProps = child.props as { className?: string, style?: React.CSSProperties };
 
-    const isFixed = scrollY > initY;
+    const childClassName = childProps.className || '';
 
-    return <div className={`relative w-full group/div-fixer ${isFixed ? "is-fixed" : ""}`} ref={ref}>
-        {cloneElement(child as ReactElement<{ className?: string }>, {
-            className: `${childClassName} ${isFixed? "fixed max-h-screen overflow-y-auto top-0 !m-0" : ""}`
-        })}
-    </div>
+    const containerStyle = isFixed ? { minHeight: `${height}px` } : {};
+
+    const fixedChildStyle = isFixed ? { width: `${width}px` } : {};
+
+    return (
+        <div className={`relative w-full group/div-fixer`} ref={ref} style={containerStyle}>
+            {cloneElement(child as ReactElement<{ className?: string, style?: object }>, {
+                className: `${childClassName} ${isFixed ? "fixed max-h-screen overflow-y-auto top-0 !m-0" : ""}`,
+                style: {
+                    ...childProps,
+                    ...fixedChildStyle
+                }
+            })}
+        </div>
+    );
 }

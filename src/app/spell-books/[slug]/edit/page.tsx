@@ -168,14 +168,11 @@ export default function SpellBookEditPage() {
         return <div className={`drawer lg:hidden w-full h-10 z-11`}>
             <input id="my-drawer-4" type="checkbox" className="drawer-toggle"/>
             <div className="drawer-content">
-                <DivFixer>
                     <label htmlFor="my-drawer-4"
-                           className="drawer-button btn btn-primary z-1 left-8 top-8 btn-outline bg-base-100 origin-bottom-right h-8
-                           group-[.is-fixed]/div-fixer:-rotate-90 group-[.is-fixed]/div-fixer:-translate-x-full active:group-[.is-fixed]/div-fixer:-translate-x-full"
+                           className="drawer-button btn btn-primary z-1 left-8 top-8 btn-outline bg-base-100 origin-bottom-right h-8"
                            ref={seeSpellsBtnRef}>
                         Voir les sorts préparées
                     </label>
-                </DivFixer>
             </div>
             <div className="drawer-side lg:hidden">
                 <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
@@ -232,7 +229,7 @@ export default function SpellBookEditPage() {
                             </div>
                             <DivFixer>
                                 <div
-                                    className={`right-0 w-full pb-4 group-[.is-fixed]/div-fixer:w-2/5 group-[.is-fixed]/div-fixer:pr-12`}>
+                                    className={`w-full pb-4 `}>
                                     <SpellListTarget
                                         selectedSpells={selectedSpellIds}
                                         spells={selectedSpells}
