@@ -20,13 +20,25 @@ export function SaveManagerArea({children}: SpellBookSaverAreaProps) {
         const obj = localStorage.getItem('my-save')
         if (null != obj) {
             const data: SaveData = JSON.parse(obj)
-            setSaveData(data)
+            setSaveData({...emptySave, ...data, load: true})
         }
     }, [])
 
     useEffect(() => {
         localStorage.setItem('my-save', JSON.stringify(saveData));
     }, [saveData])
+
+    const setLanguage = useCallback((language: string) => {
+        setSaveData(currentSaveData => ({...currentSaveData, language}))
+    }, [])
+
+    const setTheme = useCallback((theme: string) => {
+        setSaveData(currentSaveData => ({...currentSaveData, theme}))
+    }, [])
+
+    const setMenuCollapse = useCallback((menuCollapse: boolean) => {
+        setSaveData(currentSaveData => ({...currentSaveData, menuCollapse}))
+    }, [])
 
     const getSpellBook = useCallback((bookId: string) => {
         return saveData.spellsBooks.find(book => book.id === bookId);
@@ -171,6 +183,9 @@ export function SaveManagerArea({children}: SpellBookSaverAreaProps) {
 
     const contextValue = {
         saveData,
+        setLanguage,
+        setTheme,
+        setMenuCollapse,
         addSpell,
         removeSpell,
         cleanSpells,
