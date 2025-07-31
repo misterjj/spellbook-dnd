@@ -8,7 +8,7 @@ import { usePathname } from 'next/navigation';
 import '../i18n/config';
 import {useTranslation} from 'react-i18next';
 import {FaHatWizard} from "react-icons/fa";
-import {GiBlockHouse, GiTiedScroll} from "react-icons/gi";
+import {GiBlockHouse, GiFireSpellCast, GiPerspectiveDiceSixFacesRandom, GiTiedScroll} from "react-icons/gi";
 import Link from "next/link";
 import {DragAndDropArea} from "@/contexts/draggable/DragAndDropArea";
 import SpellLoaderArea from "@/contexts/spellLoader/SpellLoaderArea";
@@ -139,6 +139,34 @@ function Menu() {
     </div>
 }
 
+
+function DockMenu() {
+    const pathname = usePathname();
+    const isActive = (href:string) => (pathname === '/' && href === '/') || (href !== '/' && pathname.startsWith(href));
+
+    return <div className="dock sm:hidden bg-base-200">
+        <Link href={"/"} className={`${isActive("/") ? "dock-active" : ""}`}>
+            <HiOutlineHome size={24}/>
+            <span className="dock-label">Accueil</span>
+        </Link>
+
+        <Link href={"/spell-books"} className={`${isActive("/spell-books") ? "dock-active" : ""}`}>
+            <GiFireSpellCast size={24}/>
+            <span className="dock-label">Sorts</span>
+        </Link>
+
+        <Link href={"/"} className={`${isActive("/generator") ? "dock-active" : ""}`}>
+            <GiPerspectiveDiceSixFacesRandom size={24}/>
+            <span className="dock-label">Générateurs</span>
+        </Link>
+
+        <Link href={"/settings"} className={`${isActive("/settings") ? "dock-active" : ""}`}>
+            <HiOutlineCog size={24}/>
+            <span className="dock-label">Settings</span>
+        </Link>
+    </div>
+}
+
 function ClientLayout({children}: { children: React.ReactNode }) {
     const {i18n} = useTranslation();
     const {saveData} = useContext(SaveManagerContext);
@@ -167,10 +195,11 @@ function ClientLayout({children}: { children: React.ReactNode }) {
         <>
             <div className={`flex`}>
                 <Menu />
-                <div className={`py-10 px-10 grow`}>
+                <div className={`p-5 md:p-10 grow pb-24 `}>
                     <DragAndDropArea>
                         {children}
                     </DragAndDropArea>
+                    <DockMenu />
                 </div>
             </div>
         </>
