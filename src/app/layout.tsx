@@ -1,7 +1,7 @@
 "use client";
 
 import "./globals.css";
-import React, {useContext, useEffect} from "react";
+import React, {useContext, useEffect, useRef, useState} from "react";
 import localFont from 'next/font/local';
 import { usePathname } from 'next/navigation';
 
@@ -28,19 +28,39 @@ interface ItemMenuProps {
     icon: React.ReactNode;
     text: React.ReactNode;
     collapse: Boolean;
+    scrollY: number;
 }
 
-function ItemMenu({href, icon, text, collapse}: ItemMenuProps) {
+function ItemMenu({href, icon, text, collapse, scrollY}: ItemMenuProps) {
     const pathname = usePathname();
     const isActive = (pathname === '/' && href === '/') || (href !== '/' && pathname.startsWith(href));
+    const ref = useRef<HTMLDivElement | null>(null);
+    const [offsetTop, setOffsetTop] = useState(0)
 
-    return <div className={`px-2 mb-1`}>
+    useEffect(() => {
+        const updateOffset = () => {
+            if (ref.current) {
+                setOffsetTop(ref.current.offsetTop);
+            }
+        };
+
+        updateOffset();
+
+        window.addEventListener('resize', updateOffset);
+
+        return () => {
+            window.removeEventListener('resize', updateOffset);
+        };
+    }, [ref]);
+
+    return <div className={`px-2 mb-1`} ref={ref}>
         <Link href={href}
-              data-tip={text}
-              className={`flex items-center ${collapse ? "justify-center tooltip" : "justify-start"}
-              gap-1 btn btn-ghost px-2 text-base-content/75 tooltip-right ${isActive ? "btn-active" : ""}`}>
+              className={`flex items-center ${collapse ? "justify-center relative" : "justify-start"}
+              gap-1 btn btn-ghost px-2 text-base-content/75 tooltip-right group ${isActive ? "btn-active" : ""}`}>
             <div className={`shrink-0 w-5 flex justify-center`}>{icon}</div>
-            {!collapse && <div>{text}</div>}
+            <div className={`${collapse ? `fixed left-18 text-nowrap hidden group-hover:flex btn font-normal bg-base-300` : ``}`}
+                style={{top: offsetTop - scrollY}}>{text}
+            </div>
         </Link>
     </div>
 }
@@ -57,9 +77,71 @@ function ItemSeparator({text, collapse}: ItemSeparatorProps) {
     </div>
 }
 
-function ClientLayout({children}: { children: React.ReactNode }) {
-    const {t, i18n} = useTranslation();
+function Menu() {
+    const {t} = useTranslation();
     const {saveData, setMenuCollapse} = useContext(SaveManagerContext);
+    const scrollRef = useRef<HTMLDivElement|null>(null);
+    const [scrollY, setScrollY] = useState(0)
+
+    useEffect(() => {
+        const scrollableElement = scrollRef.current;
+
+        const handleScroll = () => {
+            if (scrollableElement) {
+                setScrollY(scrollableElement.scrollTop);
+            }
+        };
+
+        if (scrollableElement) {
+            scrollableElement.addEventListener('scroll', handleScroll);
+        }
+
+        return () => {
+            if (scrollableElement) {
+                scrollableElement.removeEventListener('scroll', handleScroll);
+            }
+        };
+    }, [scrollRef]);
+
+    return <div
+        className={`bg-base-200 border-r-1 border-base-300 transition-all ${saveData.menuCollapse ? "w-16" : "w-50"} 
+        h-screen shrink-0 sticky top-0 z-10 hidden sm:block`}>
+        <div className={`flex flex-col h-full overflow-y-auto w-full`} ref={scrollRef}>
+            <div className={`p-4 font-semibold`}>
+                <span>B</span>
+            </div>
+            <div className={`grow`}>
+                <ItemMenu href={"/"} icon={<HiOutlineHome size={20}/>} text={"Accueil"}
+                          collapse={saveData.menuCollapse} scrollY={scrollY}/>
+                <ItemSeparator text={"sorts"} collapse={saveData.menuCollapse}/>
+                <ItemMenu href={"/spell-list"} icon={<GiTiedScroll size={20}/>}
+                          text={t("layout.menu.spells-list")} collapse={saveData.menuCollapse} scrollY={scrollY}/>
+                <ItemMenu href={"/spell-books"} icon={<FaHatWizard size={20}/>}
+                          text={t("layout.menu.spell-books")} collapse={saveData.menuCollapse} scrollY={scrollY}/>
+                <ItemSeparator text={"Générateur"} collapse={saveData.menuCollapse}/>
+                <ItemMenu href={"/character-name"} icon={<TbUserHexagon size={20}/>}
+                          text={"Nom de personnage"} collapse={saveData.menuCollapse} scrollY={scrollY}/>
+                <ItemMenu href={"/inn-name"} icon={<GiBlockHouse size={20}/>}
+                          text={"Nom d'auberge"} collapse={saveData.menuCollapse} scrollY={scrollY}/>
+            </div>
+            <div className={``}>
+                <ItemMenu href={"/settings"} icon={<HiOutlineCog size={20}/>} text={"Paramètres"}
+                          collapse={saveData.menuCollapse} scrollY={scrollY}/>
+            </div>
+            <div className={`flex justify-end w-full p-2`}>
+                <div className={`btn btn-sm btn-ghost transition-all text-base-content/75 ${saveData.menuCollapse ? "w-full p-0" : ""}`}
+                     onClick={() => setMenuCollapse(!saveData.menuCollapse)}>
+                    <HiChevronDoubleRight size={20}
+                                          className={`${saveData.menuCollapse ? "rotate-0" : "rotate-180"} duration-500`}/>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+function ClientLayout({children}: { children: React.ReactNode }) {
+    const {i18n} = useTranslation();
+    const {saveData} = useContext(SaveManagerContext);
 
     useEffect(() => {
         if (saveData.theme) {
@@ -84,39 +166,7 @@ function ClientLayout({children}: { children: React.ReactNode }) {
     return (
         <>
             <div className={`flex`}>
-                <div
-                    className={`bg-base-200 border-r-1 border-base-300 transition-all ${saveData.menuCollapse ? "w-16" : "w-50"} h-screen shrink-0 sticky top-0 z-10 hidden sm:block overflow-y-auto`}>
-                    <div className={`flex flex-col h-full`}>
-                        <div className={`p-4 font-semibold`}>
-                            <span>Brand</span>
-                        </div>
-                        <div className={`grow`}>
-                            <ItemMenu href={"/"} icon={<HiOutlineHome size={20}/>} text={"Accueil"}
-                                      collapse={saveData.menuCollapse}/>
-                            <ItemSeparator text={"sorts"} collapse={saveData.menuCollapse}/>
-                            <ItemMenu href={"/spell-list"} icon={<GiTiedScroll size={20}/>}
-                                      text={t("layout.menu.spells-list")} collapse={saveData.menuCollapse}/>
-                            <ItemMenu href={"/spell-books"} icon={<FaHatWizard size={20}/>}
-                                      text={t("layout.menu.spell-books")} collapse={saveData.menuCollapse}/>
-                            <ItemSeparator text={"Générateur"} collapse={saveData.menuCollapse}/>
-                            <ItemMenu href={"/character-name"} icon={<TbUserHexagon size={20}/>}
-                                      text={"Nom de personnage"} collapse={saveData.menuCollapse}/>
-                            <ItemMenu href={"/inn-name"} icon={<GiBlockHouse size={20}/>}
-                                      text={"Nom d'auberge"} collapse={saveData.menuCollapse}/>
-                        </div>
-                        <div className={``}>
-                            <ItemMenu href={"/settings"} icon={<HiOutlineCog size={20}/>} text={"Paramètres"}
-                                      collapse={saveData.menuCollapse}/>
-                        </div>
-                        <div className={`flex justify-end w-full p-2`}>
-                            <div className={`btn btn-sm btn-ghost w-12 transition-all text-base-content/75`}
-                                 onClick={() => setMenuCollapse(!saveData.menuCollapse)}>
-                                <HiChevronDoubleRight size={20}
-                                                      className={`${saveData.menuCollapse ? "rotate-0" : "rotate-180"} duration-500`}/>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <Menu />
                 <div className={`py-10 px-10 grow`}>
                     <DragAndDropArea>
                         {children}
