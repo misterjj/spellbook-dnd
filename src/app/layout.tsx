@@ -3,7 +3,7 @@
 import "./globals.css";
 import React, {useContext, useEffect, useRef, useState} from "react";
 import localFont from 'next/font/local';
-import { usePathname } from 'next/navigation';
+import {usePathname} from 'next/navigation';
 
 import '../i18n/config';
 import {useTranslation} from 'react-i18next';
@@ -58,7 +58,8 @@ function ItemMenu({href, icon, text, collapse, scrollY}: ItemMenuProps) {
               className={`flex items-center ${collapse ? "justify-center relative" : "justify-start"}
               gap-1 btn btn-ghost px-2 text-base-content/75 tooltip-right group ${isActive ? "btn-active" : ""}`}>
             <div className={`shrink-0 w-5 flex justify-center`}>{icon}</div>
-            <div className={`${collapse ? `fixed left-18 text-nowrap hidden group-hover:flex btn font-normal bg-base-300` : ``}`}
+            <div
+                className={`${collapse ? `fixed left-18 text-nowrap hidden group-hover:flex btn font-normal bg-base-300` : ``}`}
                 style={{top: offsetTop - scrollY}}>{text}
             </div>
         </Link>
@@ -80,7 +81,7 @@ function ItemSeparator({text, collapse}: ItemSeparatorProps) {
 function Menu() {
     const {t} = useTranslation();
     const {saveData, setMenuCollapse} = useContext(SaveManagerContext);
-    const scrollRef = useRef<HTMLDivElement|null>(null);
+    const scrollRef = useRef<HTMLDivElement | null>(null);
     const [scrollY, setScrollY] = useState(0)
 
     useEffect(() => {
@@ -129,8 +130,9 @@ function Menu() {
                           collapse={saveData.menuCollapse} scrollY={scrollY}/>
             </div>
             <div className={`flex justify-end w-full p-2`}>
-                <div className={`btn btn-sm btn-ghost transition-all text-base-content/75 ${saveData.menuCollapse ? "w-full p-0" : ""}`}
-                     onClick={() => setMenuCollapse(!saveData.menuCollapse)}>
+                <div
+                    className={`btn btn-sm btn-ghost transition-all text-base-content/75 ${saveData.menuCollapse ? "w-full p-0" : ""}`}
+                    onClick={() => setMenuCollapse(!saveData.menuCollapse)}>
                     <HiChevronDoubleRight size={20}
                                           className={`${saveData.menuCollapse ? "rotate-0" : "rotate-180"} duration-500`}/>
                 </div>
@@ -139,32 +141,113 @@ function Menu() {
     </div>
 }
 
+interface DockMenuItemProps {
+    href?: string;
+    icon: React.ReactNode;
+    text: React.ReactNode;
+}
+
+function DockMenuItem({icon, text, href}: DockMenuItemProps) {
+    const pathname = usePathname();
+    const isActive = (pathname === '/' && href === '/') || (href !== '/' && pathname.startsWith(href));
+
+    return <Link href={href} className={`${isActive ? "dock-active" : ""} flex flex-col items-center justify-center`}>
+        {icon}
+        <span className="dock-label">{text}</span>
+    </Link>
+}
+
+interface DockMenuMultipleItemProps {
+    children: React.ReactNode;
+    icon: React.ReactNode;
+    text: React.ReactNode;
+    isOpen: boolean;
+    onToggle: (event: MouseEvent<HTMLAnchorElement>) => void;
+}
+
+function DockMenuMultipleItem({ children, text, icon, isOpen, onToggle }: DockMenuMultipleItemProps) {
+    const pathname = usePathname();
+
+    const checkActivePath = (nodes: ReactNode): boolean => {
+        return React.Children.toArray(nodes).some((child) => {
+            if (!React.isValidElement(child)) {
+                return false;
+            }
+
+            if (child.props.href && pathname.startsWith(child.props.href) && child.props.href !== '/') {
+                return true;
+            }
+
+            if (child.props.children) {
+                return checkActivePath(child.props.children);
+            }
+
+            return false;
+        });
+    };
+
+    const isActive = checkActivePath(children);
+
+    return (
+        <div className={`relative flex flex-col items-center justify-center ${isActive ? "dock-active" : ""}`}>
+            <a href="#" className={`flex flex-col items-center justify-center`} onClick={onToggle}>
+                {icon}
+                <span className="dock-label">{text}</span>
+            </a>
+            <div className={`absolute bottom-full mb-2 w-30 bg-base-200 p-4 rounded-lg shadow-lg transition-all z-10 text-center
+            ${isOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-full pointer-events-none"} `}>
+                {children}
+            </div>
+        </div>
+    );
+}
 
 function DockMenu() {
+    const { t } = useTranslation();
     const pathname = usePathname();
-    const isActive = (href:string) => (pathname === '/' && href === '/') || (href !== '/' && pathname.startsWith(href));
+    const [openMenu, setOpenMenu] = useState<string | null>(null);
 
-    return <div className="dock sm:hidden bg-base-200">
-        <Link href={"/"} className={`${isActive("/") ? "dock-active" : ""}`}>
-            <HiOutlineHome size={24}/>
-            <span className="dock-label">Accueil</span>
-        </Link>
+    useEffect(() => {
+        setOpenMenu(null);
+    }, [pathname]);
 
-        <Link href={"/spell-books"} className={`${isActive("/spell-books") ? "dock-active" : ""}`}>
-            <GiFireSpellCast size={24}/>
-            <span className="dock-label">Sorts</span>
-        </Link>
+    const handleToggle = (event: React.MouseEvent<HTMLAnchorElement>, text: string) => {
+        event.preventDefault();
+        event.stopPropagation();
+        setOpenMenu(openMenu === text ? null : text);
+    };
 
-        <Link href={"/"} className={`${isActive("/generator") ? "dock-active" : ""}`}>
-            <GiPerspectiveDiceSixFacesRandom size={24}/>
-            <span className="dock-label">Générateurs</span>
-        </Link>
+    return (
+        <div className="dock sm:hidden bg-base-200">
+            <DockMenuItem href={"/"} icon={<HiOutlineHome size={24} />} text={"Accueil"} />
 
-        <Link href={"/settings"} className={`${isActive("/settings") ? "dock-active" : ""}`}>
-            <HiOutlineCog size={24}/>
-            <span className="dock-label">Settings</span>
-        </Link>
-    </div>
+            <DockMenuMultipleItem
+                icon={<GiFireSpellCast size={24} />}
+                text={"Sorts"}
+                isOpen={openMenu === "SpellPanel"}
+                onToggle={(e) => handleToggle(e, "SpellPanel")}
+            >
+                <div className={`flex flex-col gap-4`}>
+                    <DockMenuItem href={"/spell-list"} icon={<GiTiedScroll size={24} />} text={t("layout.menu.spells-list")} />
+                    <DockMenuItem href={"/spell-books"} icon={<FaHatWizard size={24} />} text={t("layout.menu.spell-books")} />
+                </div>
+            </DockMenuMultipleItem>
+
+            <DockMenuMultipleItem
+                icon={<GiPerspectiveDiceSixFacesRandom size={24} />}
+                text={"Générateurs"}
+                isOpen={openMenu === "GeneratorPanel"}
+                onToggle={(e) => handleToggle(e, "GeneratorPanel")}
+            >
+                <div className={`flex flex-col gap-4`}>
+                    <DockMenuItem href={"#"} icon={<TbUserHexagon size={24} />} text={"Nom de personnage"} />
+                    <DockMenuItem href={"#"} icon={<GiBlockHouse size={24} />} text={"Nom d'auberge"} />
+                </div>
+            </DockMenuMultipleItem>
+
+            <DockMenuItem href={"/settings"} icon={<HiOutlineCog size={24} />} text={"Settings"} />
+        </div>
+    );
 }
 
 function ClientLayout({children}: { children: React.ReactNode }) {
@@ -194,12 +277,12 @@ function ClientLayout({children}: { children: React.ReactNode }) {
     return (
         <>
             <div className={`flex`}>
-                <Menu />
+                <Menu/>
                 <div className={`p-5 md:p-10 grow pb-24 `}>
                     <DragAndDropArea>
                         {children}
                     </DragAndDropArea>
-                    <DockMenu />
+                    <DockMenu/>
                 </div>
             </div>
         </>
